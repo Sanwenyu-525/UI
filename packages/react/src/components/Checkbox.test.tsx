@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, useRef } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Checkbox } from './Checkbox';
 import { Radio, RadioGroup } from './Radio';

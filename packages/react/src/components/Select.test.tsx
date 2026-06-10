@@ -139,20 +139,6 @@ describe('Select Component', () => {
       fireEvent.keyDown(screen.getByRole('combobox'), { key: 'Enter' });
       expect(handleChange).toHaveBeenCalled();
     });
-
-    it('navigates options with ArrowDown', () => {
-      render(<Select {...defaultProps} />);
-      fireEvent.click(screen.getByRole('combobox'));
-      fireEvent.keyDown(screen.getByRole('combobox'), { key: 'ArrowDown' });
-      // First option should be focused
-    });
-
-    it('navigates options with ArrowUp', () => {
-      render(<Select {...defaultProps} />);
-      fireEvent.click(screen.getByRole('combobox'));
-      fireEvent.keyDown(screen.getByRole('combobox'), { key: 'ArrowDown' });
-      fireEvent.keyDown(screen.getByRole('combobox'), { key: 'ArrowUp' });
-    });
   });
 
   describe('Controlled Mode', () => {
@@ -161,13 +147,13 @@ describe('Select Component', () => {
       expect(screen.getByRole('combobox')).toHaveTextContent(/option 3/i);
     });
 
-    it('calls onChange but does not update display without value prop', () => {
+    it('does not update display without value prop', () => {
       const handleChange = vi.fn();
-      render(<Select {...defaultProps} onChange={handleChange} />);
+      render(<Select {...defaultProps} onChange={handleChange} placeholder="Choose..." />);
       fireEvent.click(screen.getByRole('combobox'));
       fireEvent.click(screen.getByRole('option', { name: /option 2/i }));
       expect(handleChange).toHaveBeenCalledWith('2');
-      // Display should not change without controlled value
+      expect(screen.getByRole('combobox')).toHaveTextContent(/choose/i);
     });
   });
 

@@ -1,4 +1,4 @@
-import { useEffect, useCallback, type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import {
   Modal as RNModal,
   View,
@@ -17,7 +17,6 @@ export interface ModalProps {
   title?: string;
   size?: ModalSize;
   closeOnOverlay?: boolean;
-  closeOnEscape?: boolean;
   footer?: ReactNode;
   children: ReactNode;
   style?: ViewStyle;
@@ -45,21 +44,17 @@ export function Modal({
   style,
   colors = theme.colors,
 }: ModalProps) {
-  const handleClose = useCallback(() => {
-    onClose();
-  }, [onClose]);
-
   return (
     <RNModal
       visible={open}
       transparent
       animationType="fade"
-      onRequestClose={handleClose}
+      onRequestClose={onClose}
       accessibilityViewIsModal
     >
       <Pressable
         style={[styles.overlay, { backgroundColor: 'rgba(0, 0, 0, 0.5)' }]}
-        onPress={closeOnOverlay ? handleClose : undefined}
+        onPress={closeOnOverlay ? onClose : undefined}
       >
         <Pressable
           style={[
@@ -79,7 +74,7 @@ export function Modal({
             <View style={styles.header}>
               <Text style={[styles.title, { color: colors.textPrimary }]}>{title}</Text>
               <Pressable
-                onPress={handleClose}
+                onPress={onClose}
                 style={styles.closeButton}
                 accessibilityRole="button"
                 accessibilityLabel="Close"

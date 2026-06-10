@@ -69,12 +69,6 @@ describe('Button Component', () => {
       expect(button).toHaveAttribute('aria-busy', 'true');
       expect(button).toBeDisabled();
     });
-
-    it('disables button when loading', () => {
-      render(<Button loading>Loading</Button>);
-      const button = screen.getByRole('button');
-      expect(button).toBeDisabled();
-    });
   });
 
   describe('Styling', () => {

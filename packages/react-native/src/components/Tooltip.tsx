@@ -30,13 +30,10 @@ export function Tooltip({
 }: TooltipProps) {
   const [visible, setVisible] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
-  const tooltipRef = useRef<View>(null);
 
   const show = useCallback(() => {
-    timeoutRef.current = setTimeout(() => {
-      setVisible(true);
-    }, delay);
-  }, [delay]);
+    setVisible(true);
+  }, []);
 
   const hide = useCallback(() => {
     if (timeoutRef.current) {
@@ -56,7 +53,7 @@ export function Tooltip({
   const positionStyle = getPositionStyle(position);
 
   return (
-    <View ref={tooltipRef} style={[styles.container, style]}>
+    <View style={[styles.container, style]}>
       <Pressable
         onLongPress={show}
         onPressOut={hide}

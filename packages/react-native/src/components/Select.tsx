@@ -60,9 +60,9 @@ export function Select({
 
   const toggleOpen = useCallback(() => {
     if (!disabled) {
-      setOpen(!open);
+      setOpen((prev) => !prev);
     }
-  }, [open, disabled]);
+  }, [disabled]);
 
   return (
     <View style={[styles.container, style]}>
