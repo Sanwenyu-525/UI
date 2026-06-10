@@ -1,0 +1,123 @@
+/* ─── Carousel ─────────────────────────────────────────────────────── */
+
+.ui-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.ui-carousel__track {
+  display: flex;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.ui-carousel__slide {
+  flex: 0 0 100%;
+  position: relative;
+}
+
+.ui-carousel__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Navigation arrows ───────────────────────────────────────────── */
+
+.ui-carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out);
+  box-shadow: var(--shadow-sm);
+  z-index: 2;
+}
+
+.ui-carousel__arrow:hover {
+  background: var(--surface-elevated);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.ui-carousel__arrow--prev {
+  left: var(--spacing-3);
+}
+
+.ui-carousel__arrow--next {
+  right: var(--spacing-3);
+}
+
+.ui-carousel__arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ── Indicators (dots) ───────────────────────────────────────────── */
+
+.ui-carousel__indicators {
+  position: absolute;
+  bottom: var(--spacing-3);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--spacing-2);
+  z-index: 2;
+}
+
+.ui-carousel__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.ui-carousel__dot--active {
+  background: #ffffff;
+  transform: scale(1.2);
+}
+
+.ui-carousel__dot:hover:not(.ui-carousel__dot--active) {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+/* ── Autoplay controls ───────────────────────────────────────────── */
+
+.ui-carousel__play-pause {
+  position: absolute;
+  top: var(--spacing-3);
+  right: var(--spacing-3);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: var(--radius-full);
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 2;
+  transition: background var(--duration-normal) var(--ease-out);
+}
+
+.ui-carousel__play-pause:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.ui-carousel__play-pause svg {
+  width: 16px;
+  height: 16px;
+}

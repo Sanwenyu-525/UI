@@ -87,3 +87,15 @@ export type { SkeletonProps, SkeletonGroupProps } from './components/Skeleton';
 
 export { Drawer } from './components/Drawer';
 export type { DrawerProps, DrawerPosition, DrawerSize } from './components/Drawer';
+
+export { Carousel } from './components/Carousel';
+export type { CarouselProps, CarouselSlide } from './components/Carousel';
+
+export { Menu, MenuDivider } from './components/Menu';
+export type { MenuProps, MenuItem, MenuDividerProps } from './components/Menu';
+
+export { TreeView } from './components/TreeView';
+export type { TreeViewProps, TreeNode } from './components/TreeView';
+
+export { DatePicker } from './components/DatePicker';
+export type { DatePickerProps } from './components/DatePicker';

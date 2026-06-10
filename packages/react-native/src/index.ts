@@ -22,3 +22,15 @@ export type { CardProps, CardVariant, CardHeaderProps } from './components/Card'
 
 export { Switch } from './components/Switch';
 export type { SwitchProps } from './components/Switch';
+
+export { Carousel } from './components/Carousel';
+export type { CarouselProps, CarouselSlide } from './components/Carousel';
+
+export { Menu, MenuDivider } from './components/Menu';
+export type { MenuProps, MenuItem } from './components/Menu';
+
+export { TreeView } from './components/TreeView';
+export type { TreeViewProps, TreeNode } from './components/TreeView';
+
+export { DatePicker } from './components/DatePicker';
+export type { DatePickerProps } from './components/DatePicker';

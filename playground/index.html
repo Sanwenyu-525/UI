@@ -6,12 +6,105 @@
   <title>UI Components — 组件预览 / Playground</title>
   <link rel="stylesheet" href="../packages/css/src/index.css?v=5">
   <style>
-    body { padding: 2rem; max-width: 960px; margin: 0 auto; }
-    section { margin-bottom: 3rem; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text-primary);
+    }
+
+    /* Sidebar navigation */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 260px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 1.5rem 0;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+
+    .sidebar__header {
+      padding: 0 1.5rem 1rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1rem;
+    }
+
+    .sidebar__logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .sidebar__subtitle {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    .sidebar__section {
+      margin-bottom: 1rem;
+    }
+
+    .sidebar__section-title {
+      padding: 0 1.5rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-tertiary);
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar__link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.625rem 1.5rem;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.15s ease-out;
+      border-left: 3px solid transparent;
+    }
+
+    .sidebar__link:hover {
+      background: var(--bg-muted);
+      color: var(--text-primary);
+    }
+
+    .sidebar__link--active {
+      background: rgba(99, 102, 241, 0.08);
+      color: var(--color-primary);
+      border-left-color: var(--color-primary);
+      font-weight: 500;
+    }
+
+    .sidebar__link svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    /* Main content */
+    .main-content {
+      margin-left: 260px;
+      padding: 2rem;
+      max-width: 960px;
+    }
+
+    section { margin-bottom: 3rem; scroll-margin-top: 2rem; }
     section > h2 { margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
     .row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-bottom: 1rem; }
     .col { display: flex; flex-direction: column; gap: 0.5rem; }
     .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+
+    /* Theme bar */
     .theme-bar {
       position: sticky; top: 0; z-index: 100;
       display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;
@@ -61,7 +154,149 @@
   </style>
 </head>
 <body>
+  <!-- Sidebar navigation -->
+  <nav class="sidebar">
+    <div class="sidebar__header">
+      <div class="sidebar__logo">UI Components</div>
+      <div class="sidebar__subtitle">组件库文档 / Documentation</div>
+    </div>
 
+    <div class="sidebar__section">
+      <div class="sidebar__section-title">数据录入 Data Entry</div>
+      <a href="#button" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="14" height="8" rx="2"/><path d="M6 9h6"/></svg>
+        Button 按钮
+      </a>
+      <a href="#input" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="14" height="10" rx="2"/><path d="M5 9h8"/></svg>
+        Input 输入框
+      </a>
+      <a href="#form-controls" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="5" height="5" rx="1"/><rect x="10" y="3" width="5" height="5" rx="1"/><rect x="3" y="10" width="5" height="5" rx="1"/><rect x="10" y="10" width="5" height="5" rx="1"/></svg>
+        Form Controls 表单控件
+      </a>
+      <a href="#slider" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9h12"/><circle cx="10" cy="9" r="2"/></svg>
+        Slider 滑块
+      </a>
+      <a href="#datepicker" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="14" height="12" rx="2"/><path d="M6 1v3M12 1v3M2 8h14"/></svg>
+        DatePicker 日期选择器
+      </a>
+    </div>
+
+    <div class="sidebar__section">
+      <div class="sidebar__section-title">数据展示 Data Display</div>
+      <a href="#badge" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="9" r="4"/><circle cx="13" cy="5" r="2"/></svg>
+        Badge 徽标
+      </a>
+      <a href="#avatar" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="7" r="3"/><path d="M3 16c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
+        Avatar 头像
+      </a>
+      <a href="#card" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="14" height="12" rx="2"/><path d="M2 7h14"/></svg>
+        Card 卡片
+      </a>
+      <a href="#table" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="14" height="12" rx="1"/><path d="M2 7h14M6 7v8M12 7v8"/></svg>
+        Table 表格
+      </a>
+      <a href="#accordion" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7l5 4 5-4"/><path d="M4 11l5 4 5-4"/></svg>
+        Accordion 手风琴
+      </a>
+      <a href="#tag" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 9l7-7h5a1 1 0 011 1v5l-7 7-6-6z"/></svg>
+        Tag 标签
+      </a>
+      <a href="#carousel" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="14" height="12" rx="2"/><path d="M6 9l3-3v6z"/></svg>
+        Carousel 轮播
+      </a>
+      <a href="#menu" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5h12M3 9h12M3 13h12"/></svg>
+        Menu 菜单
+      </a>
+      <a href="#treeview" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v10M4 7h6M10 7v7M10 10h4"/></svg>
+        TreeView 树形视图
+      </a>
+      <a href="#empty" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="12" height="10" rx="2"/><path d="M7 4V2h4v2"/></svg>
+        Empty 空状态
+      </a>
+    </div>
+
+    <div class="sidebar__section">
+      <div class="sidebar__section-title">布局 Layout</div>
+      <a href="#divider" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9h12"/></svg>
+        Divider 分隔线
+      </a>
+      <a href="#stack" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="12" height="3" rx="1"/><rect x="3" y="8" width="12" height="3" rx="1"/><rect x="3" y="13" width="12" height="3" rx="1"/></svg>
+        Stack 堆叠
+      </a>
+    </div>
+
+    <div class="sidebar__section">
+      <div class="sidebar__section-title">导航 Navigation</div>
+      <a href="#tabs" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4h4v11H3zM7 4h4v11H7zM11 4h4v11h-4z"/></svg>
+        Tabs 标签页
+      </a>
+      <a href="#breadcrumb" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h4M10 6h4M8 6l3 3-3 3"/></svg>
+        Breadcrumb 面包屑
+      </a>
+      <a href="#pagination" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5" cy="9" r="2"/><circle cx="9" cy="9" r="2"/><circle cx="13" cy="9" r="2"/></svg>
+        Pagination 分页
+      </a>
+    </div>
+
+    <div class="sidebar__section">
+      <div class="sidebar__section-title">反馈 Feedback</div>
+      <a href="#alert" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="9" r="7"/><path d="M9 6v4M9 12v.5"/></svg>
+        Alert 警告
+      </a>
+      <a href="#progress" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="14" height="4" rx="2"/><path d="M6 7v4"/></svg>
+        Progress 进度条
+      </a>
+      <a href="#skeleton" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="14" height="4" rx="1"/><rect x="2" y="9" width="14" height="4" rx="1"/></svg>
+        Skeleton 骨架屏
+      </a>
+    </div>
+
+    <div class="sidebar__section">
+      <div class="sidebar__section-title">浮层 Overlay</div>
+      <a href="#modal" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="12" height="10" rx="2"/><path d="M3 7h12"/></svg>
+        Modal 弹窗
+      </a>
+      <a href="#toast" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h10v8H4z"/><path d="M6 4V2h6v2"/></svg>
+        Toast 通知
+      </a>
+      <a href="#tooltip" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="7" r="5"/><path d="M7 14l2 2 2-2"/></svg>
+        Tooltip 提示
+      </a>
+      <a href="#drawer" class="sidebar__link">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="14" height="12" rx="2"/><path d="M11 3v12"/></svg>
+        Drawer 抽屉
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main class="main-content">
+  <!-- Theme bar / 主题切换 -->
   <!-- Theme bar / 主题切换 -->
   <div class="theme-bar">
     <span style="font-weight:600; display:flex; align-items:center; margin-right:0.25rem;">主题 / Theme</span>
@@ -81,7 +316,7 @@
   </p>
 
   <!-- ─── Button 按钮 ─────────────────────────────────────────── -->
-  <section>
+  <section id="button">
     <h2>Button<span class="sub">按钮</span></h2>
 
     <h4 style="margin-bottom: 0.75rem;">Variants<span class="sub">变体</span></h4>
@@ -107,7 +342,7 @@
   </section>
 
   <!-- ─── Input 输入框 ────────────────────────────────────────── -->
-  <section>
+  <section id="input">
     <h2>Input<span class="sub">输入框</span></h2>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
@@ -144,7 +379,7 @@
   </section>
 
   <!-- ─── Badge 徽标 ──────────────────────────────────────────── -->
-  <section>
+  <section id="badge">
     <h2>Badge<span class="sub">徽标</span></h2>
 
     <div class="row">
@@ -158,7 +393,7 @@
   </section>
 
   <!-- ─── Avatar 头像 ─────────────────────────────────────────── -->
-  <section>
+  <section id="avatar">
     <h2>Avatar<span class="sub">头像</span></h2>
     <div class="row">
       <div class="ui-avatar ui-avatar--sm"><span class="ui-avatar__fallback">SM</span></div>
@@ -169,7 +404,7 @@
   </section>
 
   <!-- ─── Card 卡片 ───────────────────────────────────────────── -->
-  <section>
+  <section id="card">
     <h2>Card<span class="sub">卡片</span></h2>
     <div class="card-grid">
       <div class="ui-card ui-card--elevated">
@@ -208,7 +443,7 @@
   </section>
 
   <!-- ─── Form Controls 表单控件 ──────────────────────────────── -->
-  <section>
+  <section id="form-controls">
     <h2>Form Controls<span class="sub">表单控件</span></h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 2rem;">
       <div class="col">
@@ -269,7 +504,7 @@
   </section>
 
   <!-- ─── Modal 弹窗 ──────────────────────────────────────────── -->
-  <section>
+  <section id="modal">
     <h2>Modal<span class="sub">弹窗</span></h2>
     <button class="ui-btn ui-btn--primary" onclick="document.getElementById('demo-modal').classList.add('ui-modal-overlay--open')">
       Open Modal 打开弹窗
@@ -295,7 +530,7 @@
   </section>
 
   <!-- ─── Toast 通知 ──────────────────────────────────────────── -->
-  <section>
+  <section id="toast">
     <h2>Toast<span class="sub">通知</span></h2>
     <div style="position: static; max-width: 100%; display: flex; flex-direction: column; gap: 0.5rem;">
       <div class="ui-toast ui-toast--success" style="pointer-events:none;">
@@ -316,7 +551,7 @@
   </section>
 
   <!-- ─── Tooltip 提示 ────────────────────────────────────────── -->
-  <section>
+  <section id="tooltip">
     <h2>Tooltip<span class="sub">提示</span></h2>
     <div class="row" style="gap: 2rem;">
       <div class="ui-tooltip-wrapper">
@@ -337,7 +572,7 @@
   </section>
 
   <!-- ─── Divider 分隔线 ──────────────────────────────────────── -->
-  <section>
+  <section id="divider">
     <h2>Divider<span class="sub">分隔线</span></h2>
     <p>上文内容 / Content above</p>
     <hr class="ui-divider">
@@ -351,7 +586,7 @@
   </section>
 
   <!-- ─── Tag 标签 ────────────────────────────────────────────── -->
-  <section>
+  <section id="tag">
     <h2>Tag<span class="sub">标签</span></h2>
     <div class="row">
       <span class="ui-tag ui-tag--default">Default 默认</span>
@@ -364,7 +599,7 @@
   </section>
 
   <!-- ─── Tabs 标签页 ─────────────────────────────────────────── -->
-  <section>
+  <section id="tabs">
     <h2>Tabs<span class="sub">标签页</span></h2>
     <div class="ui-tabs">
       <div class="ui-tabs__list" role="tablist">
@@ -379,7 +614,7 @@
   </section>
 
   <!-- ─── Breadcrumb 面包屑 ───────────────────────────────────── -->
-  <section>
+  <section id="breadcrumb">
     <h2>Breadcrumb<span class="sub">面包屑</span></h2>
     <nav class="ui-breadcrumb" aria-label="Breadcrumb">
       <span class="ui-breadcrumb__item"><a class="ui-breadcrumb__link" href="#">首页 Home</a></span>
@@ -389,7 +624,7 @@
   </section>
 
   <!-- ─── Pagination 分页 ─────────────────────────────────────── -->
-  <section>
+  <section id="pagination">
     <h2>Pagination<span class="sub">分页</span></h2>
     <div class="ui-pagination">
       <button class="ui-pagination__btn ui-pagination__prev" disabled type="button" aria-label="Previous"><svg viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -403,7 +638,7 @@
   </section>
 
   <!-- ─── Accordion 手风琴 ────────────────────────────────────── -->
-  <section>
+  <section id="accordion">
     <h2>Accordion<span class="sub">手风琴</span></h2>
     <div class="ui-accordion">
       <div class="ui-accordion__item" data-open="true">
@@ -428,7 +663,7 @@
   </section>
 
   <!-- ─── Table 表格 ──────────────────────────────────────────── -->
-  <section>
+  <section id="table">
     <h2>Table<span class="sub">表格</span></h2>
     <div class="ui-table-wrap">
       <table class="ui-table">
@@ -465,7 +700,7 @@
   </section>
 
   <!-- ─── Alert 警告 ──────────────────────────────────────────── -->
-  <section>
+  <section id="alert">
     <h2>Alert<span class="sub">警告</span></h2>
     <div style="display:flex;flex-direction:column;gap:0.75rem;">
       <div class="ui-alert ui-alert--info" role="alert">
@@ -493,7 +728,7 @@
   </section>
 
   <!-- ─── Progress 进度条 ─────────────────────────────────────── -->
-  <section>
+  <section id="progress">
     <h2>Progress<span class="sub">进度条</span></h2>
     <div style="display:flex;flex-direction:column;gap:1.5rem;max-width:400px;">
       <div class="ui-progress">
@@ -518,7 +753,7 @@
   </section>
 
   <!-- ─── Skeleton 骨架屏 ─────────────────────────────────────── -->
-  <section>
+  <section id="skeleton">
     <h2>Skeleton<span class="sub">骨架屏</span></h2>
     <div class="ui-skeleton-group" style="max-width:400px;">
       <div class="ui-skeleton-group__row">
@@ -535,7 +770,7 @@
   </section>
 
   <!-- ─── Slider 滑块 ─────────────────────────────────────────── -->
-  <section>
+  <section id="slider">
     <h2>Slider<span class="sub">滑块</span></h2>
     <div style="max-width:360px;">
       <div class="ui-slider">
@@ -552,7 +787,7 @@
   </section>
 
   <!-- ─── Empty 空状态 ────────────────────────────────────────── -->
-  <section>
+  <section id="empty">
     <h2>Empty<span class="sub">空状态</span></h2>
     <div class="ui-empty" style="border:1px dashed var(--border);border-radius:var(--radius-lg);">
       <svg class="ui-empty__icon" viewBox="0 0 48 48" fill="none">
@@ -565,8 +800,232 @@
     </div>
   </section>
 
+  <!-- ─── Carousel 轮播 ──────────────────────────────────────── -->
+  <section id="carousel">
+    <h2>Carousel<span class="sub">轮播</span></h2>
+    <div style="max-width: 600px;">
+      <div class="ui-carousel" id="demo-carousel">
+        <div class="ui-carousel__track">
+          <div class="ui-carousel__slide">
+            <div style="height: 300px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 600;">
+              Slide 1 幻灯片 1
+            </div>
+          </div>
+          <div class="ui-carousel__slide">
+            <div style="height: 300px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 600;">
+              Slide 2 幻灯片 2
+            </div>
+          </div>
+          <div class="ui-carousel__slide">
+            <div style="height: 300px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 600;">
+              Slide 3 幻灯片 3
+            </div>
+          </div>
+        </div>
+        <button class="ui-carousel__arrow ui-carousel__arrow--prev" onclick="prevSlide()" aria-label="Previous">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4L6 10L12 16"/></svg>
+        </button>
+        <button class="ui-carousel__arrow ui-carousel__arrow--next" onclick="nextSlide()" aria-label="Next">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 4L14 10L8 16"/></svg>
+        </button>
+        <div class="ui-carousel__indicators">
+          <button class="ui-carousel__dot ui-carousel__dot--active" onclick="goToSlide(0)"></button>
+          <button class="ui-carousel__dot" onclick="goToSlide(1)"></button>
+          <button class="ui-carousel__dot" onclick="goToSlide(2)"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Menu 菜单 ──────────────────────────────────────────── -->
+  <section id="menu">
+    <h2>Menu<span class="sub">菜单</span></h2>
+    <div style="display: flex; gap: 1rem; align-items: flex-start;">
+      <div class="ui-menu">
+        <button class="ui-btn ui-btn--secondary ui-menu__trigger" onclick="toggleMenu('menu1')" aria-haspopup="true" aria-expanded="false">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12M2 8h12M2 12h12"/></svg>
+          Actions 操作
+        </button>
+        <div id="menu1-dropdown" class="ui-menu__dropdown" role="menu">
+          <ul class="ui-menu__list">
+            <li><button class="ui-menu__item" role="menuitem" onclick="closeMenu('menu1')">
+              <svg class="ui-menu__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3H4a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V4a1 1 0 00-1-1z"/><path d="M5 8h6M5 5h6M5 11h3"/></svg>
+              <span class="ui-menu__label">Edit 编辑</span>
+              <span class="ui-menu__shortcut">⌘E</span>
+            </button></li>
+            <li><button class="ui-menu__item" role="menuitem" onclick="closeMenu('menu1')">
+              <svg class="ui-menu__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3H13v3M6 13H3v-3M13 3L7 9M3 13l6-6"/></svg>
+              <span class="ui-menu__label">Copy 复制</span>
+              <span class="ui-menu__shortcut">⌘C</span>
+            </button></li>
+            <li><div class="ui-menu__divider"></div></li>
+            <li><button class="ui-menu__item" role="menuitem" onclick="closeMenu('menu1')">
+              <svg class="ui-menu__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l8 8M4 12l8-8"/></svg>
+              <span class="ui-menu__label">Delete 删除</span>
+            </button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ui-menu">
+        <button class="ui-btn ui-btn--secondary ui-menu__trigger" onclick="toggleMenu('menu2')" aria-haspopup="true" aria-expanded="false">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="3" r="1.5"/><circle cx="8" cy="8" r="1.5"/><circle cx="8" cy="13" r="1.5"/></svg>
+          Options 选项
+        </button>
+        <div id="menu2-dropdown" class="ui-menu__dropdown ui-menu__dropdown--right" role="menu">
+          <ul class="ui-menu__list">
+            <li><button class="ui-menu__item" role="menuitem" onclick="closeMenu('menu2')">
+              <svg class="ui-menu__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 3H3a1 1 0 00-1 1v8a1 1 0 001 1h10a1 1 0 001-1V4a1 1 0 00-1-1z"/><path d="M5 8l2 2 4-4"/></svg>
+              <span class="ui-menu__label">Enable 启用</span>
+            </button></li>
+            <li><button class="ui-menu__item ui-menu__item--disabled" role="menuitem" disabled>
+              <svg class="ui-menu__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l8 8M4 12l8-8"/></svg>
+              <span class="ui-menu__label">Disable 禁用</span>
+            </button></li>
+            <li><div class="ui-menu__divider"></div></li>
+            <li><button class="ui-menu__item ui-menu__item--danger" role="menuitem" onclick="closeMenu('menu2')">
+              <svg class="ui-menu__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12M5 4V3a1 1 0 011-1h4a1 1 0 011 1v1M6 7v5M10 7v5M3 4l1 9a1 1 0 001 1h6a1 1 0 001-1l1-9"/></svg>
+              <span class="ui-menu__label">Remove 删除</span>
+            </button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TreeView 树形视图 ─────────────────────────────────── -->
+  <section id="treeview">
+    <h2>TreeView<span class="sub">树形视图</span></h2>
+    <div style="max-width: 400px;">
+      <ul class="ui-tree" role="tree">
+        <li class="ui-tree__node" role="treeitem" aria-expanded="true">
+          <div class="ui-tree__node-content" style="padding-left: 8px;">
+            <button class="ui-tree__expand ui-tree__expand--expanded" onclick="toggleTreeNode(this)" aria-label="Collapse">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2L8 6L4 10"/></svg>
+            </button>
+            <svg class="ui-tree__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12M2 8h12M2 12h12"/></svg>
+            <span class="ui-tree__label">Documents 文档</span>
+          </div>
+          <ul class="ui-tree__children ui-tree__children--expanded" role="group">
+            <li class="ui-tree__node" role="treeitem">
+              <div class="ui-tree__node-content" style="padding-left: 28px;">
+                <span style="width: 20px;"></span>
+                <svg class="ui-tree__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h8v8H4z"/></svg>
+                <span class="ui-tree__label">Projects 项目</span>
+              </div>
+            </li>
+            <li class="ui-tree__node" role="treeitem" aria-expanded="true">
+              <div class="ui-tree__node-content" style="padding-left: 28px;">
+                <button class="ui-tree__expand ui-tree__expand--expanded" onclick="toggleTreeNode(this)" aria-label="Collapse">
+                  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2L8 6L4 10"/></svg>
+                </button>
+                <svg class="ui-tree__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12M2 8h12M2 12h12"/></svg>
+                <span class="ui-tree__label">Components 组件</span>
+              </div>
+              <ul class="ui-tree__children ui-tree__children--expanded" role="group">
+                <li class="ui-tree__node ui-tree__node--selected" role="treeitem">
+                  <div class="ui-tree__node-content" style="padding-left: 48px;">
+                    <span style="width: 20px;"></span>
+                    <svg class="ui-tree__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h8v8H4z"/></svg>
+                    <span class="ui-tree__label">Button 按钮</span>
+                  </div>
+                </li>
+                <li class="ui-tree__node" role="treeitem">
+                  <div class="ui-tree__node-content" style="padding-left: 48px;">
+                    <span style="width: 20px;"></span>
+                    <svg class="ui-tree__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h8v8H4z"/></svg>
+                    <span class="ui-tree__label">Input 输入框</span>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="ui-tree__node" role="treeitem">
+          <div class="ui-tree__node-content" style="padding-left: 8px;">
+            <button class="ui-tree__expand" onclick="toggleTreeNode(this)" aria-label="Expand">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2L8 6L4 10"/></svg>
+            </button>
+            <svg class="ui-tree__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12M2 8h12M2 12h12"/></svg>
+            <span class="ui-tree__label">Images 图片</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ─── DatePicker 日期选择器 ─────────────────────────────── -->
+  <section id="datepicker">
+    <h2>DatePicker<span class="sub">日期选择器</span></h2>
+    <div style="display: flex; gap: 1rem; align-items: flex-start;">
+      <div class="ui-datepicker">
+        <div class="ui-input-wrap ui-datepicker__input" onclick="toggleDatePicker('dp1')" role="button" tabindex="0" aria-haspopup="dialog" aria-expanded="false">
+          <svg class="ui-input-wrap__prefix" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="3" width="12" height="11" rx="1" />
+            <path d="M5 1v3M11 1v3M2 7h12" />
+          </svg>
+          <span id="dp1-display" style="flex:1;color:var(--text-tertiary);">Select date</span>
+        </div>
+        <div id="dp1-dropdown" class="ui-datepicker__dropdown" role="dialog" aria-modal="true">
+          <div class="ui-datepicker__header">
+            <button class="ui-datepicker__nav-btn" onclick="prevMonth('dp1')" aria-label="Previous month">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 4L6 8L10 12"/></svg>
+            </button>
+            <span id="dp1-title" class="ui-datepicker__title">June 2026</span>
+            <button class="ui-datepicker__nav-btn" onclick="nextMonth('dp1')" aria-label="Next month">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4L10 8L6 12"/></svg>
+            </button>
+          </div>
+          <div id="dp1-calendar" class="ui-datepicker__calendar">
+            <!-- Calendar will be rendered by JS -->
+          </div>
+          <div class="ui-datepicker__footer">
+            <button class="ui-datepicker__today-btn" onclick="selectToday('dp1')">Today</button>
+            <button class="ui-datepicker__clear-btn" onclick="clearDate('dp1')">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui-datepicker">
+        <div class="ui-input-wrap ui-datepicker__input" onclick="toggleDatePicker('dp2')" role="button" tabindex="0" aria-haspopup="dialog" aria-expanded="false">
+          <svg class="ui-input-wrap__prefix" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="3" width="12" height="11" rx="1" />
+            <path d="M5 1v3M11 1v3M2 7h12" />
+          </svg>
+          <span id="dp2-display" style="flex:1;color:var(--text-tertiary);">With time</span>
+        </div>
+        <div id="dp2-dropdown" class="ui-datepicker__dropdown" role="dialog" aria-modal="true">
+          <div class="ui-datepicker__header">
+            <button class="ui-datepicker__nav-btn" onclick="prevMonth('dp2')" aria-label="Previous month">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 4L6 8L10 12"/></svg>
+            </button>
+            <span id="dp2-title" class="ui-datepicker__title">June 2026</span>
+            <button class="ui-datepicker__nav-btn" onclick="nextMonth('dp2')" aria-label="Next month">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4L10 8L6 12"/></svg>
+            </button>
+          </div>
+          <div id="dp2-calendar" class="ui-datepicker__calendar">
+            <!-- Calendar will be rendered by JS -->
+          </div>
+          <div class="ui-datepicker__time">
+            <div class="ui-datepicker__time-input">
+              <span class="ui-datepicker__time-label">Time</span>
+              <input id="dp2-hours" class="ui-datepicker__time-field" type="number" min="0" max="23" value="10" onchange="updateTime('dp2')">
+              <span class="ui-datepicker__time-separator">:</span>
+              <input id="dp2-minutes" class="ui-datepicker__time-field" type="number" min="0" max="59" value="30" onchange="updateTime('dp2')">
+            </div>
+          </div>
+          <div class="ui-datepicker__footer">
+            <button class="ui-datepicker__today-btn" onclick="selectToday('dp2')">Today</button>
+            <button class="ui-datepicker__clear-btn" onclick="clearDate('dp2')">Clear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── Drawer 抽屉 ─────────────────────────────────────────── -->
-  <section>
+  <section id="drawer">
     <h2>Drawer<span class="sub">抽屉</span></h2>
     <button class="ui-btn ui-btn--primary" onclick="document.getElementById('demo-drawer').classList.add('ui-drawer-overlay--open')">
       Open Drawer 打开抽屉
@@ -589,6 +1048,7 @@
       </div>
     </div>
   </section>
+</main>
 
   <script>
     const THEMES = {
@@ -606,6 +1066,275 @@
         btn.dataset.active = btn.dataset.themeBtn === name ? 'true' : 'false';
       });
     }
+
+    // Carousel functionality
+    let currentSlide = 0;
+    const totalSlides = 3;
+
+    function goToSlide(index) {
+      currentSlide = index;
+      const track = document.querySelector('#demo-carousel .ui-carousel__track');
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      document.querySelectorAll('#demo-carousel .ui-carousel__dot').forEach((dot, i) => {
+        dot.classList.toggle('ui-carousel__dot--active', i === currentSlide);
+      });
+    }
+
+    function nextSlide() {
+      goToSlide((currentSlide + 1) % totalSlides);
+    }
+
+    function prevSlide() {
+      goToSlide((currentSlide - 1 + totalSlides) % totalSlides);
+    }
+
+    // Auto-play
+    setInterval(nextSlide, 5000);
+
+    // Menu functionality
+    function toggleMenu(menuId) {
+      const dropdown = document.getElementById(`${menuId}-dropdown`);
+      const trigger = dropdown.previousElementSibling;
+      const isOpen = dropdown.classList.contains('ui-menu__dropdown--open');
+
+      if (isOpen) {
+        dropdown.classList.remove('ui-menu__dropdown--open');
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        dropdown.classList.add('ui-menu__dropdown--open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    function closeMenu(menuId) {
+      const dropdown = document.getElementById(`${menuId}-dropdown`);
+      const trigger = dropdown.previousElementSibling;
+      dropdown.classList.remove('ui-menu__dropdown--open');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    document.addEventListener('click', function(e) {
+      document.querySelectorAll('.ui-menu__dropdown').forEach(dropdown => {
+        const trigger = dropdown.previousElementSibling;
+        if (!dropdown.contains(e.target) && !trigger.contains(e.target)) {
+          dropdown.classList.remove('ui-menu__dropdown--open');
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    // TreeView functionality
+    function toggleTreeNode(button) {
+      const node = button.closest('.ui-tree__node');
+      const children = node.querySelector('.ui-tree__children');
+      const isExpanded = button.classList.contains('ui-tree__expand--expanded');
+
+      if (isExpanded) {
+        button.classList.remove('ui-tree__expand--expanded');
+        children.classList.remove('ui-tree__children--expanded');
+        children.classList.add('ui-tree__children--collapsed');
+        node.setAttribute('aria-expanded', 'false');
+      } else {
+        button.classList.add('ui-tree__expand--expanded');
+        children.classList.remove('ui-tree__children--collapsed');
+        children.classList.add('ui-tree__children--expanded');
+        node.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    // DatePicker functionality
+    const datepickers = {};
+
+    function initDatePicker(id, options = {}) {
+      const now = new Date();
+      datepickers[id] = {
+        viewDate: new Date(now.getFullYear(), now.getMonth(), 1),
+        selectedDate: options.value || null,
+        showTime: options.showTime || false,
+        hours: options.value ? options.value.getHours() : 10,
+        minutes: options.value ? options.value.getMinutes() : 30,
+      };
+      renderCalendar(id);
+    }
+
+    function toggleDatePicker(id) {
+      const dropdown = document.getElementById(`${id}-dropdown`);
+      const trigger = dropdown.previousElementSibling;
+      const isOpen = dropdown.classList.contains('ui-datepicker__dropdown--open');
+
+      if (isOpen) {
+        dropdown.classList.remove('ui-datepicker__dropdown--open');
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        dropdown.classList.add('ui-datepicker__dropdown--open');
+        trigger.setAttribute('aria-expanded', 'true');
+        renderCalendar(id);
+      }
+    }
+
+    function renderCalendar(id) {
+      const dp = datepickers[id];
+      if (!dp) return;
+
+      const year = dp.viewDate.getFullYear();
+      const month = dp.viewDate.getMonth();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const firstDay = new Date(year, month, 1).getDay();
+      const today = new Date();
+
+      const title = document.getElementById(`${id}-title`);
+      const calendar = document.getElementById(`${id}-calendar`);
+
+      const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      title.textContent = `${months[month]} ${year}`;
+
+      const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      let html = weekdays.map(d => `<div class="ui-datepicker__weekday">${d}</div>`).join('');
+
+      for (let i = 0; i < firstDay; i++) {
+        html += '<div></div>';
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const date = new Date(year, month, day);
+        const isSelected = dp.selectedDate && date.toDateString() === dp.selectedDate.toDateString();
+        const isToday = date.toDateString() === today.toDateString();
+
+        let classes = 'ui-datepicker__day';
+        if (isSelected) classes += ' ui-datepicker__day--selected';
+        if (isToday) classes += ' ui-datepicker__day--today';
+
+        html += `<button class="${classes}" onclick="selectDay('${id}', ${day})" type="button">${day}</button>`;
+      }
+
+      calendar.innerHTML = html;
+    }
+
+    function prevMonth(id) {
+      const dp = datepickers[id];
+      dp.viewDate.setMonth(dp.viewDate.getMonth() - 1);
+      renderCalendar(id);
+    }
+
+    function nextMonth(id) {
+      const dp = datepickers[id];
+      dp.viewDate.setMonth(dp.viewDate.getMonth() + 1);
+      renderCalendar(id);
+    }
+
+    function selectDay(id, day) {
+      const dp = datepickers[id];
+      const date = new Date(dp.viewDate.getFullYear(), dp.viewDate.getMonth(), day);
+
+      if (dp.showTime) {
+        date.setHours(dp.hours, dp.minutes);
+      }
+
+      dp.selectedDate = date;
+      updateDisplay(id);
+
+      if (!dp.showTime) {
+        toggleDatePicker(id);
+      }
+    }
+
+    function selectToday(id) {
+      const dp = datepickers[id];
+      const today = new Date();
+
+      if (dp.showTime) {
+        today.setHours(dp.hours, dp.minutes);
+      }
+
+      dp.selectedDate = today;
+      dp.viewDate = new Date(today.getFullYear(), today.getMonth(), 1);
+      updateDisplay(id);
+
+      if (!dp.showTime) {
+        toggleDatePicker(id);
+      }
+    }
+
+    function clearDate(id) {
+      const dp = datepickers[id];
+      dp.selectedDate = null;
+      updateDisplay(id);
+      toggleDatePicker(id);
+    }
+
+    function updateDisplay(id) {
+      const dp = datepickers[id];
+      const display = document.getElementById(`${id}-display`);
+
+      if (dp.selectedDate) {
+        const y = dp.selectedDate.getFullYear();
+        const m = String(dp.selectedDate.getMonth() + 1).padStart(2, '0');
+        const d = String(dp.selectedDate.getDate()).padStart(2, '0');
+
+        if (dp.showTime) {
+          const h = String(dp.selectedDate.getHours()).padStart(2, '0');
+          const min = String(dp.selectedDate.getMinutes()).padStart(2, '0');
+          display.textContent = `${y}-${m}-${d} ${h}:${min}`;
+        } else {
+          display.textContent = `${y}-${m}-${d}`;
+        }
+        display.style.color = 'var(--text-primary)';
+      } else {
+        display.textContent = dp.showTime ? 'With time' : 'Select date';
+        display.style.color = 'var(--text-tertiary)';
+      }
+    }
+
+    function updateTime(id) {
+      const dp = datepickers[id];
+      if (!dp) return;
+
+      const hoursInput = document.getElementById(`${id}-hours`);
+      const minutesInput = document.getElementById(`${id}-minutes`);
+
+      dp.hours = parseInt(hoursInput.value) || 0;
+      dp.minutes = parseInt(minutesInput.value) || 0;
+
+      if (dp.selectedDate) {
+        dp.selectedDate.setHours(dp.hours, dp.minutes);
+        updateDisplay(id);
+      }
+    }
+
+    // Initialize datepickers
+    document.addEventListener('DOMContentLoaded', function() {
+      initDatePicker('dp1');
+      initDatePicker('dp2', { showTime: true, hours: 10, minutes: 30 });
+
+      // Smooth scroll for sidebar navigation
+      document.querySelectorAll('.sidebar__link').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').slice(1);
+          const target = document.getElementById(targetId);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      // Update active link on scroll
+      const sections = document.querySelectorAll('section[id]');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            document.querySelectorAll('.sidebar__link').forEach(link => {
+              link.classList.remove('sidebar__link--active');
+              if (link.getAttribute('href') === '#' + entry.target.id) {
+                link.classList.add('sidebar__link--active');
+              }
+            });
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '-80px 0px -70% 0px' });
+
+      sections.forEach(section => observer.observe(section));
+    });
   </script>
 </body>
 </html>

@@ -1,0 +1,166 @@
+/* ─── Menu ─────────────────────────────────────────────────────────── */
+
+.ui-menu {
+  position: relative;
+  display: inline-flex;
+}
+
+.ui-menu__trigger {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* ── Dropdown ─────────────────────────────────────────────────────── */
+
+.ui-menu__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  margin-top: var(--spacing-1);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-dropdown);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition:
+    opacity var(--duration-normal) var(--ease-out),
+    visibility var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
+}
+
+.ui-menu__dropdown--open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.ui-menu__dropdown--right {
+  left: auto;
+  right: 0;
+}
+
+/* ── Menu items ───────────────────────────────────────────────────── */
+
+.ui-menu__list {
+  padding: var(--spacing-1);
+  list-style: none;
+  margin: 0;
+}
+
+.ui-menu__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  width: 100%;
+  padding: var(--spacing-2) var(--spacing-3);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.ui-menu__item:hover:not(.ui-menu__item--disabled) {
+  background: var(--bg-muted);
+}
+
+.ui-menu__item:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: -2px;
+}
+
+.ui-menu__item--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ui-menu__item--danger {
+  color: var(--color-error);
+}
+
+.ui-menu__item--danger:hover:not(.ui-menu__item--disabled) {
+  background: rgba(220, 38, 38, 0.1);
+}
+
+/* ── Icon ─────────────────────────────────────────────────────────── */
+
+.ui-menu__icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--text-secondary);
+}
+
+.ui-menu__item--danger .ui-menu__icon {
+  color: var(--color-error);
+}
+
+/* ── Label ────────────────────────────────────────────────────────── */
+
+.ui-menu__label {
+  flex: 1;
+}
+
+/* ── Shortcut ─────────────────────────────────────────────────────── */
+
+.ui-menu__shortcut {
+  margin-left: auto;
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+}
+
+/* ── Divider ──────────────────────────────────────────────────────── */
+
+.ui-menu__divider {
+  height: 1px;
+  background: var(--border);
+  margin: var(--spacing-1) 0;
+}
+
+/* ── Submenu ──────────────────────────────────────────────────────── */
+
+.ui-menu__item--has-submenu {
+  position: relative;
+}
+
+.ui-menu__submenu-arrow {
+  width: 12px;
+  height: 12px;
+  margin-left: auto;
+  color: var(--text-tertiary);
+}
+
+.ui-menu__submenu {
+  position: absolute;
+  top: -var(--spacing-1);
+  left: 100%;
+  min-width: 200px;
+  margin-left: var(--spacing-1);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-dropdown);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-8px);
+  transition:
+    opacity var(--duration-normal) var(--ease-out),
+    visibility var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
+}
+
+.ui-menu__item--has-submenu:hover > .ui-menu__submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}

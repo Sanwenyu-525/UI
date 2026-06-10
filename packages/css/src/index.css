@@ -32,6 +32,10 @@
 @import './components/progress/index.css';
 @import './components/skeleton/index.css';
 @import './components/drawer/index.css';
+@import './components/carousel/index.css';
+@import './components/menu/index.css';
+@import './components/treeview/index.css';
+@import './components/datepicker/index.css';
 
 /* Theme overrides — import after components */
 @import './styles/theme-glass.css';
