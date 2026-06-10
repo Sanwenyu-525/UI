@@ -1,10 +1,17 @@
 # Dependencies
 node_modules/
 .pnpm-store/
+.pnpm-debug.log
 
 # Build outputs
 dist/
+build/
 *.tsbuildinfo
+*.tsbuildinfo.cache
+
+# TypeScript
+*.js.map
+*.d.ts.map
 
 # IDE
 .vscode/
@@ -12,20 +19,48 @@ dist/
 *.swp
 *.swo
 *~
+*.sublime-project
+*.sublime-workspace
 
 # OS
 .DS_Store
+.DS_Store?
 Thumbs.db
+ehthumbs.db
+Desktop.ini
 
 # Logs
 *.log
 npm-debug.log*
 pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Environment
 .env
 .env.local
-.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Playground
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+
+# Vite
 playground/.vite/
+playground/.vite-cache/
+
+# Build tools
+.cache/
+.parcel-cache/
+
+# Misc
+*.tgz
+*.tar.gz
+*.zip
+*.rar
+
+# Claude Code
+.claude/
