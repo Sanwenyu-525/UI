@@ -31,6 +31,15 @@
   background: var(--bg-muted);
 }
 
+.ui-tree__node-content:active:not(.ui-tree__node--selected) {
+  background: var(--bg-muted);
+  transform: scale(0.99);
+}
+
+.ui-tree__node--selected > .ui-tree__node-content {
+  background: rgba(99, 102, 241, 0.08);
+}
+
 .ui-tree__node-content:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: -2px;

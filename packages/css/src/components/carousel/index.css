@@ -49,6 +49,11 @@
   box-shadow: var(--shadow-md);
 }
 
+.ui-carousel__arrow:active {
+  transform: translateY(-50%) scale(0.95);
+  box-shadow: var(--shadow-sm);
+}
+
 .ui-carousel__arrow--prev {
   left: var(--spacing-3);
 }

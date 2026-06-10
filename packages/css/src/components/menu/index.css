@@ -73,6 +73,11 @@
   background: var(--bg-muted);
 }
 
+.ui-menu__item:active:not(.ui-menu__item--disabled) {
+  background: var(--bg-muted);
+  transform: scale(0.99);
+}
+
 .ui-menu__item:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: -2px;

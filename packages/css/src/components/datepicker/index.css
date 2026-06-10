@@ -112,6 +112,10 @@
   background: var(--bg-muted);
 }
 
+.ui-datepicker__day:active:not(.ui-datepicker__day--disabled) {
+  transform: scale(0.95);
+}
+
 .ui-datepicker__day--today {
   font-weight: 600;
   border: 1px solid var(--color-primary);
@@ -210,6 +214,11 @@
   background: rgba(99, 102, 241, 0.1);
 }
 
+.ui-datepicker__today-btn:active {
+  background: rgba(99, 102, 241, 0.15);
+  transform: scale(0.98);
+}
+
 .ui-datepicker__clear-btn {
   padding: var(--spacing-2) var(--spacing-3);
   font-size: var(--text-sm);
@@ -224,4 +233,9 @@
 
 .ui-datepicker__clear-btn:hover {
   background: var(--bg-muted);
+}
+
+.ui-datepicker__clear-btn:active {
+  background: var(--bg-muted);
+  transform: scale(0.98);
 }
