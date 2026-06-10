@@ -8,7 +8,7 @@
 packages/
 ├── tokens/          设计令牌 (色彩、字体、间距、阴影、圆角)
 ├── css/             Web 组件 (HTML + CSS)
-├── react/           React 组件 (TypeScript)
+├── react/           React 组件 (TypeScript + Vitest 测试)
 └── react-native/    React Native 组件 (StyleSheet)
 playground/          组件预览页面
 ```
@@ -30,12 +30,39 @@ pnpm build:react     # React 组件
 # 预览组件
 open playground/index.html
 
+# 运行测试
+pnpm test
+
 # 类型检查
 pnpm typecheck
 
 # 清理构建产物
 pnpm clean
 ```
+
+## 测试
+
+项目使用 Vitest + React Testing Library 进行组件测试：
+
+```bash
+# 运行所有测试
+pnpm test
+
+# 监视模式
+pnpm test:watch
+
+# 生成覆盖率报告
+pnpm test:coverage
+```
+
+### 测试覆盖
+
+- Button 组件: 渲染、状态、交互、可访问性、ref 转发
+- Input 组件: 渲染、状态、标签、前后缀、错误处理
+- Checkbox/Radio/Switch: 状态管理、键盘导航、可访问性
+- Select 组件: 下拉菜单、键盘导航、受控/非受控模式
+- Modal 组件: 显示/隐藏、关闭行为、可访问性
+- Toast 组件: 显示、自动关闭、手动关闭
 
 ## 设计令牌
 
@@ -55,44 +82,44 @@ pnpm clean
 
 ## 组件列表
 
-| 组件 | CSS | React | 分类 |
-|------|-----|-------|------|
-| Button | ✅ | ✅ | 数据录入 |
-| Input / Textarea | ✅ | ✅ | 数据录入 |
-| Checkbox | ✅ | ✅ | 数据录入 |
-| Radio | ✅ | ✅ | 数据录入 |
-| Switch | ✅ | ✅ | 数据录入 |
-| Select | ✅ | ✅ | 数据录入 |
-| Slider | ✅ | ✅ | 数据录入 |
-| DatePicker | ✅ | ✅ | 数据录入 |
-| TimePicker | ✅ | — | 数据录入 |
-| Upload | ✅ | — | 数据录入 |
-| Badge | ✅ | ✅ | 数据展示 |
-| Tag | ✅ | ✅ | 数据展示 |
-| Avatar | ✅ | ✅ | 数据展示 |
-| Card | ✅ | ✅ | 数据展示 |
-| Table | ✅ | ✅ | 数据展示 |
-| Accordion | ✅ | ✅ | 数据展示 |
-| Empty | ✅ | ✅ | 数据展示 |
-| Carousel | ✅ | ✅ | 数据展示 |
-| Menu | ✅ | ✅ | 数据展示 |
-| TreeView | ✅ | ✅ | 数据展示 |
-| Calendar | ✅ | — | 数据展示 |
-| Timeline | ✅ | — | 数据展示 |
-| Divider | ✅ | ✅ | 布局 |
-| Stack | ✅ | ✅ | 布局 |
-| Tabs | ✅ | ✅ | 导航 |
-| Breadcrumb | ✅ | ✅ | 导航 |
-| Pagination | ✅ | ✅ | 导航 |
-| Steps | ✅ | — | 导航 |
-| Alert | ✅ | ✅ | 反馈 |
-| Progress | ✅ | ✅ | 反馈 |
-| Skeleton | ✅ | ✅ | 反馈 |
-| Modal | ✅ | ✅ | 浮层 |
-| Toast | ✅ | ✅ | 浮层 |
-| Tooltip | ✅ | ✅ | 浮层 |
-| Drawer | ✅ | ✅ | 浮层 |
-| Popover | ✅ | — | 浮层 |
+| 组件 | CSS | React | React Native | 分类 |
+|------|-----|-------|--------------|------|
+| Button | ✅ | ✅ | ✅ | 数据录入 |
+| Input / Textarea | ✅ | ✅ | ✅ | 数据录入 |
+| Checkbox | ✅ | ✅ | — | 数据录入 |
+| Radio | ✅ | ✅ | — | 数据录入 |
+| Switch | ✅ | ✅ | ✅ | 数据录入 |
+| Select | ✅ | ✅ | ✅ | 数据录入 |
+| Slider | ✅ | ✅ | — | 数据录入 |
+| DatePicker | ✅ | ✅ | ✅ | 数据录入 |
+| TimePicker | ✅ | — | — | 数据录入 |
+| Upload | ✅ | — | — | 数据录入 |
+| Badge | ✅ | ✅ | ✅ | 数据展示 |
+| Tag | ✅ | ✅ | — | 数据展示 |
+| Avatar | ✅ | ✅ | ✅ | 数据展示 |
+| Card | ✅ | ✅ | ✅ | 数据展示 |
+| Table | ✅ | ✅ | — | 数据展示 |
+| Accordion | ✅ | ✅ | — | 数据展示 |
+| Empty | ✅ | ✅ | — | 数据展示 |
+| Carousel | ✅ | ✅ | ✅ | 数据展示 |
+| Menu | ✅ | ✅ | ✅ | 数据展示 |
+| TreeView | ✅ | ✅ | ✅ | 数据展示 |
+| Calendar | ✅ | — | — | 数据展示 |
+| Timeline | ✅ | — | — | 数据展示 |
+| Divider | ✅ | ✅ | — | 布局 |
+| Stack | ✅ | ✅ | — | 布局 |
+| Tabs | ✅ | ✅ | — | 导航 |
+| Breadcrumb | ✅ | ✅ | — | 导航 |
+| Pagination | ✅ | ✅ | — | 导航 |
+| Steps | ✅ | — | — | 导航 |
+| Alert | ✅ | ✅ | — | 反馈 |
+| Progress | ✅ | ✅ | — | 反馈 |
+| Skeleton | ✅ | ✅ | — | 反馈 |
+| Modal | ✅ | ✅ | ✅ | 浮层 |
+| Toast | ✅ | ✅ | ✅ | 浮层 |
+| Tooltip | ✅ | ✅ | ✅ | 浮层 |
+| Drawer | ✅ | ✅ | — | 浮层 |
+| Popover | ✅ | — | — | 浮层 |
 
 ## 主题风格
 

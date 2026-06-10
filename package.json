@@ -9,7 +9,10 @@
     "build:css": "pnpm --filter @ui/css run build",
     "build:react": "pnpm --filter @ui/react run build",
     "typecheck": "tsc --noEmit",
-    "clean": "pnpm -r run clean"
+    "clean": "pnpm -r run clean",
+    "test": "pnpm --filter @ui/react run test",
+    "test:watch": "pnpm --filter @ui/react run test:watch",
+    "test:coverage": "pnpm --filter @ui/react run test:coverage"
   },
   "engines": {
     "node": ">=18",
