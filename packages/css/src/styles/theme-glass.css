@@ -1,0 +1,429 @@
+/* ─── Glass Theme (revised) ──────────────────────────────────────────── */
+/* Light base with subtle color accents. Glass is selective —           */
+/* only cards, modals, dropdowns get backdrop-filter. Inputs/buttons    */
+/* stay grounded. Surfaces have real depth hierarchy.                   */
+/* Apply: <html data-theme="glass">                                     */
+
+/* Override CSS variables for glass theme */
+[data-theme="glass"] {
+  /* ── Backgrounds ──────────────────────────────────────────────── */
+  --bg:              #ffffff;
+  --bg-subtle:       #f9fafb;
+  --bg-muted:        #f3f4f6;
+
+  /* ── Surfaces — layered depth ─────────────────────────────────── */
+  /* Resting surface: barely translucent, just enough to show bg     */
+  --surface:         rgba(255, 255, 255, 0.95);
+  /* Elevated surface: noticeably lighter, for modals/dropdowns      */
+  --surface-elevated: #ffffff;
+  /* Overlay scrim */
+  --surface-overlay:  rgba(0, 0, 0, 0.5);
+
+  /* ── Text — grounded hierarchy ────────────────────────────────── */
+  --text-primary:    #111827;
+  --text-secondary:  #6b7280;
+  --text-tertiary:   #9ca3af;
+  --text-inverse:    #ffffff;
+  --text-on-primary: #ffffff;
+
+  /* ── Borders — subtle ────────────────────────────────────────── */
+  --border:          rgba(0, 0, 0, 0.06);
+  --border-strong:   rgba(0, 0, 0, 0.12);
+
+  /* ── Interactive — keep a real accent color ───────────────────── */
+  --color-primary:        #4f46e5;
+  --color-primary-hover:  #4338ca;
+  --color-primary-active: #3730a3;
+
+  /* ── Semantic ─────────────────────────────────────────────────── */
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-error:   #dc2626;
+  --color-info:    #2563eb;
+
+  --ring:          rgba(79, 70, 229, 0.4);
+  --ring-error:    rgba(220, 38, 38, 0.4);
+
+  --focus-ring:    0 0 0 2px rgba(79, 70, 229, 0.25), 0 0 12px rgba(79, 70, 229, 0.08);
+  --focus-ring-error: 0 0 0 2px rgba(220, 38, 38, 0.25);
+
+  /* ── Shadows — warm and diffused ──────────────────────────────── */
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-lg:  0 12px 32px rgba(0, 0, 0, 0.12);
+  --shadow-xl:  0 20px 48px rgba(0, 0, 0, 0.15);
+}
+
+/* ── Body — light base with subtle color accents ────────────────────── */
+[data-theme="glass"] body {
+  background:
+    radial-gradient(ellipse 600px 400px at 15% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 100%),
+    radial-gradient(ellipse 500px 500px at 85% 70%, rgba(236, 72, 153, 0.06) 0%, transparent 100%),
+    radial-gradient(ellipse 400px 300px at 50% 90%, rgba(59, 130, 246, 0.05) 0%, transparent 100%),
+    #ffffff !important;
+  background-color: #ffffff !important;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* ── Glass surfaces — only for floating/elevated elements ──────────── */
+[data-theme="glass"] .ui-card,
+[data-theme="glass"] .ui-modal,
+[data-theme="glass"] .ui-select__dropdown,
+[data-theme="glass"] .ui-toast {
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+}
+
+/* ── Card — real glass with inner light edge ────────────────────────── */
+[data-theme="glass"] .ui-card--elevated {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.04) inset,  /* top light edge */
+    0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="glass"] .ui-card--elevated:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.06) inset,
+    0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="glass"] .ui-card--outlined {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+[data-theme="glass"] .ui-card--flat {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+[data-theme="glass"] .ui-card__header {
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="glass"] .ui-card__footer {
+  border-top-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="glass"] .ui-card__title {
+  color: #e8eaf0;
+}
+
+[data-theme="glass"] .ui-card__description {
+  color: #6b7080;
+}
+
+/* ── Button — grounded, not glass-blurred ───────────────────────────── */
+[data-theme="glass"] .ui-btn--primary {
+  background: #7c8aff;
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.15) inset,
+    0 2px 8px rgba(124, 138, 255, 0.25);
+}
+
+[data-theme="glass"] .ui-btn--primary:hover {
+  background: #9ba3ff;
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.2) inset,
+    0 4px 16px rgba(124, 138, 255, 0.3);
+}
+
+[data-theme="glass"] .ui-btn--primary:active {
+  background: #6270e8;
+  box-shadow:
+    0 1px 4px rgba(124, 138, 255, 0.2);
+  transform: translateY(0.5px);
+}
+
+[data-theme="glass"] .ui-btn--secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #c0c4d0;
+}
+
+[data-theme="glass"] .ui-btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #e8eaf0;
+}
+
+[data-theme="glass"] .ui-btn--ghost {
+  color: #8b90a0;
+}
+
+[data-theme="glass"] .ui-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #c0c4d0;
+}
+
+[data-theme="glass"] .ui-btn--destructive {
+  background: #ff6b7a;
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(255, 107, 122, 0.2);
+}
+
+[data-theme="glass"] .ui-btn--destructive:hover {
+  background: #ff8590;
+  box-shadow: 0 4px 16px rgba(255, 107, 122, 0.25);
+}
+
+[data-theme="glass"] .ui-btn--loading.ui-btn--primary::after {
+  border-color: #ffffff;
+  border-right-color: transparent;
+}
+
+/* ── Input — grounded surface, no blur ──────────────────────────────── */
+[data-theme="glass"] .ui-input-wrap {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="glass"] .ui-input-wrap:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+[data-theme="glass"] .ui-input-wrap:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(124, 138, 255, 0.2);
+}
+
+[data-theme="glass"] .ui-input-wrap--error {
+  border-color: var(--color-error);
+}
+
+[data-theme="glass"] .ui-input-wrap--error:focus-within {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 2px rgba(255, 107, 122, 0.2);
+}
+
+[data-theme="glass"] .ui-input-wrap--disabled {
+  background: rgba(255, 255, 255, 0.02);
+  opacity: 0.5;
+}
+
+[data-theme="glass"] .ui-input {
+  color: #e8eaf0;
+}
+
+[data-theme="glass"] .ui-input::placeholder {
+  color: #444858;
+}
+
+[data-theme="glass"] .ui-input-wrap__prefix,
+[data-theme="glass"] .ui-input-wrap__suffix {
+  color: #555968;
+}
+
+[data-theme="glass"] .ui-textarea-wrap {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="glass"] .ui-textarea-wrap:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(124, 138, 255, 0.2);
+}
+
+[data-theme="glass"] .ui-textarea {
+  color: #e8eaf0;
+}
+
+[data-theme="glass"] .ui-textarea::placeholder {
+  color: #444858;
+}
+
+/* ── Badge — subtle, tinted ─────────────────────────────────────────── */
+[data-theme="glass"] .ui-badge--default {
+  background: rgba(255, 255, 255, 0.06);
+  color: #8b90a0;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="glass"] .ui-badge--primary {
+  background: rgba(124, 138, 255, 0.12);
+  color: #9ba3ff;
+  border-color: rgba(124, 138, 255, 0.18);
+}
+
+[data-theme="glass"] .ui-badge--success { background: rgba(92, 224, 160, 0.1); color: #5ce0a0; border-color: rgba(92, 224, 160, 0.15); }
+[data-theme="glass"] .ui-badge--warning { background: rgba(245, 200, 66, 0.1); color: #f5c842; border-color: rgba(245, 200, 66, 0.15); }
+[data-theme="glass"] .ui-badge--error   { background: rgba(255, 107, 122, 0.1); color: #ff6b7a; border-color: rgba(255, 107, 122, 0.15); }
+[data-theme="glass"] .ui-badge--info    { background: rgba(107, 184, 255, 0.1); color: #6bb8ff; border-color: rgba(107, 184, 255, 0.15); }
+
+/* ── Avatar ─────────────────────────────────────────────────────────── */
+[data-theme="glass"] .ui-avatar {
+  background: rgba(124, 138, 255, 0.12);
+  color: #9ba3ff;
+  border: 1px solid rgba(124, 138, 255, 0.15);
+}
+
+[data-theme="glass"] .ui-avatar-group .ui-avatar {
+  border-color: #0f1117;
+}
+
+/* ── Checkbox / Radio / Switch ──────────────────────────────────────── */
+[data-theme="glass"] .ui-checkbox__control {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="glass"] .ui-checkbox__control:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="glass"] .ui-checkbox__input:checked + .ui-checkbox__control {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+[data-theme="glass"] .ui-radio__control {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="glass"] .ui-radio__control:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="glass"] .ui-radio__input:checked + .ui-radio__control {
+  border-color: var(--color-primary);
+}
+
+[data-theme="glass"] .ui-radio__input:checked + .ui-radio__control::after {
+  background-color: var(--color-primary);
+}
+
+[data-theme="glass"] .ui-switch__track {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="glass"] .ui-switch__input:checked + .ui-switch__track {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* ── Select ─────────────────────────────────────────────────────────── */
+[data-theme="glass"] .ui-select__trigger {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #e8eaf0;
+}
+
+[data-theme="glass"] .ui-select__trigger:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+[data-theme="glass"] .ui-select__trigger:focus-visible {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(124, 138, 255, 0.2);
+}
+
+[data-theme="glass"] .ui-select__placeholder { color: #444858; }
+[data-theme="glass"] .ui-select__chevron { color: #555968; }
+
+[data-theme="glass"] .ui-select__dropdown {
+  background: rgba(20, 22, 30, 0.85);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="glass"] .ui-select__option { color: #c0c4d0; }
+
+[data-theme="glass"] .ui-select__option:hover,
+[data-theme="glass"] .ui-select__option--focused {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="glass"] .ui-select__option--selected {
+  background: rgba(124, 138, 255, 0.1);
+  color: var(--color-primary);
+}
+
+[data-theme="glass"] .ui-select__option-check { color: var(--color-primary); }
+
+/* ── Modal ──────────────────────────────────────────────────────────── */
+[data-theme="glass"] .ui-modal {
+  background: rgba(20, 22, 30, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.04) inset,
+    0 20px 48px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="glass"] .ui-modal__header {
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="glass"] .ui-modal__title { color: #e8eaf0; }
+
+[data-theme="glass"] .ui-modal__close { color: #555968; }
+[data-theme="glass"] .ui-modal__close:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #c0c4d0;
+}
+
+[data-theme="glass"] .ui-modal__body p { color: #8b90a0; }
+
+[data-theme="glass"] .ui-modal__footer {
+  border-top-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ── Toast ──────────────────────────────────────────────────────────── */
+[data-theme="glass"] .ui-toast {
+  background: rgba(20, 22, 30, 0.85);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="glass"] .ui-toast--success { border-left-color: #5ce0a0; }
+[data-theme="glass"] .ui-toast--error   { border-left-color: #ff6b7a; }
+[data-theme="glass"] .ui-toast--warning { border-left-color: #f5c842; }
+[data-theme="glass"] .ui-toast--info    { border-left-color: #6bb8ff; }
+
+[data-theme="glass"] .ui-toast__title { color: #e8eaf0; }
+[data-theme="glass"] .ui-toast__message { color: #8b90a0; }
+[data-theme="glass"] .ui-toast__close { color: #555968; }
+[data-theme="glass"] .ui-toast__close:hover { color: #c0c4d0; background: rgba(255, 255, 255, 0.06); }
+
+/* ── Tooltip ────────────────────────────────────────────────────────── */
+[data-theme="glass"] .ui-tooltip {
+  background: rgba(30, 32, 42, 0.9);
+  color: #c0c4d0;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="glass"] .ui-tooltip__arrow {
+  background: rgba(30, 32, 42, 0.9);
+}
+
+/* ── Labels & helpers ───────────────────────────────────────────────── */
+[data-theme="glass"] .ui-field__label {
+  color: #a0a4b4;
+}
+
+[data-theme="glass"] .ui-field__helper { color: #555968; }
+[data-theme="glass"] .ui-field__error { color: #ff6b7a; }
+
+/* ── Selection ──────────────────────────────────────────────────────── */
+[data-theme="glass"] ::selection {
+  background-color: rgba(124, 138, 255, 0.25);
+  color: #ffffff;
+}
+
+/* ── Link ───────────────────────────────────────────────────────────── */
+[data-theme="glass"] a:not([class]) {
+  color: var(--color-primary);
+}
+
+[data-theme="glass"] a:not([class]):hover {
+  color: #9ba3ff;
+}

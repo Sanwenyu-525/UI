@@ -1,0 +1,18 @@
+{
+  "name": "ui-components",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cross-platform UI component system",
+  "scripts": {
+    "build": "pnpm -r run build",
+    "build:tokens": "pnpm --filter @ui/tokens run build",
+    "build:css": "pnpm --filter @ui/css run build",
+    "build:react": "pnpm --filter @ui/react run build",
+    "typecheck": "tsc --noEmit",
+    "clean": "pnpm -r run clean"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8"
+  }
+}

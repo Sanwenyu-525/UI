@@ -1,0 +1,37 @@
+/* ─── Empty State ──────────────────────────────────────────────────── */
+
+.ui-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-10) var(--spacing-6);
+  text-align: center;
+}
+
+.ui-empty__icon {
+  width: 3rem;
+  height: 3rem;
+  color: var(--text-tertiary);
+  margin-bottom: var(--spacing-4);
+  opacity: 0.5;
+}
+
+.ui-empty__title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-1);
+}
+
+.ui-empty__description {
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+  max-width: 20rem;
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--spacing-4);
+}
+
+.ui-empty__action {
+  /* Typically a Button goes here */
+}

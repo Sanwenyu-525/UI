@@ -1,0 +1,177 @@
+/* ─── Button ──────────────────────────────────────────────────────── */
+
+.ui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--size-md-gap);
+  height: var(--size-md-height);
+  padding: var(--size-md-py) var(--size-md-px);
+  font-size: var(--size-md-font);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out),
+    color var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.ui-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.ui-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Sizes ─────────────────────────────────────────────────────── */
+.ui-btn--sm {
+  height: var(--size-sm-height);
+  padding: var(--size-sm-py) var(--size-sm-px);
+  font-size: var(--size-sm-font);
+  gap: var(--size-sm-gap);
+}
+
+.ui-btn--lg {
+  height: var(--size-lg-height);
+  padding: var(--size-lg-py) var(--size-lg-px);
+  font-size: var(--size-lg-font);
+  gap: var(--size-lg-gap);
+}
+
+/* ── Variants ──────────────────────────────────────────────────── */
+
+/* Primary — solid brand color */
+.ui-btn--primary {
+  background-color: var(--color-primary);
+  color: var(--text-on-primary);
+  border-color: var(--color-primary);
+}
+
+.ui-btn--primary:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.ui-btn--primary:active {
+  background-color: var(--color-primary-active);
+  border-color: var(--color-primary-active);
+}
+
+/* Secondary — outlined, subtle bg */
+.ui-btn--secondary {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+.ui-btn--secondary:hover {
+  background-color: var(--bg-subtle);
+}
+
+.ui-btn--secondary:active {
+  background-color: var(--bg-muted);
+}
+
+/* Ghost — transparent */
+.ui-btn--ghost {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border-color: transparent;
+}
+
+.ui-btn--ghost:hover {
+  background-color: var(--bg-subtle);
+  color: var(--text-primary);
+}
+
+.ui-btn--ghost:active {
+  background-color: var(--bg-muted);
+}
+
+/* Destructive — danger/red */
+.ui-btn--destructive {
+  background-color: var(--color-error);
+  color: #ffffff;
+  border-color: var(--color-error);
+}
+
+.ui-btn--destructive:hover {
+  background-color: var(--error-700);
+  border-color: var(--error-700);
+}
+
+.ui-btn--destructive:active {
+  background-color: var(--error-800);
+  border-color: var(--error-800);
+}
+
+[data-theme="dark"] .ui-btn--destructive:hover {
+  background-color: var(--error-500);
+  border-color: var(--error-500);
+}
+
+[data-theme="dark"] .ui-btn--destructive:active {
+  background-color: var(--error-400);
+  border-color: var(--error-400);
+}
+
+/* ── Loading state ─────────────────────────────────────────────── */
+.ui-btn--loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.ui-btn--loading::after {
+  content: '';
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: var(--radius-full);
+  animation: ui-spin 0.6s linear infinite;
+}
+
+.ui-btn--primary.ui-btn--loading::after {
+  border-color: #ffffff;
+  border-right-color: transparent;
+}
+
+.ui-btn--destructive.ui-btn--loading::after {
+  border-color: #ffffff;
+  border-right-color: transparent;
+}
+
+@keyframes ui-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Icon-only ─────────────────────────────────────────────────── */
+.ui-btn--icon-only {
+  padding: 0;
+  width: var(--size-md-height);
+}
+
+.ui-btn--icon-only.ui-btn--sm {
+  width: var(--size-sm-height);
+}
+
+.ui-btn--icon-only.ui-btn--lg {
+  width: var(--size-lg-height);
+}
+
+/* ── Full width ────────────────────────────────────────────────── */
+.ui-btn--block {
+  width: 100%;
+}

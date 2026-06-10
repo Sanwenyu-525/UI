@@ -1,0 +1,37 @@
+/* ─── Stack (Flex layout helper) ───────────────────────────────────── */
+
+.ui-stack {
+  display: flex;
+}
+
+.ui-stack--vertical {
+  flex-direction: column;
+}
+
+.ui-stack--center {
+  align-items: center;
+  justify-content: center;
+}
+
+.ui-stack--wrap {
+  flex-wrap: wrap;
+}
+
+/* Gap presets via modifier classes */
+.ui-stack--gap-1 { gap: var(--spacing-1); }
+.ui-stack--gap-2 { gap: var(--spacing-2); }
+.ui-stack--gap-3 { gap: var(--spacing-3); }
+.ui-stack--gap-4 { gap: var(--spacing-4); }
+.ui-stack--gap-6 { gap: var(--spacing-6); }
+.ui-stack--gap-8 { gap: var(--spacing-8); }
+
+/* Alignment helpers */
+.ui-stack--align-start   { align-items: flex-start; }
+.ui-stack--align-center  { align-items: center; }
+.ui-stack--align-end     { align-items: flex-end; }
+.ui-stack--align-stretch { align-items: stretch; }
+
+.ui-stack--justify-start   { justify-content: flex-start; }
+.ui-stack--justify-center  { justify-content: center; }
+.ui-stack--justify-end     { justify-content: flex-end; }
+.ui-stack--justify-between { justify-content: space-between; }

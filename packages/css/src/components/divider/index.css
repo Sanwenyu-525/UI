@@ -1,0 +1,44 @@
+/* ─── Divider / Separator ──────────────────────────────────────────── */
+
+.ui-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: var(--spacing-4) 0;
+}
+
+/* Horizontal (default) */
+.ui-divider--dashed {
+  border-top-style: dashed;
+}
+
+/* With label text */
+.ui-divider--with-label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  border: none;
+}
+
+.ui-divider--with-label::before,
+.ui-divider--with-label::after {
+  content: '';
+  flex: 1;
+  border-top: 1px solid var(--border);
+}
+
+.ui-divider__label {
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+/* Vertical */
+.ui-divider--vertical {
+  display: inline-flex;
+  align-self: stretch;
+  border: none;
+  border-left: 1px solid var(--border);
+  margin: 0 var(--spacing-3);
+  height: auto;
+  width: auto;
+}

@@ -1,0 +1,18 @@
+{
+  "name": "@ui/css",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.css",
+  "exports": {
+    ".": "./dist/index.css",
+    "./tokens": "./dist/styles/tokens.css",
+    "./reset": "./dist/styles/reset.css",
+    "./base": "./dist/styles/base.css",
+    "./components/*": "./dist/components/*/index.css"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {}
+}

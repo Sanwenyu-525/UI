@@ -1,0 +1,45 @@
+/* ─── Breadcrumb ───────────────────────────────────────────────────── */
+
+.ui-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-1);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}
+
+.ui-breadcrumb__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.ui-breadcrumb__link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.ui-breadcrumb__link:hover {
+  color: var(--text-primary);
+}
+
+.ui-breadcrumb__link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Current page — not a link */
+.ui-breadcrumb__current {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Separator */
+.ui-breadcrumb__sep {
+  color: var(--text-tertiary);
+  font-size: var(--text-xs);
+  user-select: none;
+}

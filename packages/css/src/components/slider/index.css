@@ -1,0 +1,106 @@
+/* ─── Slider / Range ───────────────────────────────────────────────── */
+
+.ui-slider {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  width: 100%;
+}
+
+.ui-slider__label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ui-slider__label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.ui-slider__value {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Track ──────────────────────────────────────────────────────── */
+.ui-slider__track {
+  position: relative;
+  width: 100%;
+  height: 0.5rem; /* 8px */
+  background: var(--bg-muted);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+}
+
+/* Filled portion */
+.ui-slider__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  pointer-events: none;
+}
+
+/* ── Native range input (visually hidden, interactive) ──────────── */
+.ui-slider__input {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-50%);
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+  z-index: 1;
+}
+
+/* Visual thumb (follows native input position via CSS) */
+.ui-slider__thumb {
+  position: absolute;
+  top: 50%;
+  width: 1.125rem;   /* 18px */
+  height: 1.125rem;
+  background: #ffffff;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-full);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  box-shadow: var(--shadow-sm);
+  transition:
+    box-shadow var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.ui-slider__input:focus-visible ~ .ui-slider__thumb {
+  box-shadow: var(--focus-ring);
+}
+
+.ui-slider__input:active ~ .ui-slider__thumb {
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+/* ── Disabled ───────────────────────────────────────────────────── */
+.ui-slider--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.ui-slider--disabled .ui-slider__thumb {
+  background: var(--bg-muted);
+  border-color: var(--border);
+}
+
+/* ── Min/Max labels ─────────────────────────────────────────────── */
+.ui-slider__bounds {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+}

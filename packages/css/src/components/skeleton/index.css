@@ -1,0 +1,78 @@
+/* ─── Skeleton (Loading placeholder) ───────────────────────────────── */
+
+.ui-skeleton {
+  background: var(--bg-muted);
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.ui-skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 100%
+  );
+  animation: ui-skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+[data-theme="dark"] .ui-skeleton::after,
+[data-theme="cyber"] .ui-skeleton::after,
+[data-theme="glass"] .ui-skeleton::after,
+[data-theme="sport"] .ui-skeleton::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.04) 50%,
+    transparent 100%
+  );
+}
+
+@keyframes ui-skeleton-shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ── Shape presets ──────────────────────────────────────────────── */
+.ui-skeleton--text {
+  height: 1rem;
+  width: 100%;
+}
+
+.ui-skeleton--text-sm {
+  height: 0.75rem;
+  width: 60%;
+}
+
+.ui-skeleton--title {
+  height: 1.5rem;
+  width: 40%;
+}
+
+.ui-skeleton--circle {
+  border-radius: var(--radius-full);
+}
+
+.ui-skeleton--rounded {
+  border-radius: var(--radius-lg);
+}
+
+/* ── Skeleton group (card-like loading) ─────────────────────────── */
+.ui-skeleton-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  padding: var(--spacing-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.ui-skeleton-group__row {
+  display: flex;
+  gap: var(--spacing-3);
+  align-items: center;
+}

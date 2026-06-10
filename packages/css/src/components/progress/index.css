@@ -1,0 +1,94 @@
+/* ─── Progress ─────────────────────────────────────────────────────── */
+
+/* ── Linear progress bar ────────────────────────────────────────── */
+.ui-progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  width: 100%;
+}
+
+.ui-progress__label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ui-progress__label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.ui-progress__value {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.ui-progress__track {
+  width: 100%;
+  height: 0.5rem; /* 8px */
+  background: var(--bg-muted);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.ui-progress__fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  transition: width var(--duration-slow) var(--ease-out);
+}
+
+/* Variants */
+.ui-progress__fill--success { background: var(--color-success); }
+.ui-progress__fill--warning { background: var(--color-warning); }
+.ui-progress__fill--error   { background: var(--color-error); }
+
+/* Indeterminate (animated) */
+.ui-progress--indeterminate .ui-progress__fill {
+  width: 30% !important;
+  animation: ui-progress-slide 1.5s ease-in-out infinite;
+}
+
+@keyframes ui-progress-slide {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+
+/* Sizes */
+.ui-progress--sm .ui-progress__track { height: 0.25rem; }
+.ui-progress--lg .ui-progress__track { height: 0.75rem; }
+
+/* ── Circular progress ──────────────────────────────────────────── */
+.ui-progress-circle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui-progress-circle__svg {
+  transform: rotate(-90deg);
+}
+
+.ui-progress-circle__track {
+  fill: none;
+  stroke: var(--bg-muted);
+}
+
+.ui-progress-circle__fill {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-linecap: round;
+  transition: stroke-dashoffset var(--duration-slow) var(--ease-out);
+}
+
+.ui-progress-circle__label {
+  position: absolute;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}

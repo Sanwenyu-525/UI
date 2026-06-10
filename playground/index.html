@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Components — 组件预览 / Playground</title>
+  <link rel="stylesheet" href="../packages/css/src/index.css?v=5">
+  <style>
+    body { padding: 2rem; max-width: 960px; margin: 0 auto; }
+    section { margin-bottom: 3rem; }
+    section > h2 { margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+    .row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-bottom: 1rem; }
+    .col { display: flex; flex-direction: column; gap: 0.5rem; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .theme-bar {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;
+      padding: 0.75rem 0; margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .theme-bar__btn {
+      padding: 0.5rem 1rem; border-radius: 0.5rem;
+      font-size: 0.875rem; font-weight: 500; cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--surface); color: var(--text-primary);
+      transition: all 0.2s ease-out;
+    }
+    .theme-bar__btn:hover { border-color: var(--border-strong); }
+    .theme-bar__btn[data-active="true"] {
+      background: var(--color-primary); color: var(--text-on-primary);
+      border-color: var(--color-primary);
+    }
+    .theme-info {
+      display: inline-block; padding: 0.25rem 0.75rem;
+      border-radius: 9999px; font-size: 0.75rem; font-weight: 500;
+      background: var(--bg-muted); color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+    .sub { font-size: 0.85em; opacity: 0.6; margin-left: 0.25em; }
+
+    /* 主题背景覆盖 - 内联确保生效 */
+    html[data-theme="glass"] body {
+      background:
+        radial-gradient(ellipse 600px 400px at 15% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 100%),
+        radial-gradient(ellipse 500px 500px at 85% 70%, rgba(236, 72, 153, 0.06) 0%, transparent 100%),
+        radial-gradient(ellipse 400px 300px at 50% 90%, rgba(59, 130, 246, 0.05) 0%, transparent 100%),
+        #ffffff !important;
+      background-color: #ffffff !important;
+    }
+    html[data-theme="cyber"] body {
+      background: #ffffff !important;
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(13, 148, 136, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(14, 165, 233, 0.03) 0%, transparent 50%) !important;
+    }
+    html[data-theme="sport"] body {
+      background: #ffffff !important;
+      background-color: #ffffff !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Theme bar / 主题切换 -->
+  <div class="theme-bar">
+    <span style="font-weight:600; display:flex; align-items:center; margin-right:0.25rem;">主题 / Theme</span>
+    <button class="theme-bar__btn" data-theme-btn="light" data-active="true" onclick="setTheme('light')">☀️ Light 亮色</button>
+    <button class="theme-bar__btn" data-theme-btn="dark" onclick="setTheme('dark')">🌙 Dark 暗色</button>
+    <button class="theme-bar__btn" data-theme-btn="glass" onclick="setTheme('glass')">🪟 Glass 毛玻璃</button>
+    <button class="theme-bar__btn" data-theme-btn="cyber" onclick="setTheme('cyber')">⚡ Cyber 科技风</button>
+    <button class="theme-bar__btn" data-theme-btn="sport" onclick="setTheme('sport')">🔥 Sport 运动风</button>
+  </div>
+
+  <h1>UI Components<span class="sub">组件预览</span></h1>
+  <p style="margin-bottom: 0.5rem; color: var(--text-secondary);">
+    跨平台组件库 · Cross-platform component system — 5 种主题风格，12 个基础组件。
+  </p>
+  <p style="margin-bottom: 2rem;">
+    <span class="theme-info" id="theme-label">当前 / Current: Light 亮色</span>
+  </p>
+
+  <!-- ─── Button 按钮 ─────────────────────────────────────────── -->
+  <section>
+    <h2>Button<span class="sub">按钮</span></h2>
+
+    <h4 style="margin-bottom: 0.75rem;">Variants<span class="sub">变体</span></h4>
+    <div class="row">
+      <button class="ui-btn ui-btn--primary">Primary 主要</button>
+      <button class="ui-btn ui-btn--secondary">Secondary 次要</button>
+      <button class="ui-btn ui-btn--ghost">Ghost 幽灵</button>
+      <button class="ui-btn ui-btn--destructive">Destructive 危险</button>
+    </div>
+
+    <h4 style="margin-bottom: 0.75rem;">Sizes<span class="sub">尺寸</span></h4>
+    <div class="row">
+      <button class="ui-btn ui-btn--primary ui-btn--sm">Small 小</button>
+      <button class="ui-btn ui-btn--primary">Medium 中</button>
+      <button class="ui-btn ui-btn--primary ui-btn--lg">Large 大</button>
+    </div>
+
+    <h4 style="margin-bottom: 0.75rem;">States<span class="sub">状态</span></h4>
+    <div class="row">
+      <button class="ui-btn ui-btn--primary" disabled>Disabled 禁用</button>
+      <button class="ui-btn ui-btn--primary ui-btn--loading">Loading 加载中</button>
+    </div>
+  </section>
+
+  <!-- ─── Input 输入框 ────────────────────────────────────────── -->
+  <section>
+    <h2>Input<span class="sub">输入框</span></h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+      <div class="ui-field">
+        <label class="ui-field__label" for="name">Name 姓名</label>
+        <div class="ui-input-wrap">
+          <input class="ui-input" id="name" placeholder="Enter your name / 请输入姓名">
+        </div>
+      </div>
+
+      <div class="ui-field">
+        <label class="ui-field__label ui-field__label--required" for="email">Email 邮箱</label>
+        <div class="ui-input-wrap">
+          <input class="ui-input" id="email" type="email" placeholder="you@example.com">
+        </div>
+        <span class="ui-field__helper">We'll never share your email. / 我们不会分享您的邮箱。</span>
+      </div>
+
+      <div class="ui-field">
+        <label class="ui-field__label" for="err">With Error 错误状态</label>
+        <div class="ui-input-wrap ui-input-wrap--error">
+          <input class="ui-input" id="err" value="invalid-value" aria-invalid="true">
+        </div>
+        <span class="ui-field__error">This field has an error. / 此字段有误。</span>
+      </div>
+
+      <div class="ui-field">
+        <label class="ui-field__label" for="dis">Disabled 禁用</label>
+        <div class="ui-input-wrap ui-input-wrap--disabled">
+          <input class="ui-input" id="dis" value="Cannot edit / 不可编辑" disabled>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Badge 徽标 ──────────────────────────────────────────── -->
+  <section>
+    <h2>Badge<span class="sub">徽标</span></h2>
+
+    <div class="row">
+      <span class="ui-badge ui-badge--default">Default 默认</span>
+      <span class="ui-badge ui-badge--primary">Primary 主要</span>
+      <span class="ui-badge ui-badge--success"><span class="ui-badge__dot"></span>Active 活跃</span>
+      <span class="ui-badge ui-badge--warning">Warning 警告</span>
+      <span class="ui-badge ui-badge--error">Error 错误</span>
+      <span class="ui-badge ui-badge--info">Info 信息</span>
+    </div>
+  </section>
+
+  <!-- ─── Avatar 头像 ─────────────────────────────────────────── -->
+  <section>
+    <h2>Avatar<span class="sub">头像</span></h2>
+    <div class="row">
+      <div class="ui-avatar ui-avatar--sm"><span class="ui-avatar__fallback">SM</span></div>
+      <div class="ui-avatar ui-avatar--md"><span class="ui-avatar__fallback">MD</span></div>
+      <div class="ui-avatar ui-avatar--lg ui-avatar--circle"><span class="ui-avatar__fallback">JD</span></div>
+      <div class="ui-avatar ui-avatar--xl ui-avatar--circle"><span class="ui-avatar__fallback">XL</span></div>
+    </div>
+  </section>
+
+  <!-- ─── Card 卡片 ───────────────────────────────────────────── -->
+  <section>
+    <h2>Card<span class="sub">卡片</span></h2>
+    <div class="card-grid">
+      <div class="ui-card ui-card--elevated">
+        <div class="ui-card__header">
+          <div>
+            <h3 class="ui-card__title">Elevated Card 浮层卡片</h3>
+            <p class="ui-card__description">With shadow elevation / 带阴影层级</p>
+          </div>
+          <span class="ui-badge ui-badge--primary">New 新</span>
+        </div>
+        <div class="ui-card__body">
+          <p>This card uses shadow for visual elevation in the hierarchy. / 此卡片通过阴影表达视觉层级。</p>
+        </div>
+        <div class="ui-card__footer">
+          <button class="ui-btn ui-btn--ghost ui-btn--sm">Cancel 取消</button>
+          <button class="ui-btn ui-btn--primary ui-btn--sm">Save 保存</button>
+        </div>
+      </div>
+
+      <div class="ui-card ui-card--outlined">
+        <div class="ui-card__header">
+          <h3 class="ui-card__title">Outlined Card 描边卡片</h3>
+        </div>
+        <div class="ui-card__body">
+          <p>This card uses a border for visual separation. / 此卡片通过边框进行视觉分隔。</p>
+        </div>
+      </div>
+
+      <div class="ui-card ui-card--flat ui-card--clickable">
+        <div class="ui-card__body">
+          <h3 class="ui-card__title">Clickable Flat 可点击扁平卡片</h3>
+          <p class="ui-card__description" style="margin-top: 0.5rem;">Click me / 点击试试 — hover to see interaction / 悬停查看交互效果。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Form Controls 表单控件 ──────────────────────────────── -->
+  <section>
+    <h2>Form Controls<span class="sub">表单控件</span></h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 2rem;">
+      <div class="col">
+        <h4>Checkbox 复选框</h4>
+        <label class="ui-checkbox">
+          <input type="checkbox" class="ui-checkbox__input" checked>
+          <span class="ui-checkbox__control">
+            <svg class="ui-checkbox__icon ui-checkbox__icon--check" viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="ui-checkbox__label">Accept terms 接受条款</span>
+        </label>
+        <label class="ui-checkbox">
+          <input type="checkbox" class="ui-checkbox__input">
+          <span class="ui-checkbox__control">
+            <svg class="ui-checkbox__icon ui-checkbox__icon--check" viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="ui-checkbox__label">Subscribe 订阅</span>
+        </label>
+        <label class="ui-checkbox ui-checkbox--disabled">
+          <input type="checkbox" class="ui-checkbox__input" disabled>
+          <span class="ui-checkbox__control">
+            <svg class="ui-checkbox__icon ui-checkbox__icon--check" viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="ui-checkbox__label">Disabled 禁用</span>
+        </label>
+      </div>
+
+      <div class="col">
+        <h4>Radio 单选</h4>
+        <div class="ui-radio-group" role="radiogroup">
+          <label class="ui-radio">
+            <input type="radio" name="plan" class="ui-radio__input" value="free" checked>
+            <span class="ui-radio__control"></span>
+            <span class="ui-radio__label">Free plan 免费版</span>
+          </label>
+          <label class="ui-radio">
+            <input type="radio" name="plan" class="ui-radio__input" value="pro">
+            <span class="ui-radio__control"></span>
+            <span class="ui-radio__label">Pro plan 专业版</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="col">
+        <h4>Switch 开关</h4>
+        <label class="ui-switch">
+          <input type="checkbox" class="ui-switch__input" role="switch" checked>
+          <span class="ui-switch__track"><span class="ui-switch__thumb"></span></span>
+          <span class="ui-switch__label">Notifications 通知</span>
+        </label>
+        <label class="ui-switch">
+          <input type="checkbox" class="ui-switch__input" role="switch">
+          <span class="ui-switch__track"><span class="ui-switch__thumb"></span></span>
+          <span class="ui-switch__label">Dark mode 暗色模式</span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Modal 弹窗 ──────────────────────────────────────────── -->
+  <section>
+    <h2>Modal<span class="sub">弹窗</span></h2>
+    <button class="ui-btn ui-btn--primary" onclick="document.getElementById('demo-modal').classList.add('ui-modal-overlay--open')">
+      Open Modal 打开弹窗
+    </button>
+
+    <div id="demo-modal" class="ui-modal-overlay" onclick="if(event.target===this) this.classList.remove('ui-modal-overlay--open')">
+      <div class="ui-modal ui-modal--md">
+        <div class="ui-modal__header">
+          <h2 class="ui-modal__title">Confirm Action 确认操作</h2>
+          <button class="ui-modal__close" onclick="document.getElementById('demo-modal').classList.remove('ui-modal-overlay--open')" aria-label="Close 关闭">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4L12 12M4 12L12 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <div class="ui-modal__body">
+          <p>Are you sure you want to proceed? This action cannot be undone.<br>确定要继续吗？此操作无法撤销。</p>
+        </div>
+        <div class="ui-modal__footer">
+          <button class="ui-btn ui-btn--ghost" onclick="document.getElementById('demo-modal').classList.remove('ui-modal-overlay--open')">Cancel 取消</button>
+          <button class="ui-btn ui-btn--primary" onclick="document.getElementById('demo-modal').classList.remove('ui-modal-overlay--open')">Confirm 确认</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Toast 通知 ──────────────────────────────────────────── -->
+  <section>
+    <h2>Toast<span class="sub">通知</span></h2>
+    <div style="position: static; max-width: 100%; display: flex; flex-direction: column; gap: 0.5rem;">
+      <div class="ui-toast ui-toast--success" style="pointer-events:none;">
+        <svg class="ui-toast__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        <div class="ui-toast__content">
+          <div class="ui-toast__title">Success 成功</div>
+          <div class="ui-toast__message">Your changes have been saved. / 更改已保存。</div>
+        </div>
+      </div>
+      <div class="ui-toast ui-toast--error" style="pointer-events:none;">
+        <svg class="ui-toast__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>
+        <div class="ui-toast__content">
+          <div class="ui-toast__title">Error 错误</div>
+          <div class="ui-toast__message">Something went wrong. / 出了点问题，请重试。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Tooltip 提示 ────────────────────────────────────────── -->
+  <section>
+    <h2>Tooltip<span class="sub">提示</span></h2>
+    <div class="row" style="gap: 2rem;">
+      <div class="ui-tooltip-wrapper">
+        <button class="ui-btn ui-btn--secondary">Hover 悬停 (top 上)</button>
+        <div class="ui-tooltip ui-tooltip--top ui-tooltip--visible" style="position:relative;bottom:auto;left:auto;transform:none;">
+          Top tooltip / 上方提示
+          <span class="ui-tooltip__arrow" style="bottom:-4px;left:50%;margin-left:-4px;"></span>
+        </div>
+      </div>
+      <div class="ui-tooltip-wrapper">
+        <button class="ui-btn ui-btn--secondary">Hover 悬停 (bottom 下)</button>
+        <div class="ui-tooltip ui-tooltip--bottom ui-tooltip--visible" style="position:relative;top:auto;left:auto;transform:none;">
+          Bottom tooltip / 下方提示
+          <span class="ui-tooltip__arrow" style="top:-4px;left:50%;margin-left:-4px;"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Divider 分隔线 ──────────────────────────────────────── -->
+  <section>
+    <h2>Divider<span class="sub">分隔线</span></h2>
+    <p>上文内容 / Content above</p>
+    <hr class="ui-divider">
+    <p>下文内容 / Content below</p>
+    <hr class="ui-divider ui-divider--dashed">
+    <div class="ui-divider--with-label" style="display:flex;align-items:center;gap:0.75rem;">
+      <span style="flex:1;border-top:1px solid var(--border);"></span>
+      <span class="ui-divider__label">或者 / OR</span>
+      <span style="flex:1;border-top:1px solid var(--border);"></span>
+    </div>
+  </section>
+
+  <!-- ─── Tag 标签 ────────────────────────────────────────────── -->
+  <section>
+    <h2>Tag<span class="sub">标签</span></h2>
+    <div class="row">
+      <span class="ui-tag ui-tag--default">Default 默认</span>
+      <span class="ui-tag ui-tag--primary">Primary 主要</span>
+      <span class="ui-tag ui-tag--success">Success 成功</span>
+      <span class="ui-tag ui-tag--warning">Warning 警告</span>
+      <span class="ui-tag ui-tag--error">Error 错误</span>
+      <span class="ui-tag ui-tag--primary">可关闭 Closable <button class="ui-tag__close" type="button" aria-label="Remove"><svg viewBox="0 0 12 12" fill="none"><path d="M3 3L9 9M3 9L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span>
+    </div>
+  </section>
+
+  <!-- ─── Tabs 标签页 ─────────────────────────────────────────── -->
+  <section>
+    <h2>Tabs<span class="sub">标签页</span></h2>
+    <div class="ui-tabs">
+      <div class="ui-tabs__list" role="tablist">
+        <button class="ui-tabs__trigger ui-tabs__trigger--active" role="tab" aria-selected="true" type="button">Overview 概览</button>
+        <button class="ui-tabs__trigger" role="tab" aria-selected="false" type="button">Analytics 分析 <span class="ui-tabs__count">12</span></button>
+        <button class="ui-tabs__trigger" role="tab" aria-selected="false" type="button">Settings 设置</button>
+      </div>
+      <div class="ui-tabs__panel" role="tabpanel">
+        <p style="color:var(--text-secondary);">概览内容面板 / Overview panel content.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Breadcrumb 面包屑 ───────────────────────────────────── -->
+  <section>
+    <h2>Breadcrumb<span class="sub">面包屑</span></h2>
+    <nav class="ui-breadcrumb" aria-label="Breadcrumb">
+      <span class="ui-breadcrumb__item"><a class="ui-breadcrumb__link" href="#">首页 Home</a></span>
+      <span class="ui-breadcrumb__item"><span class="ui-breadcrumb__sep">/</span><a class="ui-breadcrumb__link" href="#">产品 Products</a></span>
+      <span class="ui-breadcrumb__item"><span class="ui-breadcrumb__sep">/</span><span class="ui-breadcrumb__current" aria-current="page">详情 Detail</span></span>
+    </nav>
+  </section>
+
+  <!-- ─── Pagination 分页 ─────────────────────────────────────── -->
+  <section>
+    <h2>Pagination<span class="sub">分页</span></h2>
+    <div class="ui-pagination">
+      <button class="ui-pagination__btn ui-pagination__prev" disabled type="button" aria-label="Previous"><svg viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="ui-pagination__btn ui-pagination__btn--active" type="button">1</button>
+      <button class="ui-pagination__btn" type="button">2</button>
+      <button class="ui-pagination__btn" type="button">3</button>
+      <span class="ui-pagination__ellipsis">…</span>
+      <button class="ui-pagination__btn" type="button">10</button>
+      <button class="ui-pagination__btn ui-pagination__next" type="button" aria-label="Next"><svg viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+  </section>
+
+  <!-- ─── Accordion 手风琴 ────────────────────────────────────── -->
+  <section>
+    <h2>Accordion<span class="sub">手风琴</span></h2>
+    <div class="ui-accordion">
+      <div class="ui-accordion__item" data-open="true">
+        <button class="ui-accordion__trigger" type="button" aria-expanded="true">
+          <span>什么是组件系统？ / What is a component system?</span>
+          <svg class="ui-accordion__icon" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="ui-accordion__content">
+          <div class="ui-accordion__body">组件系统是一套可复用的 UI 构建块，提供一致的视觉和交互体验。/ A component system is a set of reusable UI building blocks providing consistent visual and interaction patterns.</div>
+        </div>
+      </div>
+      <div class="ui-accordion__item" data-open="false">
+        <button class="ui-accordion__trigger" type="button" aria-expanded="false">
+          <span>如何切换主题？ / How to switch themes?</span>
+          <svg class="ui-accordion__icon" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="ui-accordion__content">
+          <div class="ui-accordion__body">通过设置 html 标签的 data-theme 属性即可切换主题。/ Set the data-theme attribute on the html element to switch themes.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Table 表格 ──────────────────────────────────────────── -->
+  <section>
+    <h2>Table<span class="sub">表格</span></h2>
+    <div class="ui-table-wrap">
+      <table class="ui-table">
+        <thead>
+          <tr>
+            <th>名称 Name</th>
+            <th>分类 Category</th>
+            <th aria-sort="ascending">数量 Count</th>
+            <th>状态 Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Button 按钮</td>
+            <td>数据录入 Data Entry</td>
+            <td>4</td>
+            <td><span class="ui-badge ui-badge--success"><span class="ui-badge__dot"></span>完成 Done</span></td>
+          </tr>
+          <tr>
+            <td>Card 卡片</td>
+            <td>数据展示 Data Display</td>
+            <td>3</td>
+            <td><span class="ui-badge ui-badge--success"><span class="ui-badge__dot"></span>完成 Done</span></td>
+          </tr>
+          <tr>
+            <td>Calendar 日历</td>
+            <td>数据展示 Data Display</td>
+            <td>—</td>
+            <td><span class="ui-badge ui-badge--warning"><span class="ui-badge__dot"></span>规划中 Planned</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ─── Alert 警告 ──────────────────────────────────────────── -->
+  <section>
+    <h2>Alert<span class="sub">警告</span></h2>
+    <div style="display:flex;flex-direction:column;gap:0.75rem;">
+      <div class="ui-alert ui-alert--info" role="alert">
+        <svg class="ui-alert__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+        <div class="ui-alert__content">
+          <div class="ui-alert__title">提示 Info</div>
+          <div class="ui-alert__message">新版本已发布，请及时更新。/ A new version is available.</div>
+        </div>
+      </div>
+      <div class="ui-alert ui-alert--warning" role="alert">
+        <svg class="ui-alert__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+        <div class="ui-alert__content">
+          <div class="ui-alert__title">警告 Warning</div>
+          <div class="ui-alert__message">存储空间即将用完。/ Storage is almost full.</div>
+        </div>
+      </div>
+      <div class="ui-alert ui-alert--error" role="alert">
+        <svg class="ui-alert__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>
+        <div class="ui-alert__content">
+          <div class="ui-alert__title">错误 Error</div>
+          <div class="ui-alert__message">提交失败，请重试。/ Submission failed, please retry.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Progress 进度条 ─────────────────────────────────────── -->
+  <section>
+    <h2>Progress<span class="sub">进度条</span></h2>
+    <div style="display:flex;flex-direction:column;gap:1.5rem;max-width:400px;">
+      <div class="ui-progress">
+        <div class="ui-progress__label-row">
+          <span class="ui-progress__label">上传中 Uploading…</span>
+          <span class="ui-progress__value">68%</span>
+        </div>
+        <div class="ui-progress__track"><div class="ui-progress__fill" style="width:68%"></div></div>
+      </div>
+      <div class="ui-progress">
+        <div class="ui-progress__label-row">
+          <span class="ui-progress__label">成功 Success</span>
+          <span class="ui-progress__value">100%</span>
+        </div>
+        <div class="ui-progress__track"><div class="ui-progress__fill ui-progress__fill--success" style="width:100%"></div></div>
+      </div>
+      <div class="ui-progress ui-progress--indeterminate">
+        <div class="ui-progress__label-row"><span class="ui-progress__label">处理中 Processing…</span></div>
+        <div class="ui-progress__track"><div class="ui-progress__fill"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Skeleton 骨架屏 ─────────────────────────────────────── -->
+  <section>
+    <h2>Skeleton<span class="sub">骨架屏</span></h2>
+    <div class="ui-skeleton-group" style="max-width:400px;">
+      <div class="ui-skeleton-group__row">
+        <div class="ui-skeleton ui-skeleton--circle" style="width:40px;height:40px;"></div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:0.5rem;">
+          <div class="ui-skeleton ui-skeleton--title" style="width:50%;"></div>
+          <div class="ui-skeleton ui-skeleton--text-sm" style="width:30%;"></div>
+        </div>
+      </div>
+      <div class="ui-skeleton ui-skeleton--text" style="width:100%;"></div>
+      <div class="ui-skeleton ui-skeleton--text" style="width:100%;"></div>
+      <div class="ui-skeleton ui-skeleton--text" style="width:60%;"></div>
+    </div>
+  </section>
+
+  <!-- ─── Slider 滑块 ─────────────────────────────────────────── -->
+  <section>
+    <h2>Slider<span class="sub">滑块</span></h2>
+    <div style="max-width:360px;">
+      <div class="ui-slider">
+        <div class="ui-slider__label-row">
+          <label class="ui-slider__label">Volume 音量</label>
+          <span class="ui-slider__value">65</span>
+        </div>
+        <div class="ui-slider__track">
+          <div class="ui-slider__fill" style="width:65%"></div>
+          <span class="ui-slider__thumb" style="left:65%"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Empty 空状态 ────────────────────────────────────────── -->
+  <section>
+    <h2>Empty<span class="sub">空状态</span></h2>
+    <div class="ui-empty" style="border:1px dashed var(--border);border-radius:var(--radius-lg);">
+      <svg class="ui-empty__icon" viewBox="0 0 48 48" fill="none">
+        <path d="M8 12h32v24a4 4 0 01-4 4H12a4 4 0 01-4-4V12z" stroke="currentColor" stroke-width="2"/>
+        <path d="M16 12V8h16v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <h3 class="ui-empty__title">暂无数据 No Data</h3>
+      <p class="ui-empty__description">当前没有可显示的内容。/ There is nothing to display right now.</p>
+      <button class="ui-btn ui-btn--primary ui-btn--sm">刷新 Refresh</button>
+    </div>
+  </section>
+
+  <!-- ─── Drawer 抽屉 ─────────────────────────────────────────── -->
+  <section>
+    <h2>Drawer<span class="sub">抽屉</span></h2>
+    <button class="ui-btn ui-btn--primary" onclick="document.getElementById('demo-drawer').classList.add('ui-drawer-overlay--open')">
+      Open Drawer 打开抽屉
+    </button>
+    <div id="demo-drawer" class="ui-drawer-overlay" onclick="if(event.target===this) this.classList.remove('ui-drawer-overlay--open')">
+      <div class="ui-drawer ui-drawer--right ui-drawer--md">
+        <div class="ui-drawer__header">
+          <h2 class="ui-drawer__title">Details 详情</h2>
+          <button class="ui-drawer__close" onclick="document.getElementById('demo-drawer').classList.remove('ui-drawer-overlay--open')" aria-label="Close" type="button">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4L12 12M4 12L12 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <div class="ui-drawer__body">
+          <p style="color:var(--text-secondary);">这是从右侧滑入的抽屉面板。<br>This is a drawer panel sliding in from the right.</p>
+        </div>
+        <div class="ui-drawer__footer">
+          <button class="ui-btn ui-btn--ghost" onclick="document.getElementById('demo-drawer').classList.remove('ui-drawer-overlay--open')">关闭 Close</button>
+          <button class="ui-btn ui-btn--primary" onclick="document.getElementById('demo-drawer').classList.remove('ui-drawer-overlay--open')">保存 Save</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const THEMES = {
+      light: '☀️ Light 亮色',
+      dark:  '🌙 Dark 暗色',
+      glass: '🪟 Glass 毛玻璃',
+      cyber: '⚡ Cyber 科技风',
+      sport: '🔥 Sport 运动风',
+    };
+
+    function setTheme(name) {
+      document.documentElement.dataset.theme = name;
+      document.getElementById('theme-label').textContent = '当前 / Current: ' + THEMES[name];
+      document.querySelectorAll('[data-theme-btn]').forEach(btn => {
+        btn.dataset.active = btn.dataset.themeBtn === name ? 'true' : 'false';
+      });
+    }
+  </script>
+</body>
+</html>

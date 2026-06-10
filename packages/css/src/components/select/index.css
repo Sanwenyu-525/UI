@@ -1,0 +1,173 @@
+/* ─── Select ──────────────────────────────────────────────────────── */
+
+.ui-select {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+/* ── Label ─────────────────────────────────────────────────────── */
+.ui-select__label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: var(--leading-snug);
+}
+
+/* ── Trigger button ────────────────────────────────────────────── */
+.ui-select__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-2);
+  height: var(--size-md-height);
+  padding: var(--size-md-py) var(--size-md-px);
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--size-md-font);
+  color: var(--text-primary);
+  transition:
+    border-color var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+  width: 100%;
+  text-align: left;
+}
+
+.ui-select__trigger:hover {
+  border-color: var(--border-strong);
+}
+
+.ui-select__trigger:focus-visible {
+  border-color: var(--ring);
+  box-shadow: var(--focus-ring);
+  outline: none;
+}
+
+.ui-select__trigger--error {
+  border-color: var(--color-error);
+}
+
+.ui-select__trigger--error:focus-visible {
+  border-color: var(--ring-error);
+  box-shadow: var(--focus-ring-error);
+}
+
+.ui-select__trigger--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--bg-muted);
+}
+
+/* ── Sizes ─────────────────────────────────────────────────────── */
+.ui-select__trigger--sm {
+  height: var(--size-sm-height);
+  padding: var(--size-sm-py) var(--size-sm-px);
+  font-size: var(--size-sm-font);
+}
+
+.ui-select__trigger--lg {
+  height: var(--size-lg-height);
+  padding: var(--size-lg-py) var(--size-lg-px);
+  font-size: var(--size-lg-font);
+}
+
+/* ── Placeholder ───────────────────────────────────────────────── */
+.ui-select__placeholder {
+  color: var(--text-tertiary);
+}
+
+/* ── Chevron icon ──────────────────────────────────────────────── */
+.ui-select__chevron {
+  width: 1rem;
+  height: 1rem;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.ui-select[data-open="true"] .ui-select__chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown ──────────────────────────────────────────────────── */
+.ui-select__dropdown {
+  position: absolute;
+  z-index: var(--z-dropdown);
+  top: calc(100% + var(--spacing-1));
+  left: 0;
+  right: 0;
+  min-width: 100%;
+  max-height: 15rem;
+  overflow-y: auto;
+  background-color: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-1);
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.ui-select[data-open="true"] .ui-select__dropdown {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ── Option ────────────────────────────────────────────────────── */
+.ui-select__option {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-3);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.ui-select__option:hover,
+.ui-select__option--focused {
+  background-color: var(--bg-subtle);
+}
+
+.ui-select__option--selected {
+  background-color: var(--primary-50);
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+[data-theme="dark"] .ui-select__option--selected {
+  background-color: rgba(99, 102, 241, 0.15);
+}
+
+.ui-select__option--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ui-select__option-check {
+  width: 1rem;
+  height: 1rem;
+  margin-left: auto;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* ── Helper text ───────────────────────────────────────────────── */
+.ui-select__helper {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+}
+
+.ui-select__error {
+  font-size: var(--text-xs);
+  color: var(--color-error);
+}

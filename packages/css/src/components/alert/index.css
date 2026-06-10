@@ -1,0 +1,86 @@
+/* ─── Alert ────────────────────────────────────────────────────────── */
+
+.ui-alert {
+  display: flex;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+/* ── Variants ──────────────────────────────────────────────────── */
+.ui-alert--info {
+  background: var(--info-50);
+  border-color: var(--info-200);
+  color: var(--info-800);
+}
+
+.ui-alert--success {
+  background: var(--success-50);
+  border-color: var(--success-200);
+  color: var(--success-800);
+}
+
+.ui-alert--warning {
+  background: var(--warning-50);
+  border-color: var(--warning-200);
+  color: var(--warning-800);
+}
+
+.ui-alert--error {
+  background: var(--error-50);
+  border-color: var(--error-200);
+  color: var(--error-800);
+}
+
+/* Dark mode overrides */
+[data-theme="dark"] .ui-alert--info    { background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.2); color: var(--info-300); }
+[data-theme="dark"] .ui-alert--success { background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.2); color: var(--success-300); }
+[data-theme="dark"] .ui-alert--warning { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.2); color: var(--warning-300); }
+[data-theme="dark"] .ui-alert--error   { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.2); color: var(--error-300); }
+
+/* ── Icon ───────────────────────────────────────────────────────── */
+.ui-alert__icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.125rem;
+}
+
+/* ── Content ────────────────────────────────────────────────────── */
+.ui-alert__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.ui-alert__title {
+  font-weight: 600;
+  margin-bottom: var(--spacing-1);
+}
+
+.ui-alert__message {
+  opacity: 0.9;
+}
+
+/* ── Close button ───────────────────────────────────────────────── */
+.ui-alert__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--radius-sm);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.6;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.ui-alert__close:hover {
+  opacity: 1;
+}

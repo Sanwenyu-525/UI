@@ -1,0 +1,99 @@
+/* ─── Avatar ──────────────────────────────────────────────────────── */
+
+.ui-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  background-color: var(--primary-100);
+  color: var(--primary-700);
+  font-weight: 600;
+  user-select: none;
+}
+
+[data-theme="dark"] .ui-avatar {
+  background-color: var(--primary-900);
+  color: var(--primary-300);
+}
+
+/* ── Sizes ─────────────────────────────────────────────────────── */
+
+.ui-avatar--sm {
+  width: 2rem;    /* 32px */
+  height: 2rem;
+  font-size: var(--text-xs);
+  border-radius: var(--radius-sm);
+}
+
+.ui-avatar--md {
+  width: 2.5rem;  /* 40px */
+  height: 2.5rem;
+  font-size: var(--text-sm);
+  border-radius: var(--radius-md);
+}
+
+.ui-avatar--lg {
+  width: 3rem;    /* 48px */
+  height: 3rem;
+  font-size: var(--text-base);
+  border-radius: var(--radius-md);
+}
+
+.ui-avatar--xl {
+  width: 4rem;    /* 64px */
+  height: 4rem;
+  font-size: var(--text-lg);
+  border-radius: var(--radius-lg);
+}
+
+/* ── Shape ─────────────────────────────────────────────────────── */
+
+.ui-avatar--circle {
+  border-radius: var(--radius-full);
+}
+
+/* ── Image ─────────────────────────────────────────────────────── */
+
+.ui-avatar__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Fallback (initials) ───────────────────────────────────────── */
+
+.ui-avatar__fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+}
+
+/* ── Group (stacked avatars) ───────────────────────────────────── */
+
+.ui-avatar-group {
+  display: flex;
+  align-items: center;
+}
+
+.ui-avatar-group .ui-avatar {
+  border: 2px solid var(--bg);
+  margin-left: -0.5rem;
+}
+
+.ui-avatar-group .ui-avatar:first-child {
+  margin-left: 0;
+}
+
+.ui-avatar-group__overflow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-muted);
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+  font-weight: 500;
+}

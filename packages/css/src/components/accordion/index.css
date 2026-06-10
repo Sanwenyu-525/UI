@@ -1,0 +1,94 @@
+/* ─── Accordion / Collapse ─────────────────────────────────────────── */
+
+.ui-accordion {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* ── Item ────────────────────────────────────────────────────────── */
+.ui-accordion__item {
+  border-bottom: 1px solid var(--border);
+}
+
+.ui-accordion__item:last-child {
+  border-bottom: none;
+}
+
+/* ── Trigger (clickable header) ─────────────────────────────────── */
+.ui-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--spacing-4);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.ui-accordion__trigger:hover {
+  background: var(--bg-subtle);
+}
+
+.ui-accordion__trigger:focus-visible {
+  outline: none;
+  box-shadow: inset var(--focus-ring);
+}
+
+/* Chevron icon */
+.ui-accordion__icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.ui-accordion__item[data-open="true"] .ui-accordion__icon {
+  transform: rotate(180deg);
+}
+
+/* ── Content ─────────────────────────────────────────────────────── */
+.ui-accordion__content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height var(--duration-slow) var(--ease-out);
+}
+
+.ui-accordion__item[data-open="true"] .ui-accordion__content {
+  max-height: 500px; /* JS should set real value */
+}
+
+.ui-accordion__body {
+  padding: 0 var(--spacing-4) var(--spacing-4);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+/* ── Separated variant (each item is its own card) ──────────────── */
+.ui-accordion--separated {
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.ui-accordion--separated .ui-accordion__item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.ui-accordion--separated .ui-accordion__item:last-child {
+  border-bottom: 1px solid var(--border);
+}
