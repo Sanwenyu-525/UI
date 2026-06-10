@@ -1,0 +1,81 @@
+/* ─── High Contrast Theme ─────────────────────────────────────────── */
+/* WCAG AAA compliant with 7:1+ contrast ratios.                       */
+/* Apply: <html data-theme="high-contrast">                            */
+
+[data-theme="high-contrast"] {
+  /* ── Backgrounds — pure dark ──────────────────────────────────── */
+  --bg:              #000000;
+  --bg-subtle:       #0d0d0d;
+  --bg-muted:        #1a1a1a;
+
+  /* ── Surfaces ─────────────────────────────────────────────────── */
+  --surface:         #1a1a1a;
+  --surface-elevated: #262626;
+  --surface-overlay:  rgba(0, 0, 0, 0.85);
+
+  /* ── Text — maximum contrast ──────────────────────────────────── */
+  --text-primary:    #ffffff;
+  --text-secondary:  #d0d0d0;
+  --text-tertiary:   #a0a0a0;
+  --text-inverse:    #000000;
+  --text-on-primary: #000000;
+
+  /* ── Borders — distinct ───────────────────────────────────────── */
+  --border:          rgba(255, 255, 255, 0.25);
+  --border-strong:   rgba(255, 255, 255, 0.4);
+
+  /* ── Colors — vivid and distinct ──────────────────────────────── */
+  --color-primary:        #818cf8;
+  --color-primary-hover:  #a5b4fc;
+  --color-primary-active: #6366f1;
+
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-error:   #f87171;
+  --color-info:    #60a5fa;
+
+  --ring:          rgba(129, 140, 248, 0.5);
+  --ring-error:    rgba(248, 113, 113, 0.5);
+
+  --focus-ring:    0 0 0 3px rgba(129, 140, 248, 0.5), 0 0 16px rgba(129, 140, 248, 0.2);
+  --focus-ring-error: 0 0 0 3px rgba(248, 113, 113, 0.5);
+
+  /* ── Shadows — distinct elevation ─────────────────────────────── */
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.6);
+  --shadow-lg:  0 12px 32px rgba(0, 0, 0, 0.7);
+  --shadow-xl:  0 20px 48px rgba(0, 0, 0, 0.8);
+}
+
+/* ── Body ────────────────────────────────────────────────────────────── */
+[data-theme="high-contrast"] body {
+  background: #000000 !important;
+  background-color: #000000 !important;
+  color: #ffffff;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* ── Enhanced focus states ──────────────────────────────────────────── */
+[data-theme="high-contrast"] *:focus-visible {
+  outline: 3px solid var(--color-primary) !important;
+  outline-offset: 2px !important;
+}
+
+/* ── Selection ──────────────────────────────────────────────────────── */
+[data-theme="high-contrast"] ::selection {
+  background-color: rgba(129, 140, 248, 0.4);
+  color: #ffffff;
+}
+
+/* ── Links ──────────────────────────────────────────────────────────── */
+[data-theme="high-contrast"] a:not([class]) {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+[data-theme="high-contrast"] a:not([class]):hover {
+  color: var(--color-primary-hover);
+  text-decoration-thickness: 3px;
+}

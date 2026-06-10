@@ -1,0 +1,287 @@
+/* ─── Upload ──────────────────────────────────────────────────────── */
+
+.ui-upload {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+/* ── Drop zone ─────────────────────────────────────────────────── */
+.ui-upload__dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-8) var(--spacing-4);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-subtle);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-normal) var(--ease-out),
+    background-color var(--duration-normal) var(--ease-out);
+}
+
+.ui-upload__dropzone:hover {
+  border-color: var(--color-primary);
+  background-color: var(--primary-50);
+}
+
+[data-theme="dark"] .ui-upload__dropzone:hover {
+  background-color: rgba(99, 102, 241, 0.1);
+}
+
+/* Drag active */
+.ui-upload__dropzone--dragover {
+  border-color: var(--color-primary);
+  background-color: var(--primary-50);
+  border-style: solid;
+}
+
+[data-theme="dark"] .ui-upload__dropzone--dragover {
+  background-color: rgba(99, 102, 241, 0.15);
+}
+
+/* Disabled */
+.ui-upload__dropzone--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ui-upload__dropzone--disabled:hover {
+  border-color: var(--border);
+  background-color: var(--bg-subtle);
+}
+
+/* ── Upload icon ───────────────────────────────────────────────── */
+.ui-upload__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--text-tertiary);
+}
+
+.ui-upload__dropzone:hover .ui-upload__icon {
+  color: var(--color-primary);
+}
+
+/* ── Text ──────────────────────────────────────────────────────── */
+.ui-upload__text {
+  text-align: center;
+}
+
+.ui-upload__text-main {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-1);
+}
+
+.ui-upload__text-sub {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+/* ── Browse button ─────────────────────────────────────────────── */
+.ui-upload__browse {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-primary);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.ui-upload__browse:hover {
+  color: var(--color-primary-hover);
+}
+
+/* ── File list ─────────────────────────────────────────────────── */
+.ui-upload__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+/* ── File item ─────────────────────────────────────────────────── */
+.ui-upload__file {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.ui-upload__file-icon {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--text-tertiary);
+}
+
+.ui-upload__file-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ui-upload__file-name {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ui-upload__file-size {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+/* ── Progress bar ──────────────────────────────────────────────── */
+.ui-upload__progress {
+  width: 100%;
+  height: 0.25rem;
+  background-color: var(--bg-muted);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-top: var(--spacing-2);
+}
+
+.ui-upload__progress-bar {
+  height: 100%;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+  transition: width var(--duration-normal) var(--ease-out);
+}
+
+.ui-upload__progress-bar--error {
+  background-color: var(--color-error);
+}
+
+.ui-upload__progress-bar--success {
+  background-color: var(--color-success);
+}
+
+/* ── Remove button ─────────────────────────────────────────────── */
+.ui-upload__remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.ui-upload__remove:hover {
+  background-color: var(--bg-subtle);
+  color: var(--color-error);
+}
+
+/* ── Status ────────────────────────────────────────────────────── */
+.ui-upload__status {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.ui-upload__status--success {
+  color: var(--color-success);
+}
+
+.ui-upload__status--error {
+  color: var(--color-error);
+}
+
+/* ── Visual variants ───────────────────────────────────────────── */
+
+/* Glass — translucent backdrop blur */
+.ui-upload__dropzone--glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.ui-upload__dropzone--glass:hover,
+.ui-upload__dropzone--glass.ui-upload__dropzone--dragover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-primary);
+}
+
+/* Gradient — gradient background */
+.ui-upload__dropzone--gradient {
+  background: linear-gradient(135deg, var(--bg-subtle) 0%, var(--bg-muted) 100%);
+}
+
+/* Soft — subtle styling */
+.ui-upload__dropzone--soft {
+  background: var(--bg-muted);
+  border: none;
+}
+
+.ui-upload__dropzone--soft:hover,
+.ui-upload__dropzone--soft.ui-upload__dropzone--dragover {
+  background: var(--bg-subtle);
+}
+
+/* Flat — completely flat */
+.ui-upload__dropzone--flat {
+  background: var(--bg);
+  border: none;
+  border-bottom: 2px dashed var(--border);
+  border-radius: 0;
+}
+
+.ui-upload__dropzone--flat:hover,
+.ui-upload__dropzone--flat.ui-upload__dropzone--dragover {
+  border-bottom-color: var(--color-primary);
+  background: var(--bg);
+}
+
+/* ── Density variants ──────────────────────────────────────────── */
+
+/* Compact */
+[data-density="compact"] .ui-upload__dropzone {
+  padding: var(--spacing-5) var(--spacing-3);
+}
+
+[data-density="compact"] .ui-upload__icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+[data-density="compact"] .ui-upload__text-main {
+  font-size: var(--text-xs);
+}
+
+[data-density="compact"] .ui-upload__file {
+  padding: var(--spacing-2);
+}
+
+/* Spacious */
+[data-density="spacious"] .ui-upload__dropzone {
+  padding: var(--spacing-10) var(--spacing-6);
+}
+
+[data-density="spacious"] .ui-upload__icon {
+  width: 3rem;
+  height: 3rem;
+}
+
+[data-density="spacious"] .ui-upload__text-main {
+  font-size: var(--text-base);
+}
+
+[data-density="spacious"] .ui-upload__file {
+  padding: var(--spacing-4);
+}

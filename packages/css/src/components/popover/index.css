@@ -1,0 +1,197 @@
+/* ─── Popover ─────────────────────────────────────────────────────── */
+
+.ui-popover {
+  position: relative;
+  display: inline-flex;
+}
+
+/* ── Content container ─────────────────────────────────────────── */
+.ui-popover__content {
+  position: absolute;
+  z-index: var(--z-popover);
+  min-width: 12rem;
+  max-width: 24rem;
+  background-color: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-4);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.95);
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    visibility var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.ui-popover[data-open="true"] .ui-popover__content {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+/* ── Positions ─────────────────────────────────────────────────── */
+.ui-popover__content--top {
+  bottom: calc(100% + var(--spacing-2));
+  left: 50%;
+  transform: translateX(-50%) scale(0.95);
+}
+
+.ui-popover[data-open="true"] .ui-popover__content--top {
+  transform: translateX(-50%) scale(1);
+}
+
+.ui-popover__content--bottom {
+  top: calc(100% + var(--spacing-2));
+  left: 50%;
+  transform: translateX(-50%) scale(0.95);
+}
+
+.ui-popover[data-open="true"] .ui-popover__content--bottom {
+  transform: translateX(-50%) scale(1);
+}
+
+.ui-popover__content--left {
+  right: calc(100% + var(--spacing-2));
+  top: 50%;
+  transform: translateY(-50%) scale(0.95);
+}
+
+.ui-popover[data-open="true"] .ui-popover__content--left {
+  transform: translateY(-50%) scale(1);
+}
+
+.ui-popover__content--right {
+  left: calc(100% + var(--spacing-2));
+  top: 50%;
+  transform: translateY(-50%) scale(0.95);
+}
+
+.ui-popover[data-open="true"] .ui-popover__content--right {
+  transform: translateY(-50%) scale(1);
+}
+
+/* ── Arrow ─────────────────────────────────────────────────────── */
+.ui-popover__arrow {
+  position: absolute;
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: var(--surface-elevated);
+  border: 1px solid var(--border);
+  transform: rotate(45deg);
+}
+
+.ui-popover__content--top .ui-popover__arrow {
+  bottom: -0.375rem;
+  left: 50%;
+  margin-left: -0.375rem;
+}
+
+.ui-popover__content--bottom .ui-popover__arrow {
+  top: -0.375rem;
+  left: 50%;
+  margin-left: -0.375rem;
+}
+
+.ui-popover__content--left .ui-popover__arrow {
+  right: -0.375rem;
+  top: 50%;
+  margin-top: -0.375rem;
+}
+
+.ui-popover__content--right .ui-popover__arrow {
+  left: -0.375rem;
+  top: 50%;
+  margin-top: -0.375rem;
+}
+
+/* ── Title ─────────────────────────────────────────────────────── */
+.ui-popover__title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-2);
+}
+
+/* ── Description ───────────────────────────────────────────────── */
+.ui-popover__description {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+  margin-bottom: var(--spacing-3);
+}
+
+/* ── Close button ──────────────────────────────────────────────── */
+.ui-popover__close {
+  position: absolute;
+  top: var(--spacing-2);
+  right: var(--spacing-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.ui-popover__close:hover {
+  background-color: var(--bg-subtle);
+  color: var(--text-primary);
+}
+
+/* ── Visual variants ───────────────────────────────────────────── */
+
+/* Glass — translucent backdrop blur */
+.ui-popover__content--glass {
+  background: rgba(20, 22, 30, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.ui-popover__content--glass .ui-popover__arrow {
+  background: rgba(20, 22, 30, 0.85);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Gradient — gradient background */
+.ui-popover__content--gradient {
+  background: linear-gradient(135deg, var(--surface-elevated) 0%, var(--surface) 100%);
+}
+
+.ui-popover__content--gradient .ui-popover__arrow {
+  background: linear-gradient(135deg, var(--surface-elevated) 0%, var(--surface) 100%);
+}
+
+/* Soft — subtle elevation, no hard borders */
+.ui-popover__content--soft {
+  background: var(--surface);
+  border: none;
+  box-shadow: var(--shadow-lg);
+}
+
+.ui-popover__content--soft .ui-popover__arrow {
+  background: var(--surface);
+  border: none;
+  box-shadow: var(--shadow-md);
+}
+
+/* Flat — completely flat, minimal styling */
+.ui-popover__content--flat {
+  background: var(--bg-subtle);
+  border: none;
+  box-shadow: none;
+}
+
+.ui-popover__content--flat .ui-popover__arrow {
+  background: var(--bg-subtle);
+  border: none;
+  box-shadow: none;
+}

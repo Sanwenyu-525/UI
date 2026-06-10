@@ -1,0 +1,138 @@
+/* ─── Material Theme ──────────────────────────────────────────────── */
+/* Material Design 3 inspired with elevation system.                   */
+/* Apply: <html data-theme="material">                                 */
+
+[data-theme="material"] {
+  /* ── Backgrounds ──────────────────────────────────────────────── */
+  --bg:              #f5f5f5;
+  --bg-subtle:       #eeeeee;
+  --bg-muted:        #e0e0e0;
+
+  /* ── Surfaces — MD3 elevation ─────────────────────────────────── */
+  --surface:         #ffffff;
+  --surface-elevated: #ffffff;
+  --surface-overlay:  rgba(0, 0, 0, 0.32);
+
+  /* ── Text — MD3 hierarchy ─────────────────────────────────────── */
+  --text-primary:    rgba(0, 0, 0, 0.87);
+  --text-secondary:  rgba(0, 0, 0, 0.6);
+  --text-tertiary:   rgba(0, 0, 0, 0.38);
+  --text-inverse:    #ffffff;
+  --text-on-primary: #ffffff;
+
+  /* ── Borders — minimal, MD3 style ─────────────────────────────── */
+  --border:          rgba(0, 0, 0, 0.12);
+  --border-strong:   rgba(0, 0, 0, 0.2);
+
+  /* ── Colors — MD3 primary palette ─────────────────────────────── */
+  --color-primary:        #6750a4;
+  --color-primary-hover:  #7c6cb0;
+  --color-primary-active: #5b42a0;
+
+  --color-success: #386a20;
+  --color-warning: #7c5800;
+  --color-error:   #b3261e;
+  --color-info:    #0061a4;
+
+  --ring:          rgba(103, 80, 164, 0.3);
+  --ring-error:    rgba(179, 38, 30, 0.3);
+
+  --focus-ring:    0 0 0 3px rgba(103, 80, 164, 0.2);
+  --focus-ring-error: 0 0 0 3px rgba(179, 38, 30, 0.2);
+
+  /* ── Shadows — MD3 elevation ──────────────────────────────────── */
+  --shadow-sm:  0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --shadow-md:  0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --shadow-lg:  0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-xl:  0 6px 10px 4px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Body ────────────────────────────────────────────────────────────── */
+[data-theme="material"] body {
+  background: #f5f5f5 !important;
+  background-color: #f5f5f5 !important;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* ── Cards — MD3 surface ──────────────────────────────────────────── */
+[data-theme="material"] .ui-card {
+  box-shadow: var(--shadow-sm);
+  border-radius: 12px;
+}
+
+[data-theme="material"] .ui-card--elevated {
+  box-shadow: var(--shadow-md);
+}
+
+[data-theme="material"] .ui-card--outlined {
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+[data-theme="material"] .ui-card--flat {
+  box-shadow: none;
+}
+
+/* ── Buttons — MD3 filled/tonal/outlined ──────────────────────────── */
+[data-theme="material"] .ui-btn {
+  border-radius: 20px;
+  text-transform: none;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+[data-theme="material"] .ui-btn--primary {
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="material"] .ui-btn--primary:hover {
+  box-shadow: var(--shadow-md);
+}
+
+[data-theme="material"] .ui-btn--secondary {
+  background: rgba(103, 80, 164, 0.08);
+  border-color: transparent;
+  color: var(--color-primary);
+}
+
+[data-theme="material"] .ui-btn--secondary:hover {
+  background: rgba(103, 80, 164, 0.12);
+}
+
+[data-theme="material"] .ui-btn--ghost {
+  border-radius: 20px;
+}
+
+/* ── Inputs — MD3 outlined field ──────────────────────────────────── */
+[data-theme="material"] .ui-input-wrap {
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+[data-theme="material"] .ui-input-wrap:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: none;
+  border-width: 2px;
+}
+
+[data-theme="material"] .ui-input {
+  font-size: 16px;
+}
+
+/* ── Selection ──────────────────────────────────────────────────────── */
+[data-theme="material"] ::selection {
+  background-color: rgba(103, 80, 164, 0.2);
+  color: var(--text-primary);
+}
+
+/* ── Links ──────────────────────────────────────────────────────────── */
+[data-theme="material"] a:not([class]) {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+[data-theme="material"] a:not([class]):hover {
+  color: var(--color-primary-hover);
+}

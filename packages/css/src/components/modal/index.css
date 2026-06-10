@@ -114,3 +114,92 @@
   padding: var(--spacing-4) var(--spacing-6);
   border-top: 1px solid var(--border);
 }
+
+/* ── Visual variants ───────────────────────────────────────────── */
+
+/* Glass — translucent backdrop blur */
+.ui-modal--glass {
+  background: rgba(20, 22, 30, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+}
+
+.ui-modal--glass .ui-modal__header {
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.ui-modal--glass .ui-modal__footer {
+  border-top-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Gradient — gradient background */
+.ui-modal--gradient {
+  background: linear-gradient(135deg, var(--surface-elevated) 0%, var(--surface) 100%);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Soft — subtle elevation, no hard borders */
+.ui-modal--soft {
+  background: var(--surface);
+  border: none;
+  box-shadow: var(--shadow-lg);
+}
+
+.ui-modal--soft .ui-modal__header {
+  border-bottom-color: transparent;
+}
+
+.ui-modal--soft .ui-modal__footer {
+  border-top-color: transparent;
+}
+
+/* Flat — completely flat, minimal styling */
+.ui-modal--flat {
+  background: var(--bg-subtle);
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: none;
+}
+
+.ui-modal--flat .ui-modal__header {
+  border-bottom-color: var(--border);
+}
+
+/* ── Density variants ───────────────────────────────────────────── */
+
+/* Compact — smaller padding */
+[data-density="compact"] .ui-modal__header {
+  padding: var(--spacing-3) var(--spacing-4);
+}
+
+[data-density="compact"] .ui-modal__title {
+  font-size: var(--text-sm);
+}
+
+[data-density="compact"] .ui-modal__body {
+  padding: var(--spacing-4);
+}
+
+[data-density="compact"] .ui-modal__footer {
+  padding: var(--spacing-2) var(--spacing-4);
+}
+
+/* Spacious — larger padding */
+[data-density="spacious"] .ui-modal__header {
+  padding: var(--spacing-6) var(--spacing-8);
+}
+
+[data-density="spacious"] .ui-modal__title {
+  font-size: var(--text-xl);
+}
+
+[data-density="spacious"] .ui-modal__body {
+  padding: var(--spacing-8);
+}
+
+[data-density="spacious"] .ui-modal__footer {
+  padding: var(--spacing-5) var(--spacing-8);
+}

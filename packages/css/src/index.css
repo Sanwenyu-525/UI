@@ -1,9 +1,10 @@
 /* ─── @ui/css — Complete Stylesheet ──────────────────────────────── */
-/* Import order: tokens → reset → base → components                  */
+/* Import order: tokens → reset → base → density → components         */
 
 @import './styles/tokens.css';
 @import './styles/reset.css';
 @import './styles/base.css';
+@import './styles/density.css';
 
 /* Components */
 @import './components/button/index.css';
@@ -36,8 +37,21 @@
 @import './components/menu/index.css';
 @import './components/treeview/index.css';
 @import './components/datepicker/index.css';
+@import './components/timepicker/index.css';
+@import './components/calendar/index.css';
+@import './components/popover/index.css';
+@import './components/steps/index.css';
+@import './components/timeline/index.css';
+@import './components/upload/index.css';
 
 /* Theme overrides — import after components */
 @import './styles/theme-glass.css';
 @import './styles/theme-cyber.css';
 @import './styles/theme-sport.css';
+@import './styles/theme-dark.css';
+@import './styles/theme-high-contrast.css';
+@import './styles/theme-material.css';
+@import './styles/theme-fluent.css';
+@import './styles/theme-retro.css';
+@import './styles/theme-neon.css';
+@import './styles/theme-pastel.css';

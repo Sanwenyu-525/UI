@@ -1,13 +1,13 @@
-/* ─── Select ──────────────────────────────────────────────────────── */
+/* ─── TimePicker ──────────────────────────────────────────────────── */
 
-.ui-select {
+.ui-timepicker {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-1);
 }
 
 /* ── Label ─────────────────────────────────────────────────────── */
-.ui-select__label {
+.ui-timepicker__label {
   font-size: var(--text-sm);
   font-weight: 500;
   color: var(--text-primary);
@@ -15,7 +15,7 @@
 }
 
 /* ── Trigger button ────────────────────────────────────────────── */
-.ui-select__trigger {
+.ui-timepicker__trigger {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -35,77 +35,65 @@
   text-align: left;
 }
 
-.ui-select__trigger:hover {
+.ui-timepicker__trigger:hover {
   border-color: var(--border-strong);
 }
 
-.ui-select__trigger:focus-visible {
+.ui-timepicker__trigger:focus-visible {
   border-color: var(--ring);
   box-shadow: var(--focus-ring);
   outline: none;
 }
 
-.ui-select__trigger--error {
+.ui-timepicker__trigger--error {
   border-color: var(--color-error);
 }
 
-.ui-select__trigger--error:focus-visible {
+.ui-timepicker__trigger--error:focus-visible {
   border-color: var(--ring-error);
   box-shadow: var(--focus-ring-error);
 }
 
-.ui-select__trigger--disabled {
+.ui-timepicker__trigger--disabled {
   opacity: 0.5;
   cursor: not-allowed;
   background-color: var(--bg-muted);
 }
 
 /* ── Sizes ─────────────────────────────────────────────────────── */
-.ui-select__trigger--sm {
+.ui-timepicker__trigger--sm {
   height: var(--size-sm-height);
   padding: var(--size-sm-py) var(--size-sm-px);
   font-size: var(--size-sm-font);
 }
 
-.ui-select__trigger--lg {
+.ui-timepicker__trigger--lg {
   height: var(--size-lg-height);
   padding: var(--size-lg-py) var(--size-lg-px);
   font-size: var(--size-lg-font);
 }
 
-/* ── Placeholder ───────────────────────────────────────────────── */
-.ui-select__placeholder {
-  color: var(--text-tertiary);
-}
-
-/* ── Chevron icon ──────────────────────────────────────────────── */
-.ui-select__chevron {
+/* ── Clock icon ────────────────────────────────────────────────── */
+.ui-timepicker__icon {
   width: 1rem;
   height: 1rem;
   color: var(--text-tertiary);
   flex-shrink: 0;
-  transition: transform var(--duration-normal) var(--ease-out);
 }
 
-.ui-select[data-open="true"] .ui-select__chevron {
-  transform: rotate(180deg);
-}
-
-/* ── Dropdown ──────────────────────────────────────────────────── */
-.ui-select__dropdown {
+/* ── Dropdown panel ────────────────────────────────────────────── */
+.ui-timepicker__dropdown {
   position: absolute;
   z-index: var(--z-dropdown);
   top: calc(100% + var(--spacing-1));
   left: 0;
   right: 0;
   min-width: 100%;
-  max-height: 15rem;
-  overflow-y: auto;
   background-color: var(--surface-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
-  padding: var(--spacing-1);
+  padding: var(--spacing-3);
   opacity: 0;
   transform: translateY(-4px);
   pointer-events: none;
@@ -114,18 +102,25 @@
     transform var(--duration-fast) var(--ease-out);
 }
 
-.ui-select[data-open="true"] .ui-select__dropdown {
+.ui-timepicker[data-open="true"] .ui-timepicker__dropdown {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-/* ── Option ────────────────────────────────────────────────────── */
-.ui-select__option {
+/* ── Time grid ─────────────────────────────────────────────────── */
+.ui-timepicker__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-2);
+}
+
+/* ── Time cell ─────────────────────────────────────────────────── */
+.ui-timepicker__cell {
   display: flex;
   align-items: center;
-  gap: var(--spacing-2);
-  padding: var(--spacing-2) var(--spacing-3);
+  justify-content: center;
+  padding: var(--spacing-2);
   font-size: var(--text-sm);
   color: var(--text-primary);
   border-radius: var(--radius-sm);
@@ -133,37 +128,92 @@
   transition: background-color var(--duration-fast) var(--ease-out);
 }
 
-.ui-select__option:hover,
-.ui-select__option--focused {
+.ui-timepicker__cell:hover {
   background-color: var(--bg-subtle);
 }
 
-.ui-select__option--selected {
-  background-color: var(--primary-50);
+.ui-timepicker__cell--selected {
+  background-color: var(--primary-100);
   color: var(--color-primary);
   font-weight: 500;
 }
 
-[data-theme="dark"] .ui-select__option--selected {
+[data-theme="dark"] .ui-timepicker__cell--selected {
   background-color: rgba(99, 102, 241, 0.15);
+}
+
+/* ── Separator between hours and minutes ────────────────────────── */
+.ui-timepicker__separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 0 var(--spacing-1);
+}
+
+/* ── Period toggle (AM/PM) ─────────────────────────────────────── */
+.ui-timepicker__period {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.ui-timepicker__period-btn {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.ui-timepicker__period-btn:hover {
+  background-color: var(--bg-subtle);
+}
+
+.ui-timepicker__period-btn--active {
+  background-color: var(--primary-100);
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .ui-timepicker__period-btn--active {
+  background-color: rgba(99, 102, 241, 0.15);
+}
+
+/* ── Helper & Error text ───────────────────────────────────────── */
+.ui-timepicker__helper {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  line-height: var(--leading-normal);
+}
+
+.ui-timepicker__error {
+  font-size: var(--text-xs);
+  color: var(--color-error);
+  line-height: var(--leading-normal);
 }
 
 /* ── Visual variants ───────────────────────────────────────────── */
 
 /* Glass — translucent backdrop blur */
-.ui-select__trigger--glass {
+.ui-timepicker__trigger--glass {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.ui-select__trigger--glass:hover {
+.ui-timepicker__trigger--glass:hover {
   background: rgba(255, 255, 255, 0.15);
   border-color: rgba(255, 255, 255, 0.2);
 }
 
-.ui-select__dropdown--glass {
+.ui-timepicker__dropdown--glass {
   background: rgba(20, 22, 30, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -172,63 +222,39 @@
 }
 
 /* Gradient — gradient background */
-.ui-select__trigger--gradient {
+.ui-timepicker__trigger--gradient {
   background: linear-gradient(135deg, var(--surface) 0%, var(--bg-subtle) 100%);
   border: 1px solid var(--border);
 }
 
 /* Outline — bordered, no fill */
-.ui-select__trigger--outline {
+.ui-timepicker__trigger--outline {
   background: transparent;
   border: 2px solid var(--border-strong);
 }
 
-.ui-select__trigger--outline:hover {
+.ui-timepicker__trigger--outline:hover {
   border-color: var(--color-primary);
 }
 
 /* Soft — subtle background, no hard border */
-.ui-select__trigger--soft {
+.ui-timepicker__trigger--soft {
   background: var(--bg-muted);
   border: none;
 }
 
-.ui-select__trigger--soft:hover {
+.ui-timepicker__trigger--soft:hover {
   background: var(--bg-subtle);
 }
 
 /* Flat — completely flat, minimal styling */
-.ui-select__trigger--flat {
+.ui-timepicker__trigger--flat {
   background: var(--bg);
   border: none;
   border-bottom: 2px solid var(--border);
   border-radius: 0;
 }
 
-.ui-select__trigger--flat:hover {
+.ui-timepicker__trigger--flat:hover {
   border-bottom-color: var(--border-strong);
-}
-
-.ui-select__option--disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.ui-select__option-check {
-  width: 1rem;
-  height: 1rem;
-  margin-left: auto;
-  color: var(--color-primary);
-  flex-shrink: 0;
-}
-
-/* ── Helper text ───────────────────────────────────────────────── */
-.ui-select__helper {
-  font-size: var(--text-xs);
-  color: var(--text-tertiary);
-}
-
-.ui-select__error {
-  font-size: var(--text-xs);
-  color: var(--color-error);
 }

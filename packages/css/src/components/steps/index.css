@@ -1,0 +1,254 @@
+/* ─── Steps ───────────────────────────────────────────────────────── */
+
+.ui-steps {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* ── Step item ─────────────────────────────────────────────────── */
+.ui-step {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+}
+
+/* ── Connector line ────────────────────────────────────────────── */
+.ui-step__connector {
+  position: absolute;
+  top: 1.25rem;
+  left: calc(50% + 1.25rem);
+  right: calc(-50% + 1.25rem);
+  height: 2px;
+  background-color: var(--border);
+}
+
+.ui-step--completed .ui-step__connector {
+  background-color: var(--color-primary);
+}
+
+/* ── Step indicator (icon/number) ──────────────────────────────── */
+.ui-step__indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-muted);
+  border: 2px solid var(--border);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin: 0 auto var(--spacing-3);
+  position: relative;
+  z-index: 1;
+  transition:
+    background-color var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out),
+    color var(--duration-normal) var(--ease-out);
+}
+
+/* Active step */
+.ui-step--active .ui-step__indicator {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--text-on-primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+}
+
+/* Completed step */
+.ui-step--completed .ui-step__indicator {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--text-on-primary);
+}
+
+/* Error step */
+.ui-step--error .ui-step__indicator {
+  background-color: var(--color-error);
+  border-color: var(--color-error);
+  color: #ffffff;
+}
+
+/* ── Step icon ─────────────────────────────────────────────────── */
+.ui-step__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* ── Step content ──────────────────────────────────────────────── */
+.ui-step__content {
+  text-align: center;
+  padding: 0 var(--spacing-2);
+}
+
+.ui-step__title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-1);
+}
+
+.ui-step--active .ui-step__title {
+  color: var(--color-primary);
+}
+
+.ui-step--error .ui-step__title {
+  color: var(--color-error);
+}
+
+.ui-step__description {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+}
+
+/* ── Vertical steps ────────────────────────────────────────────── */
+.ui-steps--vertical {
+  flex-direction: column;
+}
+
+.ui-steps--vertical .ui-step {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.ui-steps--vertical .ui-step__connector {
+  top: 2.5rem;
+  left: 1.25rem;
+  right: auto;
+  width: 2px;
+  height: calc(100% - 1.25rem);
+}
+
+.ui-steps--vertical .ui-step__indicator {
+  margin: 0 var(--spacing-4) 0 0;
+}
+
+.ui-steps--vertical .ui-step__content {
+  text-align: left;
+  padding: 0;
+}
+
+/* ── Sizes ─────────────────────────────────────────────────────── */
+.ui-steps--sm .ui-step__indicator {
+  width: 2rem;
+  height: 2rem;
+  font-size: var(--text-xs);
+}
+
+.ui-steps--sm .ui-step__connector {
+  top: 1rem;
+  left: calc(50% + 1rem);
+  right: calc(-50% + 1rem);
+}
+
+.ui-steps--lg .ui-step__indicator {
+  width: 3rem;
+  height: 3rem;
+  font-size: var(--text-base);
+}
+
+.ui-steps--lg .ui-step__connector {
+  top: 1.5rem;
+  left: calc(50% + 1.5rem);
+  right: calc(-50% + 1.5rem);
+}
+
+/* ── Visual variants ───────────────────────────────────────────── */
+
+/* Glass — translucent backdrop blur */
+.ui-steps--glass .ui-step__indicator {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.ui-steps--glass .ui-step--active .ui-step__indicator,
+.ui-steps--glass .ui-step--completed .ui-step__indicator {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Gradient — gradient indicator */
+.ui-steps--gradient .ui-step--active .ui-step__indicator {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+  border-color: transparent;
+}
+
+.ui-steps--gradient .ui-step--completed .ui-step__indicator {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+  border-color: transparent;
+}
+
+/* Soft — subtle indicator */
+.ui-steps--soft .ui-step__indicator {
+  background: var(--bg-muted);
+  border: none;
+  box-shadow: none;
+}
+
+.ui-steps--soft .ui-step--active .ui-step__indicator {
+  background: rgba(99, 102, 241, 0.1);
+  border: none;
+  color: var(--color-primary);
+  box-shadow: none;
+}
+
+/* Flat — completely flat */
+.ui-steps--flat .ui-step__indicator {
+  background: transparent;
+  border: 2px solid var(--border);
+  box-shadow: none;
+}
+
+.ui-steps--flat .ui-step--active .ui-step__indicator {
+  border-color: var(--color-primary);
+}
+
+/* ── Density variants ──────────────────────────────────────────── */
+
+/* Compact */
+[data-density="compact"] .ui-step__indicator {
+  width: 2rem;
+  height: 2rem;
+  font-size: var(--text-xs);
+}
+
+[data-density="compact"] .ui-step__connector {
+  top: 1rem;
+  left: calc(50% + 1rem);
+  right: calc(-50% + 1rem);
+}
+
+[data-density="compact"] .ui-step__title {
+  font-size: var(--text-xs);
+}
+
+[data-density="compact"] .ui-step__description {
+  font-size: 0.625rem;
+}
+
+/* Spacious */
+[data-density="spacious"] .ui-step__indicator {
+  width: 3rem;
+  height: 3rem;
+  font-size: var(--text-base);
+}
+
+[data-density="spacious"] .ui-step__connector {
+  top: 1.5rem;
+  left: calc(50% + 1.5rem);
+  right: calc(-50% + 1.5rem);
+}
+
+[data-density="spacious"] .ui-step__title {
+  font-size: var(--text-base);
+}
+
+[data-density="spacious"] .ui-step__description {
+  font-size: var(--text-sm);
+}

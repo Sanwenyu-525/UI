@@ -144,3 +144,68 @@
 .ui-toast--error   { border-left: 3px solid var(--color-error); }
 .ui-toast--warning { border-left: 3px solid var(--color-warning); }
 .ui-toast--info    { border-left: 3px solid var(--color-info); }
+
+/* ── Visual variants ───────────────────────────────────────────── */
+
+/* Glass — translucent backdrop blur */
+.ui-toast--glass {
+  background: rgba(20, 22, 30, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.ui-toast--glass--success { border-left-color: var(--color-success); }
+.ui-toast--glass--error   { border-left-color: var(--color-error); }
+.ui-toast--glass--warning { border-left-color: var(--color-warning); }
+.ui-toast--glass--info    { border-left-color: var(--color-info); }
+
+/* Gradient — gradient background */
+.ui-toast--gradient {
+  background: linear-gradient(135deg, var(--surface-elevated) 0%, var(--surface) 100%);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Soft — subtle elevation, no hard borders */
+.ui-toast--soft {
+  background: var(--surface);
+  border: none;
+  box-shadow: var(--shadow-md);
+}
+
+/* Flat — completely flat, minimal styling */
+.ui-toast--flat {
+  background: var(--bg-subtle);
+  border: none;
+  box-shadow: none;
+}
+
+/* ── Density variants ───────────────────────────────────────────── */
+
+/* Compact — smaller padding */
+[data-density="compact"] .ui-toast {
+  padding: var(--spacing-3);
+}
+
+[data-density="compact"] .ui-toast__title {
+  font-size: var(--text-xs);
+}
+
+[data-density="compact"] .ui-toast__message {
+  font-size: var(--text-xs);
+}
+
+/* Spacious — larger padding */
+[data-density="spacious"] .ui-toast {
+  padding: var(--spacing-5);
+}
+
+[data-density="spacious"] .ui-toast__title {
+  font-size: var(--text-base);
+}
+
+[data-density="spacious"] .ui-toast__message {
+  font-size: var(--text-sm);
+}

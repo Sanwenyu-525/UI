@@ -104,6 +104,83 @@
   font-size: inherit;
 }
 
+/* ── Visual variants ───────────────────────────────────────────── */
+
+/* Glass — translucent backdrop blur */
+.ui-input-wrap--glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.ui-input-wrap--glass:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.ui-input-wrap--glass:focus-within {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient — gradient border */
+.ui-input-wrap--gradient {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--bg-subtle) 100%);
+  border: 2px solid var(--border);
+}
+
+.ui-input-wrap--gradient:focus-within {
+  border-color: var(--color-primary);
+}
+
+/* Outline — no background, just border */
+.ui-input-wrap--outline {
+  background: transparent;
+  border: 2px solid var(--border-strong);
+}
+
+.ui-input-wrap--outline:hover {
+  border-color: var(--color-primary);
+}
+
+.ui-input-wrap--outline:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: none;
+}
+
+/* Soft — subtle background, no hard border */
+.ui-input-wrap--soft {
+  background: var(--bg-muted);
+  border: none;
+}
+
+.ui-input-wrap--soft:hover {
+  background: var(--bg-subtle);
+}
+
+.ui-input-wrap--soft:focus-within {
+  background: var(--bg-subtle);
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+/* Flat — completely flat, minimal styling */
+.ui-input-wrap--flat {
+  background: var(--bg);
+  border: none;
+  border-bottom: 2px solid var(--border);
+  border-radius: 0;
+}
+
+.ui-input-wrap--flat:hover {
+  border-bottom-color: var(--border-strong);
+}
+
+.ui-input-wrap--flat:focus-within {
+  border-bottom-color: var(--color-primary);
+  box-shadow: none;
+}
+
 /* ── Helper & Error text ───────────────────────────────────────── */
 .ui-field__helper {
   font-size: var(--text-xs);

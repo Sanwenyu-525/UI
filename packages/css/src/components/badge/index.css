@@ -101,3 +101,43 @@
   background-color: currentColor;
   flex-shrink: 0;
 }
+
+/* ── Visual variants ───────────────────────────────────────────── */
+
+/* Glass — translucent backdrop */
+.ui-badge--glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+}
+
+/* Gradient — gradient background */
+.ui-badge--gradient {
+  background: linear-gradient(135deg, var(--primary-100) 0%, var(--primary-200) 100%);
+  color: var(--primary-800);
+  border: 1px solid var(--primary-200);
+}
+
+/* Outline — bordered, no fill */
+.ui-badge--outline {
+  background: transparent;
+  border: 2px solid currentColor;
+  color: var(--color-primary);
+}
+
+/* Soft — subtle filled background */
+.ui-badge--soft {
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--color-primary);
+  border: none;
+}
+
+/* Flat — completely flat, no shadows */
+.ui-badge--flat {
+  background: var(--color-primary);
+  color: var(--text-on-primary);
+  border: none;
+  box-shadow: none;
+}

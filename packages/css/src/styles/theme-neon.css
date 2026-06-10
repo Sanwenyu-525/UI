@@ -1,0 +1,216 @@
+/* ─── Neon Theme ──────────────────────────────────────────────────── */
+/* Cyberpunk neon aesthetic with glowing effects.                      */
+/* Apply: <html data-theme="neon">                                     */
+
+[data-theme="neon"] {
+  /* ── Backgrounds — deep dark ──────────────────────────────────── */
+  --bg:              #0a0a14;
+  --bg-subtle:       #0f0f1c;
+  --bg-muted:        #16162a;
+
+  /* ── Surfaces ─────────────────────────────────────────────────── */
+  --surface:         #121220;
+  --surface-elevated: #1a1a30;
+  --surface-overlay:  rgba(0, 0, 0, 0.8);
+
+  /* ── Text — neon brightness ───────────────────────────────────── */
+  --text-primary:    #f0f0ff;
+  --text-secondary:  #b0b0cc;
+  --text-tertiary:   #707090;
+  --text-inverse:    #0a0a14;
+  --text-on-primary: #000000;
+
+  /* ── Borders ──────────────────────────────────────────────────── */
+  --border:          rgba(120, 120, 200, 0.2);
+  --border-strong:   rgba(120, 120, 200, 0.35);
+
+  /* ── Colors — neon palette ────────────────────────────────────── */
+  --color-primary:        #00ffff;
+  --color-primary-hover:  #66ffff;
+  --color-primary-active: #00cccc;
+
+  --color-success: #00ff88;
+  --color-warning: #ffff00;
+  --color-error:   #ff0066;
+  --color-info:    #6666ff;
+
+  --ring:          rgba(0, 255, 255, 0.3);
+  --ring-error:    rgba(255, 0, 102, 0.3);
+
+  --focus-ring:    0 0 0 2px rgba(0, 255, 255, 0.4), 0 0 16px rgba(0, 255, 255, 0.2);
+  --focus-ring-error: 0 0 0 2px rgba(255, 0, 102, 0.4), 0 0 16px rgba(255, 0, 102, 0.2);
+
+  /* ── Shadows — neon glow ──────────────────────────────────────── */
+  --shadow-sm:  0 0 4px rgba(0, 255, 255, 0.1);
+  --shadow-md:  0 4px 12px rgba(0, 255, 255, 0.15), 0 0 24px rgba(0, 255, 255, 0.05);
+  --shadow-lg:  0 8px 24px rgba(0, 255, 255, 0.2), 0 0 48px rgba(0, 255, 255, 0.08);
+  --shadow-xl:  0 16px 40px rgba(0, 255, 255, 0.25), 0 0 64px rgba(0, 255, 255, 0.1);
+}
+
+/* ── Body — deep space ────────────────────────────────────────────── */
+[data-theme="neon"] body {
+  background: #0a0a14 !important;
+  background-color: #0a0a14 !important;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* ── Cards — neon border glow ─────────────────────────────────────── */
+[data-theme="neon"] .ui-card {
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 4px;
+  background: linear-gradient(135deg, #121220 0%, #1a1a30 100%);
+}
+
+[data-theme="neon"] .ui-card--elevated {
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(0, 255, 255, 0.5);
+}
+
+[data-theme="neon"] .ui-card--outlined {
+  background: transparent;
+  border: 2px solid rgba(0, 255, 255, 0.4);
+}
+
+[data-theme="neon"] .ui-card--flat {
+  background: transparent;
+  border: none;
+}
+
+/* ── Buttons — neon style ─────────────────────────────────────────── */
+[data-theme="neon"] .ui-btn {
+  border-radius: 2px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+[data-theme="neon"] .ui-btn--primary {
+  background: rgba(0, 255, 255, 0.15);
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.3), inset 0 0 12px rgba(0, 255, 255, 0.1);
+}
+
+[data-theme="neon"] .ui-btn--primary:hover {
+  background: rgba(0, 255, 255, 0.25);
+  box-shadow: 0 0 24px rgba(0, 255, 255, 0.5), inset 0 0 16px rgba(0, 255, 255, 0.15);
+}
+
+[data-theme="neon"] .ui-btn--primary:active {
+  background: rgba(0, 255, 255, 0.35);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+}
+
+[data-theme="neon"] .ui-btn--secondary {
+  background: transparent;
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  color: #b0b0cc;
+}
+
+[data-theme="neon"] .ui-btn--secondary:hover {
+  border-color: #00ffff;
+  color: #00ffff;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+}
+
+[data-theme="neon"] .ui-btn--ghost {
+  color: #b0b0cc;
+}
+
+[data-theme="neon"] .ui-btn--ghost:hover {
+  background: rgba(0, 255, 255, 0.08);
+  color: #00ffff;
+}
+
+[data-theme="neon"] .ui-btn--destructive {
+  background: rgba(255, 0, 102, 0.15);
+  border: 2px solid #ff0066;
+  color: #ff0066;
+  box-shadow: 0 0 12px rgba(255, 0, 102, 0.3);
+}
+
+[data-theme="neon"] .ui-btn--destructive:hover {
+  background: rgba(255, 0, 102, 0.25);
+  box-shadow: 0 0 24px rgba(255, 0, 102, 0.5);
+}
+
+/* ── Inputs — neon style ──────────────────────────────────────────── */
+[data-theme="neon"] .ui-input-wrap {
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 2px;
+  background: rgba(0, 255, 255, 0.05);
+}
+
+[data-theme="neon"] .ui-input-wrap:hover {
+  border-color: rgba(0, 255, 255, 0.5);
+}
+
+[data-theme="neon"] .ui-input-wrap:focus-within {
+  border-color: #00ffff;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+}
+
+[data-theme="neon"] .ui-input {
+  color: #f0f0ff;
+}
+
+[data-theme="neon"] .ui-input::placeholder {
+  color: #707090;
+}
+
+[data-theme="neon"] .ui-input-wrap--error {
+  border-color: #ff0066;
+}
+
+[data-theme="neon"] .ui-input-wrap--error:focus-within {
+  box-shadow: 0 0 12px rgba(255, 0, 102, 0.3);
+}
+
+/* ── Badges — neon tags ───────────────────────────────────────────── */
+[data-theme="neon"] .ui-badge--default {
+  background: rgba(120, 120, 200, 0.1);
+  border: 1px solid rgba(120, 120, 200, 0.3);
+  color: #b0b0cc;
+}
+
+[data-theme="neon"] .ui-badge--primary {
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  color: #00ffff;
+}
+
+[data-theme="neon"] .ui-badge--success {
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.4);
+  color: #00ff88;
+}
+
+[data-theme="neon"] .ui-badge--warning {
+  background: rgba(255, 255, 0, 0.1);
+  border: 1px solid rgba(255, 255, 0, 0.4);
+  color: #ffff00;
+}
+
+[data-theme="neon"] .ui-badge--error {
+  background: rgba(255, 0, 102, 0.1);
+  border: 1px solid rgba(255, 0, 102, 0.4);
+  color: #ff0066;
+}
+
+/* ── Selection ──────────────────────────────────────────────────────── */
+[data-theme="neon"] ::selection {
+  background-color: rgba(0, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+/* ── Links ──────────────────────────────────────────────────────────── */
+[data-theme="neon"] a:not([class]) {
+  color: #00ffff;
+  text-decoration: none;
+}
+
+[data-theme="neon"] a:not([class]):hover {
+  color: #66ffff;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+}

@@ -1,0 +1,142 @@
+/* ─── Retro Theme ─────────────────────────────────────────────────── */
+/* Vintage/retro aesthetic with warm tones and textures.               */
+/* Apply: <html data-theme="retro">                                    */
+
+[data-theme="retro"] {
+  /* ── Backgrounds — warm vintage ───────────────────────────────── */
+  --bg:              #f5e6d3;
+  --bg-subtle:       #efe0cf;
+  --bg-muted:        #e5d4c0;
+
+  /* ── Surfaces ─────────────────────────────────────────────────── */
+  --surface:         #faf3e8;
+  --surface-elevated: #ffffff;
+  --surface-overlay:  rgba(58, 41, 28, 0.6);
+
+  /* ── Text — warm contrast ─────────────────────────────────────── */
+  --text-primary:    #3a291c;
+  --text-secondary:  #6b5240;
+  --text-tertiary:   #8c7560;
+  --text-inverse:    #faf3e8;
+  --text-on-primary: #ffffff;
+
+  /* ── Borders ──────────────────────────────────────────────────── */
+  --border:          rgba(58, 41, 28, 0.15);
+  --border-strong:   rgba(58, 41, 28, 0.3);
+
+  /* ── Colors — retro palette ───────────────────────────────────── */
+  --color-primary:        #c05c3c;
+  --color-primary-hover:  #d4704f;
+  --color-primary-active: #a64b2f;
+
+  --color-success: #5a8a3c;
+  --color-warning: #d4a234;
+  --color-error:   #c03828;
+  --color-info:    #3a7ca5;
+
+  --ring:          rgba(192, 92, 60, 0.3);
+  --ring-error:    rgba(192, 56, 40, 0.3);
+
+  --focus-ring:    0 0 0 2px rgba(192, 92, 60, 0.25);
+  --focus-ring-error: 0 0 0 2px rgba(192, 56, 40, 0.25);
+
+  /* ── Shadows — vintage depth ──────────────────────────────────── */
+  --shadow-sm:  0 1px 3px rgba(58, 41, 28, 0.12);
+  --shadow-md:  0 4px 12px rgba(58, 41, 28, 0.15);
+  --shadow-lg:  0 8px 24px rgba(58, 41, 28, 0.18);
+  --shadow-xl:  0 16px 40px rgba(58, 41, 28, 0.2);
+}
+
+/* ── Body — warm vintage ──────────────────────────────────────────── */
+[data-theme="retro"] body {
+  background: #f5e6d3 !important;
+  background-color: #f5e6d3 !important;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* ── Cards — retro paper effect ────────────────────────────────────── */
+[data-theme="retro"] .ui-card {
+  border-radius: 4px;
+  border: 1px solid rgba(58, 41, 28, 0.2);
+}
+
+[data-theme="retro"] .ui-card--elevated {
+  box-shadow: var(--shadow-md);
+  border: none;
+}
+
+[data-theme="retro"] .ui-card--outlined {
+  border: 2px solid rgba(58, 41, 28, 0.25);
+  box-shadow: none;
+}
+
+[data-theme="retro"] .ui-card--flat {
+  background: transparent;
+  box-shadow: none;
+}
+
+/* ── Buttons — retro style ─────────────────────────────────────────── */
+[data-theme="retro"] .ui-btn {
+  border-radius: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+[data-theme="retro"] .ui-btn--primary {
+  box-shadow: 0 2px 0 #8a3520;
+}
+
+[data-theme="retro"] .ui-btn--primary:hover {
+  box-shadow: 0 3px 0 #8a3520;
+}
+
+[data-theme="retro"] .ui-btn--primary:active {
+  box-shadow: 0 1px 0 #8a3520;
+  transform: translateY(1px);
+}
+
+[data-theme="retro"] .ui-btn--secondary {
+  border: 2px solid var(--border-strong);
+}
+
+[data-theme="retro"] .ui-btn--ghost {
+  text-decoration: underline;
+}
+
+[data-theme="retro"] .ui-btn--ghost:hover {
+  background: rgba(58, 41, 28, 0.08);
+}
+
+/* ── Inputs — retro style ──────────────────────────────────────────── */
+[data-theme="retro"] .ui-input-wrap {
+  border-radius: 2px;
+  border: 2px solid rgba(58, 41, 28, 0.25);
+  background: #ffffff;
+}
+
+[data-theme="retro"] .ui-input-wrap:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+[data-theme="retro"] .ui-input {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* ── Selection ──────────────────────────────────────────────────────── */
+[data-theme="retro"] ::selection {
+  background-color: rgba(192, 92, 60, 0.25);
+  color: #3a291c;
+}
+
+/* ── Links ──────────────────────────────────────────────────────────── */
+[data-theme="retro"] a:not([class]) {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+[data-theme="retro"] a:not([class]):hover {
+  color: var(--color-primary-hover);
+}

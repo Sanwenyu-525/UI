@@ -1,0 +1,168 @@
+/* ─── Pastel Theme ────────────────────────────────────────────────── */
+/* Soft, muted colors with gentle contrast.                            */
+/* Apply: <html data-theme="pastel">                                   */
+
+[data-theme="pastel"] {
+  /* ── Backgrounds — soft tones ─────────────────────────────────── */
+  --bg:              #faf5f0;
+  --bg-subtle:       #f5efe8;
+  --bg-muted:        #ede5dc;
+
+  /* ── Surfaces ─────────────────────────────────────────────────── */
+  --surface:         #ffffff;
+  --surface-elevated: #ffffff;
+  --surface-overlay:  rgba(0, 0, 0, 0.2);
+
+  /* ── Text — warm soft contrast ────────────────────────────────── */
+  --text-primary:    #3a3535;
+  --text-secondary:  #6a6565;
+  --text-tertiary:   #9a9595;
+  --text-inverse:    #faf5f0;
+  --text-on-primary: #ffffff;
+
+  /* ── Borders — subtle ─────────────────────────────────────────── */
+  --border:          rgba(0, 0, 0, 0.06);
+  --border-strong:   rgba(0, 0, 0, 0.1);
+
+  /* ── Colors — soft pastel palette ─────────────────────────────── */
+  --color-primary:        #8ba4c7;
+  --color-primary-hover:  #a0b8d8;
+  --color-primary-active: #7490b8;
+
+  --color-success: #7dba8a;
+  --color-warning: #d4b87a;
+  --color-error:   #c78a8a;
+  --color-info:    #8aabd4;
+
+  --ring:          rgba(139, 164, 199, 0.3);
+  --ring-error:    rgba(199, 138, 138, 0.3);
+
+  --focus-ring:    0 0 0 2px rgba(139, 164, 199, 0.2);
+  --focus-ring-error: 0 0 0 2px rgba(199, 138, 138, 0.2);
+
+  /* ── Shadows — soft diffused ──────────────────────────────────── */
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg:  0 8px 24px rgba(0, 0, 0, 0.1);
+  --shadow-xl:  0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Body — soft background ───────────────────────────────────────── */
+[data-theme="pastel"] body {
+  background: #faf5f0 !important;
+  background-color: #faf5f0 !important;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* ── Cards — soft paper ────────────────────────────────────────────── */
+[data-theme="pastel"] .ui-card {
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #ffffff;
+}
+
+[data-theme="pastel"] .ui-card--elevated {
+  box-shadow: var(--shadow-md);
+  border: none;
+}
+
+[data-theme="pastel"] .ui-card--outlined {
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  box-shadow: none;
+}
+
+[data-theme="pastel"] .ui-card--flat {
+  background: transparent;
+  box-shadow: none;
+}
+
+/* ── Buttons — soft style ─────────────────────────────────────────── */
+[data-theme="pastel"] .ui-btn {
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+[data-theme="pastel"] .ui-btn--primary {
+  box-shadow: 0 2px 6px rgba(139, 164, 199, 0.2);
+}
+
+[data-theme="pastel"] .ui-btn--primary:hover {
+  box-shadow: 0 4px 12px rgba(139, 164, 199, 0.3);
+}
+
+[data-theme="pastel"] .ui-btn--secondary {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #3a3535;
+}
+
+[data-theme="pastel"] .ui-btn--secondary:hover {
+  background: #f5efe8;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="pastel"] .ui-btn--ghost {
+  border-radius: 20px;
+}
+
+[data-theme="pastel"] .ui-btn--ghost:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="pastel"] .ui-btn--destructive {
+  box-shadow: 0 2px 6px rgba(199, 138, 138, 0.2);
+}
+
+[data-theme="pastel"] .ui-btn--destructive:hover {
+  box-shadow: 0 4px 12px rgba(199, 138, 138, 0.3);
+}
+
+/* ── Inputs — soft style ──────────────────────────────────────────── */
+[data-theme="pastel"] .ui-input-wrap {
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+}
+
+[data-theme="pastel"] .ui-input-wrap:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="pastel"] .ui-input-wrap:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(139, 164, 199, 0.15);
+}
+
+[data-theme="pastel"] .ui-input {
+  color: #3a3535;
+}
+
+[data-theme="pastel"] .ui-input::placeholder {
+  color: #9a9595;
+}
+
+[data-theme="pastel"] .ui-input-wrap--error {
+  border-color: var(--color-error);
+}
+
+[data-theme="pastel"] .ui-input-wrap--error:focus-within {
+  box-shadow: 0 0 0 3px rgba(199, 138, 138, 0.15);
+}
+
+/* ── Selection ──────────────────────────────────────────────────────── */
+[data-theme="pastel"] ::selection {
+  background-color: rgba(139, 164, 199, 0.2);
+  color: #3a3535;
+}
+
+/* ── Links ──────────────────────────────────────────────────────────── */
+[data-theme="pastel"] a:not([class]) {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+[data-theme="pastel"] a:not([class]):hover {
+  color: var(--color-primary-hover);
+}
