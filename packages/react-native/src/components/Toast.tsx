@@ -7,6 +7,7 @@ import {
   type ViewStyle,
 } from 'react-native';
 import { theme, type ThemeColors } from '../theme';
+import { Icons } from '../Icons';
 
 export type ToastVariant = 'success' | 'error' | 'warning' | 'info';
 export type ToastPosition =
@@ -37,11 +38,11 @@ export interface UseToastOptions {
   colors?: ThemeColors;
 }
 
-const ICONS: Record<ToastVariant, string> = {
-  success: '✓',
-  error: '✕',
-  warning: '⚠',
-  info: 'ℹ',
+const ICONS: Record<ToastVariant, typeof Icons.Check> = {
+  success: Icons.Check,
+  error: Icons.Close,
+  warning: Icons.Warning,
+  info: Icons.Info,
 };
 
 const VARIANT_COLORS: Record<ToastVariant, { bg: string; border: string; icon: string }> = {
@@ -84,9 +85,9 @@ function ToastItem({ toast, onDismiss, colors }: ToastItemProps) {
       accessibilityRole="alert"
       accessibilityLiveRegion="polite"
     >
-      <Text style={[styles.icon, { color: variantStyle.icon }]}>
-        {ICONS[toast.variant]}
-      </Text>
+      <View style={[styles.icon, { color: variantStyle.icon }]}>
+        {ICONS[toast.variant]({ size: 18, color: variantStyle.icon })}
+      </View>
       <View style={styles.content}>
         {toast.title && <Text style={[styles.title, { color: colors.textPrimary }]}>{toast.title}</Text>}
         <Text style={[styles.message, { color: colors.textSecondary }]}>{toast.message}</Text>
@@ -97,7 +98,7 @@ function ToastItem({ toast, onDismiss, colors }: ToastItemProps) {
         accessibilityRole="button"
         accessibilityLabel="Dismiss"
       >
-        <Text style={{ color: colors.textSecondary, fontSize: 14 }}>✕</Text>
+        <Icons.Close size={14} color={colors.textSecondary} />
       </Pressable>
     </View>
   );

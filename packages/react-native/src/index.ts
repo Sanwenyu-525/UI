@@ -4,6 +4,10 @@
 export { theme, lightColors, darkColors, glassColors, cyberColors, sportColors, fontSize, fontWeight, space, radii, sizes } from './theme';
 export type { ThemeColors } from './theme';
 
+// Icons
+export { Icons } from './Icons';
+export type { IconProps } from './Icons';
+
 // Components
 export { Button } from './components/Button';
 export type { ButtonProps, ButtonVariant, ButtonSize } from './components/Button';

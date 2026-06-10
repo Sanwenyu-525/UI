@@ -8,6 +8,7 @@ import {
   type ViewStyle,
 } from 'react-native';
 import { theme, type ThemeColors } from '../theme';
+import { Icons } from '../Icons';
 
 export interface SelectOption {
   label: string;
@@ -95,9 +96,11 @@ export function Select({
         >
           {selectedOption?.label || placeholder}
         </Text>
-        <Text style={[styles.arrow, { color: colors.textSecondary }]}>
-          {open ? '▲' : '▼'}
-        </Text>
+        <View style={[styles.arrow, { color: colors.textSecondary }]}>
+          {open
+            ? Icons.ChevronUp({ size: 12, color: colors.textSecondary })
+            : Icons.ChevronDown({ size: 12, color: colors.textSecondary })}
+        </View>
       </Pressable>
 
       {open && (
@@ -177,7 +180,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   arrow: {
-    fontSize: 12,
     marginLeft: 8,
   },
   dropdown: {

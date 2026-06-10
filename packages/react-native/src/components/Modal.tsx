@@ -8,6 +8,7 @@ import {
   type ViewStyle,
 } from 'react-native';
 import { theme, type ThemeColors } from '../theme';
+import { Icons } from '../Icons';
 
 export type ModalSize = 'sm' | 'md' | 'lg' | 'xl';
 
@@ -79,7 +80,7 @@ export function Modal({
                 accessibilityRole="button"
                 accessibilityLabel="Close"
               >
-                <Text style={{ color: colors.textSecondary, fontSize: 18 }}>✕</Text>
+                <Icons.Close size={18} color={colors.textSecondary} />
               </Pressable>
             </View>
           )}
