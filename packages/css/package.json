@@ -6,6 +6,8 @@
   "exports": {
     ".": "./dist/index.css",
     "./tokens": "./dist/styles/tokens.css",
+    "./tokens-light": "./dist/styles/tokens-light.css",
+    "./tokens-dark": "./dist/styles/tokens-dark.css",
     "./reset": "./dist/styles/reset.css",
     "./base": "./dist/styles/base.css",
     "./components/*": "./dist/components/*/index.css"
@@ -14,5 +16,7 @@
     "build": "node scripts/build.mjs",
     "clean": "rm -rf dist"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@ui/token-codegen": "workspace:*"
+  }
 }

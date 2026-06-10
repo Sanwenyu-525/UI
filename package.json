@@ -8,6 +8,7 @@
     "build:tokens": "pnpm --filter @ui/tokens run build",
     "build:css": "pnpm --filter @ui/css run build",
     "build:react": "pnpm --filter @ui/react run build",
+    "build:codegen": "pnpm --filter @ui/token-codegen run build",
     "typecheck": "tsc --noEmit",
     "clean": "pnpm -r run clean",
     "test": "pnpm --filter @ui/react run test",
