@@ -22,8 +22,19 @@ pnpm install
 # 构建所有包
 pnpm build
 
+# 构建特定包
+pnpm build:tokens    # 设计令牌
+pnpm build:css       # CSS 组件
+pnpm build:react     # React 组件
+
 # 预览组件
 open playground/index.html
+
+# 类型检查
+pnpm typecheck
+
+# 清理构建产物
+pnpm clean
 ```
 
 ## 设计令牌
@@ -40,58 +51,100 @@ open playground/index.html
 | 尺寸 | `tokens/src/sizes.ts` | sm / md / lg 组件尺寸预设 |
 | 动效 | `tokens/src/animation.ts` | 4 级时长 + 3 种缓动曲线 |
 
+修改令牌：编辑 `packages/tokens/src/<category>.ts`，运行 `pnpm build:tokens`。
+
 ## 组件列表
 
-| 组件 | CSS | React | React Native | 分类 |
-|------|-----|-------|--------------|------|
-| Button | ✅ | ✅ | ✅ | 数据录入 |
-| Input / Textarea | ✅ | ✅ | ✅ | 数据录入 |
-| Checkbox | ✅ | ✅ | — | 数据录入 |
-| Radio | ✅ | ✅ | — | 数据录入 |
-| Switch | ✅ | ✅ | ✅ | 数据录入 |
-| Select | ✅ | ✅ | — | 数据录入 |
-| Slider | ✅ | ✅ | — | 数据录入 |
-| Badge | ✅ | ✅ | ✅ | 数据展示 |
-| Tag | ✅ | ✅ | — | 数据展示 |
-| Avatar | ✅ | ✅ | ✅ | 数据展示 |
-| Card | ✅ | ✅ | ✅ | 数据展示 |
-| Table | ✅ | ✅ | — | 数据展示 |
-| Accordion | ✅ | ✅ | — | 数据展示 |
-| Empty | ✅ | ✅ | — | 数据展示 |
-| Carousel | ✅ | ✅ | ✅ | 数据展示 |
-| Menu | ✅ | ✅ | ✅ | 数据展示 |
-| TreeView | ✅ | ✅ | ✅ | 数据展示 |
-| DatePicker | ✅ | ✅ | ✅ | 数据展示 |
-| Divider | ✅ | ✅ | — | 布局 |
-| Stack | ✅ | ✅ | — | 布局 |
-| Tabs | ✅ | ✅ | — | 导航 |
-| Breadcrumb | ✅ | ✅ | — | 导航 |
-| Pagination | ✅ | ✅ | — | 导航 |
-| Alert | ✅ | ✅ | — | 反馈 |
-| Progress | ✅ | ✅ | — | 反馈 |
-| Skeleton | ✅ | ✅ | — | 反馈 |
-| Modal | ✅ | ✅ | — | 浮层 |
-| Toast | ✅ | ✅ | — | 浮层 |
-| Tooltip | ✅ | ✅ | — | 浮层 |
-| Drawer | ✅ | ✅ | — | 浮层 |
+| 组件 | CSS | React | 分类 |
+|------|-----|-------|------|
+| Button | ✅ | ✅ | 数据录入 |
+| Input / Textarea | ✅ | ✅ | 数据录入 |
+| Checkbox | ✅ | ✅ | 数据录入 |
+| Radio | ✅ | ✅ | 数据录入 |
+| Switch | ✅ | ✅ | 数据录入 |
+| Select | ✅ | ✅ | 数据录入 |
+| Slider | ✅ | ✅ | 数据录入 |
+| DatePicker | ✅ | ✅ | 数据录入 |
+| TimePicker | ✅ | — | 数据录入 |
+| Upload | ✅ | — | 数据录入 |
+| Badge | ✅ | ✅ | 数据展示 |
+| Tag | ✅ | ✅ | 数据展示 |
+| Avatar | ✅ | ✅ | 数据展示 |
+| Card | ✅ | ✅ | 数据展示 |
+| Table | ✅ | ✅ | 数据展示 |
+| Accordion | ✅ | ✅ | 数据展示 |
+| Empty | ✅ | ✅ | 数据展示 |
+| Carousel | ✅ | ✅ | 数据展示 |
+| Menu | ✅ | ✅ | 数据展示 |
+| TreeView | ✅ | ✅ | 数据展示 |
+| Calendar | ✅ | — | 数据展示 |
+| Timeline | ✅ | — | 数据展示 |
+| Divider | ✅ | ✅ | 布局 |
+| Stack | ✅ | ✅ | 布局 |
+| Tabs | ✅ | ✅ | 导航 |
+| Breadcrumb | ✅ | ✅ | 导航 |
+| Pagination | ✅ | ✅ | 导航 |
+| Steps | ✅ | — | 导航 |
+| Alert | ✅ | ✅ | 反馈 |
+| Progress | ✅ | ✅ | 反馈 |
+| Skeleton | ✅ | ✅ | 反馈 |
+| Modal | ✅ | ✅ | 浮层 |
+| Toast | ✅ | ✅ | 浮层 |
+| Tooltip | ✅ | ✅ | 浮层 |
+| Drawer | ✅ | ✅ | 浮层 |
+| Popover | ✅ | — | 浮层 |
 
 ## 主题风格
 
-组件系统内置 5 种主题，通过 `data-theme` 属性切换：
+组件系统内置 10 种主题，通过 `data-theme` 属性切换：
 
 | 主题 | 属性值 | 说明 |
 |------|--------|------|
 | **Light** | `data-theme="light"` | 默认亮色主题 |
 | **Dark** | `data-theme="dark"` | 暗色主题 |
-| **Glass** | `data-theme="glass"` | 毛玻璃 — 半透明表面、backdrop-filter 模糊、渐变背景 |
-| **Cyber** | `data-theme="cyber"` | 科技风 — 霓虹光效、HUD 美学、扫描线、终端字体 |
-| **Sport** | `data-theme="sport"` | 运动风 — 暗底橙色主调、高能量、粗犷排版 |
+| **High Contrast** | `data-theme="high-contrast"` | 高对比度（WCAG AAA） |
+| **Glass** | `data-theme="glass"` | 毛玻璃 — 半透明表面、backdrop-filter 模糊 |
+| **Cyber** | `data-theme="cyber"` | 科技风 — 霓虹光效、HUD 美学、扫描线 |
+| **Sport** | `data-theme="sport"` | 运动风 — 暗底橙色主调、高能量 |
+| **Material** | `data-theme="material"` | Material Design 3 风格 |
+| **Fluent** | `data-theme="fluent"` | Microsoft Fluent Design 风格 |
+| **Retro** | `data-theme="retro"` | 复古怀旧风格 |
+| **Neon** | `data-theme="neon"` | 赛博霓虹风格 |
+| **Pastel** | `data-theme="pastel"` | 柔和色系风格 |
 
 ```html
 <!-- 切换主题 -->
+<html data-theme="dark">
 <html data-theme="glass">
 <html data-theme="cyber">
-<html data-theme="sport">
+<html data-theme="neon">
+```
+
+## 密度系统
+
+通过 `data-density` 属性控制组件间距和尺寸：
+
+```html
+<html data-density="compact">    <!-- 紧凑密度 -->
+<html data-density="comfortable"> <!-- 舒适密度（默认） -->
+<html data-density="spacious">   <!-- 宽松密度 -->
+```
+
+## 视觉变体
+
+组件支持多种视觉风格（通过类名变体）：
+
+| 变体 | 类名 | 说明 |
+|------|------|------|
+| Glass | `--glass` | 半透明毛玻璃效果 |
+| Gradient | `--gradient` | 渐变背景 |
+| Soft | `--soft` | 柔和填充 |
+| Outline | `--outline` | 描边样式 |
+| Flat | `--flat` | 完全扁平，无阴影 |
+
+```html
+<button class="ui-btn ui-btn--primary ui-btn--glass">Glass Button</button>
+<div class="ui-card ui-card--gradient">Gradient Card</div>
 ```
 
 ## 使用方式
@@ -142,6 +195,9 @@ function App() {
 ```html
 <!-- 暗色主题 -->
 <html data-theme="dark">
+
+<!-- 毛玻璃主题 -->
+<html data-theme="glass">
 ```
 
 ### React Native
@@ -149,6 +205,22 @@ function App() {
 ```tsx
 import { darkColors, glassColors, cyberColors, sportColors } from '@ui/react-native';
 // 将对应 colors 传入组件的 colors prop
+```
+
+## 添加新组件
+
+1. **CSS**：创建 `packages/css/src/components/<name>/index.css`
+2. **React**：创建 `packages/react/src/components/<Name>.tsx`
+3. 在对应 index 文件中导出
+4. 在 `packages/css/src/index.css` 中导入 CSS
+
+CSS 组件命名约定：
+
+```css
+.ui-component { }           /* 基础 */
+.ui-component--variant { }  /* 变体 */
+.ui-component--size { }     /* 尺寸 */
+.ui-component--state { }    /* 状态 */
 ```
 
 ## 设计规范
