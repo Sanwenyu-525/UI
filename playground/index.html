@@ -24,15 +24,19 @@
       width: 260px;
       background: var(--surface);
       border-right: 1px solid var(--border);
-      padding: 1.5rem 0;
+      padding: 0 0 1.5rem;
       overflow-y: auto;
       z-index: 1000;
     }
 
     .sidebar__header {
-      padding: 0 1.5rem 1rem;
+      position: sticky;
+      top: 0;
+      background: var(--surface);
+      padding: 1.5rem 1.5rem 1rem;
       border-bottom: 1px solid var(--border);
       margin-bottom: 1rem;
+      z-index: 1;
     }
 
     .sidebar__logo {
@@ -95,7 +99,6 @@
     .main-content {
       margin-left: 260px;
       padding: 2rem;
-      max-width: 960px;
     }
 
     section { margin-bottom: 3rem; scroll-margin-top: 2rem; }
@@ -305,6 +308,12 @@
     <button class="theme-bar__btn" data-theme-btn="glass" onclick="setTheme('glass')">🪟 Glass 毛玻璃</button>
     <button class="theme-bar__btn" data-theme-btn="cyber" onclick="setTheme('cyber')">⚡ Cyber 科技风</button>
     <button class="theme-bar__btn" data-theme-btn="sport" onclick="setTheme('sport')">🔥 Sport 运动风</button>
+    <button class="theme-bar__btn" data-theme-btn="high-contrast" onclick="setTheme('high-contrast')">👁️ High Contrast 高对比</button>
+    <button class="theme-bar__btn" data-theme-btn="material" onclick="setTheme('material')">💎 Material 材料风</button>
+    <button class="theme-bar__btn" data-theme-btn="fluent" onclick="setTheme('fluent')">🪟 Fluent 流畅风</button>
+    <button class="theme-bar__btn" data-theme-btn="retro" onclick="setTheme('retro')">📼 Retro 复古</button>
+    <button class="theme-bar__btn" data-theme-btn="neon" onclick="setTheme('neon')">💚 Neon 霓虹</button>
+    <button class="theme-bar__btn" data-theme-btn="pastel" onclick="setTheme('pastel')">🎨 Pastel 柔和</button>
   </div>
 
   <h1>UI Components<span class="sub">组件预览</span></h1>
