@@ -1,7 +1,6 @@
 /* ─── Base Styles ───────────────────────────────────────────────────── */
 /* Import after tokens.css and reset.css                                */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* Optional: import fonts.css if you want Google Fonts Inter           */
 
 body {
   font-family: var(--font-sans);

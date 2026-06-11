@@ -5,18 +5,31 @@
   "main": "dist/index.css",
   "exports": {
     ".": "./dist/index.css",
+    "./minimal": "./dist/minimal.css",
     "./tokens": "./dist/styles/tokens.css",
     "./tokens-light": "./dist/styles/tokens-light.css",
     "./tokens-dark": "./dist/styles/tokens-dark.css",
+    "./themes": "./dist/styles/themes.css",
+    "./theme-dark": "./dist/styles/theme-dark.css",
+    "./theme-glass": "./dist/styles/theme-glass.css",
+    "./theme-cyber": "./dist/styles/theme-cyber.css",
+    "./theme-sport": "./dist/styles/theme-sport.css",
+    "./fonts": "./dist/styles/fonts.css",
     "./reset": "./dist/styles/reset.css",
     "./base": "./dist/styles/base.css",
     "./components/*": "./dist/components/*/index.css"
   },
   "scripts": {
     "build": "node scripts/build.mjs",
+    "build:minimal": "node scripts/build.mjs --minimal",
     "clean": "rm -rf dist"
   },
   "devDependencies": {
-    "@ui/token-codegen": "workspace:*"
+    "@ui/token-codegen": "workspace:*",
+    "postcss": "^8.4.35",
+    "postcss-import": "^16.1.0",
+    "postcss-nested": "^6.0.1",
+    "cssnano": "^6.1.0",
+    "autoprefixer": "^10.4.18"
   }
 }

@@ -1,0 +1,5 @@
+/* ─── Font Loader (Optional) ──────────────────────────────────────── */
+/* Import this file if you want to use Inter font from Google Fonts. */
+/* Otherwise, the system font stack will be used.                     */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');

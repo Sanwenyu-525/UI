@@ -1,0 +1,22 @@
+/* ─── @ui/css — Minimal Bundle ──────────────────────────────────── */
+/* Only includes light theme + base components (smallest bundle)     */
+
+@import './styles/tokens-light.css';
+@import './styles/reset.css';
+@import './styles/base.css';
+@import './styles/density.css';
+
+/* Essential components only */
+@import './components/button/index.css';
+@import './components/input/index.css';
+@import './components/badge/index.css';
+@import './components/card/index.css';
+@import './components/checkbox/index.css';
+@import './components/radio/index.css';
+@import './components/switch/index.css';
+@import './components/select/index.css';
+@import './components/modal/index.css';
+@import './components/toast/index.css';
+@import './components/tooltip/index.css';
+@import './components/divider/index.css';
+@import './components/stack/index.css';
