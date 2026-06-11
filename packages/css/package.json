@@ -17,7 +17,8 @@
     "./fonts": "./dist/styles/fonts.css",
     "./reset": "./dist/styles/reset.css",
     "./base": "./dist/styles/base.css",
-    "./components/*": "./dist/components/*/index.css"
+    "./components/*": "./dist/components/*/index.css",
+    "./class-names": "./dist/class-names.ts"
   },
   "scripts": {
     "build": "node scripts/build.mjs",

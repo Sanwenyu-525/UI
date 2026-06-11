@@ -7,6 +7,7 @@ import postcssImport from 'postcss-import';
 import postcssNested from 'postcss-nested';
 import cssnano from 'cssnano';
 import autoprefixer from 'autoprefixer';
+import { extractComponentClasses, generateClassNameConstants, writeClassNamesFile } from './extract-classes.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -100,6 +101,13 @@ async function build() {
   }
   console.log('  ✓ dist/styles/{reset,base,density}.css');
 
+  // Generate TypeScript class name constants
+  console.log('🏷️  Generating class name constants...');
+  const components = extractComponentClasses(componentsDir);
+  const classNamesContent = generateClassNameConstants(components);
+  writeClassNamesFile(join(dist, 'class-names.ts'), classNamesContent);
+  console.log(`  ✓ dist/class-names.ts (${components.length} components)`);
+
   // Report compression
   const originalSize = getDirSize(src);
   const distSize = getDirSize(dist);
@@ -121,4 +129,5 @@ function getDirSize(dir) {
 }
 
 build().catch(console.error);
+
 
