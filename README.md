@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.svg" width="100%" alt="UI Components - Cross-platform design system" />
+</p>
+
 # UI Components
 
 跨平台 UI 组件系统 — 设计令牌共享，Web / React / React Native 三栈实现。

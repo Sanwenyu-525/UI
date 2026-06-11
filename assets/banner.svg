@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="card1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:rgba(99,102,241,0.15)"/>
+      <stop offset="100%" style="stop-color:rgba(99,102,241,0.05)"/>
+    </linearGradient>
+    <linearGradient id="card2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:rgba(139,92,246,0.15)"/>
+      <stop offset="100%" style="stop-color:rgba(139,92,246,0.05)"/>
+    </linearGradient>
+    <linearGradient id="card3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:rgba(59,130,246,0.15)"/>
+      <stop offset="100%" style="stop-color:rgba(59,130,246,0.05)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="640" fill="url(#bg)"/>
+
+  <!-- Grid dots -->
+  <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+    <circle cx="20" cy="20" r="1" fill="rgba(148,163,184,0.08)"/>
+  </pattern>
+  <rect width="1280" height="640" fill="url(#dots)"/>
+
+  <!-- Accent line -->
+  <rect x="80" y="195" width="80" height="4" rx="2" fill="url(#accent)"/>
+
+  <!-- Title -->
+  <text x="80" y="250" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="700" fill="#f8fafc" letter-spacing="-1">UI Components</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="290" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#94a3b8">Cross-platform design system with shared tokens</text>
+
+  <!-- Platform cards -->
+  <!-- CSS Card -->
+  <rect x="80" y="340" width="360" height="120" rx="12" fill="url(#card1)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+  <text x="120" y="380" font-family="monospace" font-size="14" font-weight="600" fill="#6366f1">CSS</text>
+  <text x="120" y="405" font-family="system-ui, -apple-system, sans-serif" font-size="15" fill="#e2e8f0">Native Web Components</text>
+  <text x="120" y="428" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748b">HTML + CSS Variables</text>
+
+  <!-- React Card -->
+  <rect x="460" y="340" width="360" height="120" rx="12" fill="url(#card2)" stroke="rgba(139,92,246,0.2)" stroke-width="1"/>
+  <text x="500" y="380" font-family="monospace" font-size="14" font-weight="600" fill="#8b5cf6">React</text>
+  <text x="500" y="405" font-family="system-ui, -apple-system, sans-serif" font-size="15" fill="#e2e8f0">TypeScript Components</text>
+  <text x="500" y="428" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748b">Vitest + Testing Library</text>
+
+  <!-- React Native Card -->
+  <rect x="840" y="340" width="360" height="120" rx="12" fill="url(#card3)" stroke="rgba(59,130,246,0.2)" stroke-width="1"/>
+  <text x="880" y="380" font-family="monospace" font-size="14" font-weight="600" fill="#3b82f6">React Native</text>
+  <text x="880" y="405" font-family="system-ui, -apple-system, sans-serif" font-size="15" fill="#e2e8f0">StyleSheet Components</text>
+  <text x="880" y="428" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748b">iOS + Android</text>
+
+  <!-- Decorative circles -->
+  <circle cx="1150" cy="120" r="180" fill="rgba(99,102,241,0.06)"/>
+  <circle cx="1200" cy="180" r="100" fill="rgba(139,92,246,0.06)"/>
+</svg>
