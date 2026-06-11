@@ -1,10 +1,11 @@
 /* ─── @ui/css — Complete Stylesheet ──────────────────────────────── */
-/* Import order: tokens → reset → base → density → components         */
+/* Import order: tokens → reset → base → density → variants → components */
 
 @import './styles/tokens.css';
 @import './styles/reset.css';
 @import './styles/base.css';
 @import './styles/density.css';
+@import './styles/variants.css';
 
 /* Components */
 @import './components/button/index.css';

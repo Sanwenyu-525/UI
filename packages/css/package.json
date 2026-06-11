@@ -17,6 +17,7 @@
     "./fonts": "./dist/styles/fonts.css",
     "./reset": "./dist/styles/reset.css",
     "./base": "./dist/styles/base.css",
+    "./variants": "./dist/styles/variants.css",
     "./components/*": "./dist/components/*/index.css",
     "./class-names": "./dist/class-names.ts"
   },

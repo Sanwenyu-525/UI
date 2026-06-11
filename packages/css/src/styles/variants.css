@@ -1,0 +1,191 @@
+/* ─── Visual Variants ──────────────────────────────────────────────── */
+/* Shared visual variants for components. Apply to any component.      */
+/* Usage: <button class="ui-btn variant-glass">Glass Button</button>    */
+
+/* ── Glass ──────────────────────────────────────────────────────────── */
+.variant-glass {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .variant-glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ── Gradient ───────────────────────────────────────────────────────── */
+.variant-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #764ba2 100%);
+  border: none;
+  color: var(--text-on-primary);
+}
+
+.variant-gradient-success {
+  background: linear-gradient(135deg, var(--color-success) 0%, #059669 100%);
+  border: none;
+  color: var(--text-on-primary);
+}
+
+.variant-gradient-warning {
+  background: linear-gradient(135deg, var(--color-warning) 0%, #d97706 100%);
+  border: none;
+  color: var(--text-on-primary);
+}
+
+.variant-gradient-error {
+  background: linear-gradient(135deg, var(--color-error) 0%, #dc2626 100%);
+  border: none;
+  color: var(--text-on-primary);
+}
+
+/* ── Outline ────────────────────────────────────────────────────────── */
+.variant-outline {
+  background: transparent;
+  border: 2px solid var(--border-strong);
+  color: var(--text-primary);
+}
+
+.variant-outline-primary {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.variant-outline-success {
+  background: transparent;
+  border: 2px solid var(--color-success);
+  color: var(--color-success);
+}
+
+.variant-outline-warning {
+  background: transparent;
+  border: 2px solid var(--color-warning);
+  color: var(--color-warning);
+}
+
+.variant-outline-error {
+  background: transparent;
+  border: 2px solid var(--color-error);
+  color: var(--color-error);
+}
+
+/* ── Soft ───────────────────────────────────────────────────────────── */
+.variant-soft {
+  background: rgba(99, 102, 241, 0.1);
+  border: none;
+  color: var(--color-primary);
+}
+
+.variant-soft-success {
+  background: rgba(34, 197, 94, 0.1);
+  border: none;
+  color: var(--color-success);
+}
+
+.variant-soft-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border: none;
+  color: var(--color-warning);
+}
+
+.variant-soft-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: none;
+  color: var(--color-error);
+}
+
+/* ── Flat ───────────────────────────────────────────────────────────── */
+.variant-flat {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--text-primary);
+}
+
+.variant-flat-primary {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--color-primary);
+}
+
+.variant-flat-success {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--color-success);
+}
+
+.variant-flat-warning {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--color-warning);
+}
+
+.variant-flat-error {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--color-error);
+}
+
+/* ── Elevation ──────────────────────────────────────────────────────── */
+.variant-elevated {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+}
+
+.variant-elevated-lg {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+}
+
+.variant-elevated-xl {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-xl);
+}
+
+/* ── Interactive States ─────────────────────────────────────────────── */
+.variant-glass:hover,
+.variant-glass:focus-visible {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.variant-gradient:hover,
+.variant-gradient:focus-visible {
+  filter: brightness(1.1);
+}
+
+.variant-outline:hover,
+.variant-outline:focus-visible {
+  background: rgba(99, 102, 241, 0.05);
+  border-color: var(--color-primary);
+}
+
+.variant-soft:hover,
+.variant-soft:focus-visible {
+  background: rgba(99, 102, 241, 0.15);
+}
+
+.variant-flat:hover,
+.variant-flat:focus-visible {
+  background: rgba(99, 102, 241, 0.05);
+}
+
+/* ── Transitions ────────────────────────────────────────────────────── */
+.variant-glass,
+.variant-gradient,
+.variant-outline,
+.variant-soft,
+.variant-flat,
+.variant-elevated {
+  transition: all var(--duration-normal) var(--easing-ease-out);
+}

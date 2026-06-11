@@ -177,76 +177,13 @@
 }
 
 /* ── Visual variants ───────────────────────────────────────────── */
-
-/* Glass — translucent backdrop */
-.ui-btn--glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.ui-btn--glass:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.ui-btn--glass:active {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* Gradient — subtle gradient background */
-.ui-btn--gradient {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
-  border-color: transparent;
-}
-
-.ui-btn--gradient:hover {
-  background: linear-gradient(135deg, var(--color-primary-hover) 0%, var(--color-primary-active) 100%);
-}
-
-.ui-btn--gradient:active {
-  background: linear-gradient(135deg, var(--color-primary-active) 0%, var(--color-primary) 100%);
-}
-
-/* Outline — bordered, no fill */
-.ui-btn--outline {
-  background: transparent;
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
-}
-
-.ui-btn--outline:hover {
-  background: var(--color-primary);
-  color: var(--text-on-primary);
-}
-
-.ui-btn--outline:active {
-  background: var(--color-primary-active);
-  border-color: var(--color-primary-active);
-  color: var(--text-on-primary);
-}
-
-/* Soft — subtle filled background */
-.ui-btn--soft {
-  background: rgba(99, 102, 241, 0.1);
-  border-color: transparent;
-  color: var(--color-primary);
-}
-
-.ui-btn--soft:hover {
-  background: rgba(99, 102, 241, 0.15);
-}
-
-.ui-btn--soft:active {
-  background: rgba(99, 102, 241, 0.2);
-}
-
-/* Flat — completely flat, no shadows */
-.ui-btn--flat {
-  background: var(--color-primary);
-  color: var(--text-on-primary);
-  border-color: transparent;
+/* Use variant-* classes from variants.css instead:
+ *   <button class="ui-btn variant-glass">Glass</button>
+ *   <button class="ui-btn variant-gradient">Gradient</button>
+ *   <button class="ui-btn variant-outline">Outline</button>
+ *   <button class="ui-btn variant-soft">Soft</button>
+ *   <button class="ui-btn variant-flat">Flat</button>
+ */
   box-shadow: none;
 }
 
