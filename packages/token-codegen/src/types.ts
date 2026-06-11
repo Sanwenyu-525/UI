@@ -5,16 +5,6 @@ export interface TokenConfig {
   generateThemes?: boolean;
 }
 
-export interface GeneratedTokens {
-  light: string;
-  dark: string;
-  combined: string;
-}
-
-export interface TokenValue {
-  [key: string]: string | number | TokenValue;
-}
-
 export interface ThemeColors {
   [key: string]: string;
 }

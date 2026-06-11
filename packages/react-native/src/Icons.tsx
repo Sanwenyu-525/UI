@@ -6,7 +6,7 @@ export interface IconProps {
   style?: ViewStyle;
 }
 
-function CloseIcon({ size = 16, color = 'currentColor', style }: IconProps) {
+function CloseIcon({ size = 16, color = '#000000', style }: IconProps) {
   return (
     <View style={[styles.container, { width: size, height: size }, style]}>
       <View
@@ -37,7 +37,7 @@ function CloseIcon({ size = 16, color = 'currentColor', style }: IconProps) {
   );
 }
 
-function CheckIcon({ size = 16, color = 'currentColor', style }: IconProps) {
+function CheckIcon({ size = 16, color = '#000000', style }: IconProps) {
   return (
     <View style={[styles.container, { width: size, height: size }, style]}>
       <View
@@ -68,7 +68,7 @@ function CheckIcon({ size = 16, color = 'currentColor', style }: IconProps) {
   );
 }
 
-function WarningIcon({ size = 16, color = 'currentColor', style }: IconProps) {
+function WarningIcon({ size = 16, color = '#000000', style }: IconProps) {
   const borderWidth = size * 0.08;
   return (
     <View
@@ -90,7 +90,7 @@ function WarningIcon({ size = 16, color = 'currentColor', style }: IconProps) {
   );
 }
 
-function InfoIcon({ size = 16, color = 'currentColor', style }: IconProps) {
+function InfoIcon({ size = 16, color = '#000000', style }: IconProps) {
   const dotSize = size * 0.2;
   const barHeight = size * 0.35;
   return (
@@ -115,7 +115,7 @@ function InfoIcon({ size = 16, color = 'currentColor', style }: IconProps) {
   );
 }
 
-function ChevronDownIcon({ size = 16, color = 'currentColor', style }: IconProps) {
+function ChevronDownIcon({ size = 16, color = '#000000', style }: IconProps) {
   return (
     <View style={[styles.container, { width: size, height: size }, style]}>
       <View
@@ -138,7 +138,7 @@ function ChevronDownIcon({ size = 16, color = 'currentColor', style }: IconProps
   );
 }
 
-function ChevronUpIcon({ size = 16, color = 'currentColor', style }: IconProps) {
+function ChevronUpIcon({ size = 16, color = '#000000', style }: IconProps) {
   return (
     <View style={[styles.container, { width: size, height: size }, style]}>
       <View
@@ -169,12 +169,6 @@ const styles = StyleSheet.create({
   line: {
     position: 'absolute',
   },
-  lineDiagonal1: {
-    transform: [{ rotate: '45deg' }],
-  },
-  lineDiagonal2: {
-    transform: [{ rotate: '-45deg' }],
-  },
   checkLine1: {
     left: '25%',
     top: '40%',
@@ -183,7 +177,6 @@ const styles = StyleSheet.create({
     left: '15%',
     top: '55%',
   },
-  triangle: {},
 });
 
 export const Icons = {

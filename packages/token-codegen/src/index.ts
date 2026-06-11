@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import type { TokenConfig, TokenValue, ThemeColors } from './types.js';
+import type { TokenConfig, ThemeColors } from './types.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -33,14 +33,16 @@ async function generateThemeFiles(config: TokenConfig): Promise<void> {
   const themesContent = readFileSync(themesPath, 'utf-8');
 
   const themeNames = extractThemeNames(themesContent);
+  const themeDataCache = new Map<string, Record<string, string>>();
 
   for (const themeName of themeNames) {
     const themeData = extractThemeData(themesContent, themeName);
+    themeDataCache.set(themeName, themeData);
     const css = generateThemeCSS(themeName, themeData);
     writeFileSync(join(config.output, `theme-${themeName}.css`), css);
   }
 
-  generateReactNativeThemes(config.output, themesContent, themeNames);
+  generateReactNativeThemes(config.output, themeDataCache, themeNames);
 
   console.log(`✓ Generated ${themeNames.length} theme files`);
 }
@@ -115,7 +117,7 @@ function generateThemeCSS(themeName: string, data: Record<string, string>): stri
   return lines.join('\n');
 }
 
-function generateReactNativeThemes(outputPath: string, themesContent: string, themeNames: string[]): void {
+function generateReactNativeThemes(outputPath: string, themeDataCache: Map<string, Record<string, string>>, themeNames: string[]): void {
   const lines: string[] = [];
   lines.push('// Auto-generated from @ui/tokens — do not edit manually.');
   lines.push('');
@@ -146,7 +148,7 @@ function generateReactNativeThemes(outputPath: string, themesContent: string, th
   lines.push('');
 
   themeNames.forEach(themeName => {
-    const themeData = extractThemeData(themesContent, themeName);
+    const themeData = themeDataCache.get(themeName) || {};
     lines.push(`export const ${themeName}Colors: ThemeColors = {`);
 
     Object.entries(themeData).forEach(([key, value]) => {
@@ -245,86 +247,38 @@ function extractColorTokens(content: string, light: ThemeColors, dark: ThemeColo
   }
 }
 
-function extractSpacingTokens(content: string, tokens: ThemeColors) {
-  const match = content.match(/export const spacing = \{([^}]+)\}/s);
+function extractTokenGroup(content: string, varName: string, keyPrefix: string, tokens: ThemeColors) {
+  const match = content.match(new RegExp(`export const ${varName} = \\{([^}]+)\\}`, 's'));
   if (match) {
     const entries = parseObjectEntries(match[1]);
     entries.forEach(([key, value]) => {
-      tokens[`spacing-${key}`] = value;
+      tokens[`${keyPrefix}-${key}`] = value;
     });
   }
+}
 
-  const layoutMatch = content.match(/export const layout = \{([^}]+)\}/s);
-  if (layoutMatch) {
-    const entries = parseObjectEntries(layoutMatch[1]);
-    entries.forEach(([key, value]) => {
-      tokens[`layout-${key}`] = value;
-    });
-  }
+function extractSpacingTokens(content: string, tokens: ThemeColors) {
+  extractTokenGroup(content, 'spacing', 'spacing', tokens);
+  extractTokenGroup(content, 'layout', 'layout', tokens);
 }
 
 function extractTypographyTokens(content: string, tokens: ThemeColors) {
-  const fontSizesMatch = content.match(/export const fontSize = \{([^}]+)\}/s);
-  if (fontSizesMatch) {
-    const entries = parseObjectEntries(fontSizesMatch[1]);
-    entries.forEach(([key, value]) => {
-      tokens[`font-size-${key}`] = value;
-    });
-  }
-
-  const fontWeightsMatch = content.match(/export const fontWeight = \{([^}]+)\}/s);
-  if (fontWeightsMatch) {
-    const entries = parseObjectEntries(fontWeightsMatch[1]);
-    entries.forEach(([key, value]) => {
-      tokens[`font-weight-${key}`] = value;
-    });
-  }
-
-  const lineHeightsMatch = content.match(/export const lineHeight = \{([^}]+)\}/s);
-  if (lineHeightsMatch) {
-    const entries = parseObjectEntries(lineHeightsMatch[1]);
-    entries.forEach(([key, value]) => {
-      tokens[`line-height-${key}`] = value;
-    });
-  }
-
-  const fontFamilyMatch = content.match(/export const fontFamily = \{([^}]+)\}/s);
-  if (fontFamilyMatch) {
-    const entries = parseObjectEntries(fontFamilyMatch[1]);
-    entries.forEach(([key, value]) => {
-      tokens[`font-family-${key}`] = value;
-    });
-  }
+  extractTokenGroup(content, 'fontSize', 'font-size', tokens);
+  extractTokenGroup(content, 'fontWeight', 'font-weight', tokens);
+  extractTokenGroup(content, 'lineHeight', 'line-height', tokens);
+  extractTokenGroup(content, 'fontFamily', 'font-family', tokens);
 }
 
 function extractShadowTokens(content: string, tokens: ThemeColors) {
-  const match = content.match(/export const shadow = \{([^}]+)\}/s);
-  if (match) {
-    const entries = parseObjectEntries(match[1]);
-    entries.forEach(([key, value]) => {
-      tokens[`shadow-${key}`] = value;
-    });
-  }
+  extractTokenGroup(content, 'shadow', 'shadow', tokens);
 }
 
 function extractRadiusTokens(content: string, tokens: ThemeColors) {
-  const match = content.match(/export const radius = \{([^}]+)\}/s);
-  if (match) {
-    const entries = parseObjectEntries(match[1]);
-    entries.forEach(([key, value]) => {
-      tokens[`radius-${key}`] = value;
-    });
-  }
+  extractTokenGroup(content, 'radius', 'radius', tokens);
 }
 
 function extractSizeTokens(content: string, tokens: ThemeColors) {
-  const match = content.match(/export const componentSize = \{([^}]+)\}/s);
-  if (match) {
-    const entries = parseObjectEntries(match[1]);
-    entries.forEach(([key, value]) => {
-      tokens[`size-${key}`] = value;
-    });
-  }
+  extractTokenGroup(content, 'componentSize', 'size', tokens);
 }
 
 function extractAnimationTokens(content: string, tokens: ThemeColors) {

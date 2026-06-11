@@ -55,7 +55,6 @@ export function generateClassNameConstants(components: ComponentClasses[]): stri
     for (const className of component.classes) {
       const key = className
         .replace(new RegExp(`^${component.name}`), 'base')
-        .replace(/__/g, '__')
         .replace(/--/g, '_')
         .replace(/-/g, '_');
 
