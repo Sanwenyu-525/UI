@@ -8,6 +8,10 @@ export type { ThemeColors } from './theme';
 export { lightThemeColors, darkThemeColors, glassThemeColors, cyberThemeColors, sportThemeColors } from './generated/themes';
 export type { ThemeColors as GeneratedThemeColors } from './generated/themes';
 
+// Theme Provider (dynamic theming)
+export { ThemeProvider, useTheme } from './ThemeProvider';
+export type { ThemeName, ThemeProviderProps, ThemeContextValue } from './ThemeProvider';
+
 // Icons
 export { Icons } from './Icons';
 export type { IconProps } from './Icons';
