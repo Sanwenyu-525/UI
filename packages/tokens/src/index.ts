@@ -7,3 +7,4 @@ export * from './radius';
 export * from './sizes';
 export * from './animation';
 export * from './locale';
+export * from './themes';

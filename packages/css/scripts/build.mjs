@@ -26,6 +26,7 @@ async function build() {
     source: tokensSource,
     output: tokensOutput,
     theme: 'both',
+    generateThemes: true,
   });
 
   console.log('📦 Copying files to dist...');

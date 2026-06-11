@@ -1,8 +1,12 @@
 // @ui/react-native — Component exports
 
-// Theme
+// Theme (legacy - use themes for new code)
 export { theme, lightColors, darkColors, glassColors, cyberColors, sportColors, fontSize, fontWeight, space, radii, sizes } from './theme';
 export type { ThemeColors } from './theme';
+
+// Themes (generated from @ui/tokens)
+export { lightThemeColors, darkThemeColors, glassThemeColors, cyberThemeColors, sportThemeColors } from './generated/themes';
+export type { ThemeColors as GeneratedThemeColors } from './generated/themes';
 
 // Icons
 export { Icons } from './Icons';

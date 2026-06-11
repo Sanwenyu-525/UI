@@ -21,7 +21,143 @@ export async function generateTokens(config: TokenConfig): Promise<void> {
 
   generateTypeScriptTypes(config.output, tokens.light);
 
+  if (config.generateThemes) {
+    await generateThemeFiles(config);
+  }
+
   console.log(`✓ Generated tokens: tokens-light.css, tokens-dark.css, tokens.css`);
+}
+
+async function generateThemeFiles(config: TokenConfig): Promise<void> {
+  const themesPath = join(config.source, 'themes.ts');
+  const themesContent = readFileSync(themesPath, 'utf-8');
+
+  const themeNames = extractThemeNames(themesContent);
+
+  for (const themeName of themeNames) {
+    const themeData = extractThemeData(themesContent, themeName);
+    const css = generateThemeCSS(themeName, themeData);
+    writeFileSync(join(config.output, `theme-${themeName}.css`), css);
+  }
+
+  generateReactNativeThemes(config.output, themesContent, themeNames);
+
+  console.log(`✓ Generated ${themeNames.length} theme files`);
+}
+
+function extractThemeNames(content: string): string[] {
+  const themesMatch = content.match(/export const themes = \{([^}]+)\}/s);
+  if (!themesMatch) return [];
+
+  const names: string[] = [];
+  const regex = /(\w+):\s*\w+Theme/g;
+  let match;
+  while ((match = regex.exec(themesMatch[1])) !== null) {
+    names.push(match[1]);
+  }
+  return names;
+}
+
+function extractThemeData(content: string, themeName: string): Record<string, string> {
+  const themeMatch = content.match(new RegExp(`export const ${themeName}Theme: ThemeDefinition = \\{([^}]+)\\}`, 's'));
+  if (!themeMatch) return {};
+
+  const data: Record<string, string> = {};
+  const lines = themeMatch[1].split('\n');
+
+  lines.forEach(line => {
+    const match = line.match(/^\s*(\w+):\s*['"]([^'"]+)['"]/);
+    if (match) {
+      data[match[1]] = match[2];
+    } else {
+      const varMatch = line.match(/^\s*(\w+):\s*(\w+)\[(\d+)\]/);
+      if (varMatch) {
+        data[varMatch[1]] = `var(--${varMatch[2]}-${varMatch[3]})`;
+      }
+    }
+  });
+
+  return data;
+}
+
+function generateThemeCSS(themeName: string, data: Record<string, string>): string {
+  const lines: string[] = [];
+  lines.push(`/* ─── ${themeName.charAt(0).toUpperCase() + themeName.slice(1)} Theme ─── */`);
+  lines.push(`/* Auto-generated from @ui/tokens — do not edit manually. */`);
+  lines.push(`/* Apply: <html data-theme="${themeName}"> */`);
+  lines.push('');
+  lines.push(`[data-theme="${themeName}"] {`);
+
+  const sections: Record<string, string[]> = {
+    'Backgrounds': ['bg', 'bgSubtle', 'bgMuted'],
+    'Surfaces': ['surface', 'surfaceElevated', 'surfaceOverlay'],
+    'Text': ['textPrimary', 'textSecondary', 'textTertiary', 'textInverse', 'textOnPrimary'],
+    'Borders': ['border', 'borderStrong'],
+    'Interactive': ['primary', 'primaryHover', 'primaryActive'],
+    'Semantic': ['success', 'warning', 'error', 'info'],
+    'Focus': ['ring'],
+  };
+
+  Object.entries(sections).forEach(([section, keys]) => {
+    lines.push(`  /* ── ${section} ── */`);
+    keys.forEach(key => {
+      if (data[key]) {
+        const cssVar = key.replace(/([A-Z])/g, '-$1').toLowerCase();
+        lines.push(`  --${cssVar}: ${data[key]};`);
+      }
+    });
+    lines.push('');
+  });
+
+  lines.push('}');
+  lines.push('');
+
+  return lines.join('\n');
+}
+
+function generateReactNativeThemes(outputPath: string, themesContent: string, themeNames: string[]): void {
+  const lines: string[] = [];
+  lines.push('// Auto-generated from @ui/tokens — do not edit manually.');
+  lines.push('');
+  lines.push("import { gray, primary, success, warning, error, info } from '@ui/tokens/colors';");
+  lines.push('');
+  lines.push('export interface ThemeColors {');
+  lines.push('  bg: string;');
+  lines.push('  bgSubtle: string;');
+  lines.push('  bgMuted: string;');
+  lines.push('  surface: string;');
+  lines.push('  surfaceElevated: string;');
+  lines.push('  textPrimary: string;');
+  lines.push('  textSecondary: string;');
+  lines.push('  textTertiary: string;');
+  lines.push('  textInverse: string;');
+  lines.push('  textOnPrimary: string;');
+  lines.push('  border: string;');
+  lines.push('  borderStrong: string;');
+  lines.push('  primary: string;');
+  lines.push('  primaryHover: string;');
+  lines.push('  primaryActive: string;');
+  lines.push('  success: string;');
+  lines.push('  warning: string;');
+  lines.push('  error: string;');
+  lines.push('  info: string;');
+  lines.push('  ring: string;');
+  lines.push('}');
+  lines.push('');
+
+  themeNames.forEach(themeName => {
+    const themeData = extractThemeData(themesContent, themeName);
+    lines.push(`export const ${themeName}Colors: ThemeColors = {`);
+
+    Object.entries(themeData).forEach(([key, value]) => {
+      lines.push(`  ${key}: '${value}',`);
+    });
+
+    lines.push('};');
+    lines.push('');
+  });
+
+  writeFileSync(join(outputPath, 'themes.ts'), lines.join('\n'));
 }
 
 function loadTokens(sourcePath: string) {

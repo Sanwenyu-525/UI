@@ -5,10 +5,12 @@
   "main": "src/index.ts",
   "types": "src/index.ts",
   "scripts": {
+    "build": "node scripts/build-themes.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ui/tokens": "workspace:*"
+    "@ui/tokens": "workspace:*",
+    "@ui/token-codegen": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",
